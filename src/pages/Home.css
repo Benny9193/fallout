@@ -1,11 +1,28 @@
+/* ============================================
+   CSS Custom Properties
+   ============================================ */
+:root {
+  --hero-gradient-start: #667eea;
+  --hero-gradient-end: #764ba2;
+  --hero-text: white;
+  --button-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --animation-duration: 0.3s;
+  --animation-timing: ease-out;
+}
+
+/* ============================================
+   Layout
+   ============================================ */
 .home-page {
   width: 100%;
 }
 
-/* Hero Section */
+/* ============================================
+   Hero Section
+   ============================================ */
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%);
+  color: var(--hero-text);
   padding: 6rem 2rem;
   text-align: center;
 }
@@ -13,6 +30,7 @@
 .hero-content {
   max-width: 800px;
   margin: 0 auto;
+  animation: heroFadeIn 1s var(--animation-timing);
 }
 
 .hero-title {
@@ -36,6 +54,9 @@
   flex-wrap: wrap;
 }
 
+/* ============================================
+   Buttons
+   ============================================ */
 .btn-primary,
 .btn-secondary {
   padding: 0.875rem 2rem;
@@ -43,32 +64,34 @@
   font-weight: 600;
   border-radius: 8px;
   text-decoration: none;
-  transition: all 0.3s;
+  transition: all var(--animation-duration);
   display: inline-block;
 }
 
 .btn-primary {
-  background: white;
-  color: #667eea;
+  background: var(--hero-text);
+  color: var(--hero-gradient-start);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--button-hover-shadow);
 }
 
 .btn-secondary {
   background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 2px solid white;
+  color: var(--hero-text);
+  border: 2px solid var(--hero-text);
 }
 
 .btn-secondary:hover {
-  background: white;
-  color: #667eea;
+  background: var(--hero-text);
+  color: var(--hero-gradient-start);
 }
 
-/* Stats Section */
+/* ============================================
+   Stats Section
+   ============================================ */
 .stats-section {
   padding: 3rem 2rem;
   background: var(--bg-secondary);
@@ -88,7 +111,7 @@
   border-radius: 12px;
   text-align: center;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform var(--animation-duration), box-shadow var(--animation-duration);
 }
 
 .stat-card:hover {
@@ -115,7 +138,9 @@
   font-weight: 600;
 }
 
-/* Features Section */
+/* ============================================
+   Features Section
+   ============================================ */
 .features-section {
   padding: 4rem 2rem;
   max-width: 1200px;
@@ -149,7 +174,7 @@
   box-shadow: var(--shadow-sm);
   text-decoration: none;
   color: inherit;
-  transition: all 0.3s;
+  transition: all var(--animation-duration);
   position: relative;
   overflow: hidden;
   border: 2px solid transparent;
@@ -164,13 +189,13 @@
   height: 100%;
   background: var(--accent-color, #667eea);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity var(--animation-duration);
 }
 
 .feature-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--accent-color, var(--primary-color));
+  border-color: var(--accent-color, #667eea);
 }
 
 .feature-card:hover::before {
@@ -199,7 +224,7 @@
   font-size: 1.5rem;
   color: var(--accent-color, #667eea);
   opacity: 0;
-  transition: all 0.3s;
+  transition: all var(--animation-duration);
 }
 
 .feature-card:hover .feature-arrow {
@@ -207,15 +232,17 @@
   transform: translateX(4px);
 }
 
-/* Tech Section */
+/* ============================================
+   Tech Section
+   ============================================ */
 .tech-section {
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%);
+  color: var(--hero-text);
 }
 
 .tech-section .section-title {
-  color: white;
+  color: var(--hero-text);
 }
 
 .tech-grid {
@@ -234,20 +261,22 @@
   border-radius: 25px;
   font-weight: 600;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s;
+  transition: all var(--animation-duration);
 }
 
 .tech-badge:hover {
-  background: white;
-  color: #667eea;
+  background: var(--hero-text);
+  color: var(--hero-gradient-start);
   transform: translateY(-2px);
 }
 
-/* Scroll Animations */
+/* ============================================
+   Scroll Animations
+   ============================================ */
 .fade-up {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition: opacity 0.8s var(--animation-timing), transform 0.8s var(--animation-timing);
 }
 
 .fade-up.animate-in {
@@ -257,49 +286,27 @@
 
 /* Stagger animation for child elements */
 .animate-in .stat-card {
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.6s var(--animation-timing) forwards;
   opacity: 0;
 }
 
-.animate-in .stat-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.animate-in .stat-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.animate-in .stat-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.animate-in .stat-card:nth-child(4) {
-  animation-delay: 0.4s;
-}
+.animate-in .stat-card:nth-child(1) { animation-delay: 0.1s; }
+.animate-in .stat-card:nth-child(2) { animation-delay: 0.2s; }
+.animate-in .stat-card:nth-child(3) { animation-delay: 0.3s; }
+.animate-in .stat-card:nth-child(4) { animation-delay: 0.4s; }
 
 .animate-in .feature-card {
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.6s var(--animation-timing) forwards;
   opacity: 0;
 }
 
-.animate-in .feature-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.animate-in .feature-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.animate-in .feature-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.animate-in .feature-card:nth-child(4) {
-  animation-delay: 0.4s;
-}
+.animate-in .feature-card:nth-child(1) { animation-delay: 0.1s; }
+.animate-in .feature-card:nth-child(2) { animation-delay: 0.2s; }
+.animate-in .feature-card:nth-child(3) { animation-delay: 0.3s; }
+.animate-in .feature-card:nth-child(4) { animation-delay: 0.4s; }
 
 .animate-in .tech-badge {
-  animation: fadeInScale 0.5s ease-out forwards;
+  animation: fadeInScale 0.5s var(--animation-timing) forwards;
   opacity: 0;
 }
 
@@ -312,6 +319,9 @@
 .animate-in .tech-badge:nth-child(7) { animation-delay: 0.4s; }
 .animate-in .tech-badge:nth-child(8) { animation-delay: 0.45s; }
 
+/* ============================================
+   Keyframe Animations
+   ============================================ */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -334,11 +344,6 @@
   }
 }
 
-/* Hero entrance animation */
-.hero-content {
-  animation: heroFadeIn 1s ease-out;
-}
-
 @keyframes heroFadeIn {
   from {
     opacity: 0;
@@ -350,14 +355,26 @@
   }
 }
 
-/* Responsive Design */
+/* ============================================
+   Responsive Design
+   ============================================ */
 @media (max-width: 768px) {
+  .hero {
+    padding: 4rem 1.5rem;
+  }
+
   .hero-title {
     font-size: 2.5rem;
   }
 
   .hero-subtitle {
     font-size: 1rem;
+  }
+
+  .stats-section,
+  .features-section,
+  .tech-section {
+    padding: 3rem 1.5rem;
   }
 
   .stats-grid {
