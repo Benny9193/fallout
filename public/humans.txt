@@ -1,0 +1,40 @@
+/* TEAM */
+Developer: Fallout Web App Team
+Site: https://fallout-web-app.com
+Location: Earth
+
+/* THANKS */
+Thanks to all the open-source contributors and the React community.
+
+/* SITE */
+Last update: 2025-11-22
+Standards: HTML5, CSS3, ES2023
+Components: React 18, TypeScript, Vite
+Libraries: React Query, React Router, Zustand, Axios, Tailwind CSS
+IDE: Visual Studio Code
+Version Control: Git
+
+/* TECHNOLOGIES */
+- React 18.3.1
+- TypeScript 5.6.2
+- Vite 6.0.3
+- React Router 7.1.1
+- React Query (TanStack Query) 5.62.14
+- Zustand 5.0.2
+- Tailwind CSS 3.4.17
+- Axios 1.7.9
+
+/* FEATURES */
+- Modern React SPA with lazy loading
+- Type-safe with TypeScript
+- State management with Zustand
+- Server state with React Query
+- Client-side routing with React Router
+- Responsive design with Tailwind CSS
+- Dark mode support
+- PWA ready
+- SEO optimized
+
+/* CONTACT */
+Email: contact@fallout-web-app.com
+GitHub: https://github.com/fallout-web-app
