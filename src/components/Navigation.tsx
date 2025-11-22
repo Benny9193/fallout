@@ -24,6 +24,11 @@ function Navigation() {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/posts">
+              Posts
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/profile">
               Profile
             </NavLink>

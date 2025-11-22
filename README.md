@@ -64,6 +64,7 @@ npm run lint
 - Data fetching with React Query and Axios
 - Loading and error states
 - RESTful API integration (JSONPlaceholder demo)
+- Pagination with reusable Pagination component
 
 ## Project Structure
 
@@ -76,10 +77,13 @@ fallout/
 │   │   └── services.ts   # API service functions
 │   ├── components/
 │   │   ├── Navigation.tsx
-│   │   └── Navigation.css
+│   │   ├── Navigation.css
+│   │   ├── Pagination.tsx
+│   │   └── Pagination.css
 │   ├── pages/
 │   │   ├── Home.tsx
 │   │   ├── Dashboard.tsx
+│   │   ├── Posts.tsx       # Paginated posts list
 │   │   ├── Profile.tsx
 │   │   ├── Settings.tsx
 │   │   ├── About.tsx
@@ -113,3 +117,35 @@ To configure a different API:
 - Centralized error handling
 - TypeScript types for all API responses
 - React Query for caching and state management
+
+## Pages
+
+The application includes the following pages:
+
+- **Home** (`/`) - Landing page with a counter using Zustand
+- **Dashboard** (`/dashboard`) - Metrics and activity overview with real API data
+- **Posts** (`/posts`) - Paginated list of posts with 10 items per page
+- **Profile** (`/profile`) - User profile with stats from API
+- **Settings** (`/settings`) - App preferences and configuration
+- **About** (`/about`) - Information about the tech stack
+
+## Components
+
+### Pagination
+
+A reusable pagination component used in the Posts page:
+
+```tsx
+<Pagination
+  currentPage={currentPage}
+  totalPages={totalPages}
+  onPageChange={handlePageChange}
+  maxVisible={5}  // Optional: max page numbers to show
+/>
+```
+
+Features:
+- Smart ellipsis display for large page counts
+- Previous/Next buttons
+- Active page highlighting
+- Responsive design
