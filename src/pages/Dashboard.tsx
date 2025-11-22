@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useCounterStore } from '../store/counterStore'
 import { dashboardService, type Metric, type Activity } from '../api/services'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { Loading, ErrorDisplay, EmptyState } from '../components'
 import './Dashboard.css'
 
 interface QuickAction {
@@ -137,22 +138,13 @@ const MetricsSection = forwardRef<HTMLDivElement, MetricsSectionProps>(
       <section ref={ref} className="metrics-section fade-up">
         <h2>Key Metrics</h2>
         {isLoading ? (
-          <div className="loading" role="status" aria-live="polite">
-            <div className="loading-spinner" aria-hidden="true"></div>
-            <span>Loading metrics...</span>
-          </div>
+          <Loading message="Loading metrics..." />
         ) : error ? (
-          <div className="error" role="alert">
-            <p>Error loading metrics: {(error as Error).message}</p>
-            <button
-              className="error-retry"
-              onClick={onRetry}
-              aria-label="Retry loading metrics"
-              type="button"
-            >
-              Retry
-            </button>
-          </div>
+          <ErrorDisplay
+            error={error}
+            title="Failed to load metrics"
+            onRetry={onRetry}
+          />
         ) : (
           <div className="metrics-grid" role="region" aria-label="Key metrics">
             {metrics.map((metric) => (
@@ -201,22 +193,13 @@ const ActivitySection = forwardRef<HTMLDivElement, ActivitySectionProps>(
       <section ref={ref} className="activity-section fade-up">
         <h2>Recent Activity</h2>
         {isLoading ? (
-          <div className="loading" role="status" aria-live="polite">
-            <div className="loading-spinner" aria-hidden="true"></div>
-            <span>Loading activity...</span>
-          </div>
+          <Loading message="Loading activity..." />
         ) : error ? (
-          <div className="error" role="alert">
-            <p>Error loading activity: {(error as Error).message}</p>
-            <button
-              className="error-retry"
-              onClick={onRetry}
-              aria-label="Retry loading activity"
-              type="button"
-            >
-              Retry
-            </button>
-          </div>
+          <ErrorDisplay
+            error={error}
+            title="Failed to load activity"
+            onRetry={onRetry}
+          />
         ) : (
           <div className="activity-list" role="region" aria-label="Recent activity">
             {activities && activities.length > 0 ? (
@@ -224,7 +207,11 @@ const ActivitySection = forwardRef<HTMLDivElement, ActivitySectionProps>(
                 <ActivityItem key={activity.id} activity={activity} />
               ))
             ) : (
-              <div className="empty-state">No recent activity</div>
+              <EmptyState
+                title="No recent activity"
+                message="There is no recent activity to display."
+                icon="📋"
+              />
             )}
           </div>
         )}

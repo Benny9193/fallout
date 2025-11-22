@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { postService } from '../api/services'
-import Pagination from '../components/Pagination'
+import { Pagination, Loading, ErrorDisplay, EmptyState } from '../components'
+import { PAGINATION, ROUTES } from '../constants'
 import './Posts.css'
 
-const POSTS_PER_PAGE = 10
+const POSTS_PER_PAGE = PAGINATION.DEFAULT_PAGE_SIZE
 
 function Posts() {
   const [currentPage, setCurrentPage] = useState(1)
@@ -32,7 +33,7 @@ function Posts() {
     return (
       <div className="page posts-page">
         <h1>Posts (Pagination)</h1>
-        <div className="loading">Loading posts...</div>
+        <Loading message="Loading posts..." />
       </div>
     )
   }
@@ -41,7 +42,11 @@ function Posts() {
     return (
       <div className="page posts-page">
         <h1>Posts (Pagination)</h1>
-        <div className="error">Error loading posts: {(error as Error).message}</div>
+        <ErrorDisplay
+          error={error}
+          title="Failed to load posts"
+          onRetry={() => window.location.reload()}
+        />
       </div>
     )
   }
@@ -56,24 +61,32 @@ function Posts() {
               Showing {startIndex + 1}-{Math.min(endIndex, totalPosts)} of {totalPosts} posts
             </p>
           </div>
-          <Link to="/posts/infinite" className="view-toggle">
+          <Link to={ROUTES.POSTS_INFINITE} className="view-toggle">
             Switch to Infinite Scroll
           </Link>
         </div>
       </div>
 
-      <div className="posts-grid">
-        {currentPosts.map((post) => (
-          <article key={post.id} className="post-card">
-            <div className="post-header">
-              <span className="post-id">#{post.id}</span>
-              <span className="post-user">User {post.userId}</span>
-            </div>
-            <h2 className="post-title">{post.title}</h2>
-            <p className="post-body">{post.body}</p>
-          </article>
-        ))}
-      </div>
+      {currentPosts.length === 0 ? (
+        <EmptyState
+          title="No posts found"
+          message="There are no posts to display."
+          icon="📝"
+        />
+      ) : (
+        <div className="posts-grid">
+          {currentPosts.map((post) => (
+            <article key={post.id} className="post-card">
+              <div className="post-header">
+                <span className="post-id">#{post.id}</span>
+                <span className="post-user">User {post.userId}</span>
+              </div>
+              <h2 className="post-title">{post.title}</h2>
+              <p className="post-body">{post.body}</p>
+            </article>
+          ))}
+        </div>
+      )}
 
       {totalPages > 1 && (
         <Pagination

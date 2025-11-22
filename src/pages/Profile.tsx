@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { userService, postService } from '../api/services'
+import { Loading, ErrorDisplay } from '../components'
 import './Profile.css'
 
 function Profile() {
@@ -29,7 +30,7 @@ function Profile() {
     return (
       <div className="page profile-page">
         <h1>Profile</h1>
-        <div className="loading">Loading profile...</div>
+        <Loading message="Loading profile..." />
       </div>
     )
   }
@@ -38,7 +39,11 @@ function Profile() {
     return (
       <div className="page profile-page">
         <h1>Profile</h1>
-        <div className="error">Error loading profile: {(userError as Error).message}</div>
+        <ErrorDisplay
+          error={userError}
+          title="Failed to load profile"
+          onRetry={() => window.location.reload()}
+        />
       </div>
     )
   }
@@ -71,7 +76,7 @@ function Profile() {
 
         <div className="profile-stats">
           {postsLoading ? (
-            <div className="loading">Loading stats...</div>
+            <Loading message="Loading stats..." size="small" />
           ) : (
             stats.map((stat, index) => (
               <div key={index} className="stat-card">
