@@ -9,8 +9,13 @@ export const ThemeSchema = z.enum(['light', 'dark', 'system'])
 export const ThemeStateSchema = z.object({
   theme: ThemeSchema,
   effectiveTheme: z.enum(['light', 'dark']),
+  setTheme: z.function().args(ThemeSchema),
 })
 
 export type CounterState = z.infer<typeof CounterStateSchema>
 export type Theme = z.infer<typeof ThemeSchema>
-export type ThemeState = z.infer<typeof ThemeStateSchema>
+export type ThemeState = {
+  theme: Theme
+  effectiveTheme: 'light' | 'dark'
+  setTheme: (theme: Theme) => void
+}
