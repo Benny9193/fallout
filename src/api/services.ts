@@ -1,34 +1,9 @@
 import api from './axios'
+import type { User, Post, Activity, Metric, PostsPage } from '../types/api'
+import { PAGINATION } from '../constants/app'
 
-// Types
-export interface User {
-  id: number
-  name: string
-  email: string
-  username: string
-  phone: string
-  website: string
-}
-
-export interface Post {
-  id: number
-  userId: number
-  title: string
-  body: string
-}
-
-export interface Activity {
-  id: number
-  text: string
-  time: string
-}
-
-export interface Metric {
-  label: string
-  value: string | number
-  change: string
-  positive: boolean
-}
+// Re-export types for backward compatibility
+export type { User, Post, Activity, Metric, PostsPage }
 
 // API Services
 export const userService = {
@@ -51,12 +26,6 @@ export const userService = {
   },
 }
 
-export interface PostsPage {
-  posts: Post[]
-  nextPage: number | undefined
-  hasMore: boolean
-}
-
 export const postService = {
   // Get all posts
   getPosts: async (): Promise<Post[]> => {
@@ -65,7 +34,7 @@ export const postService = {
   },
 
   // Get paginated posts for infinite scroll
-  getPostsPage: async (page: number = 1, limit: number = 10): Promise<PostsPage> => {
+  getPostsPage: async (page: number = 1, limit: number = PAGINATION.DEFAULT_PAGE_SIZE): Promise<PostsPage> => {
     // JSONPlaceholder has 100 posts total
     const start = (page - 1) * limit
     const response = await api.get<Post[]>('/posts', {
