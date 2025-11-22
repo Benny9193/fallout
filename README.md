@@ -46,23 +46,70 @@ npm run lint
 
 ## Tech Stack
 
-- **React 18** - UI library
+- **React 18** - UI library with hooks
 - **TypeScript** - Type safety
 - **Vite** - Build tool and dev server
+- **React Router** - Client-side routing
+- **Zustand** - Lightweight state management
+- **React Query** - Server state management and data fetching
+- **Axios** - HTTP client
 - **ESLint** - Code linting
+
+## Features
+
+- Fast development with Vite HMR
+- Type-safe development with TypeScript
+- Client-side routing with React Router
+- Global state management with Zustand
+- Data fetching with React Query and Axios
+- Loading and error states
+- RESTful API integration (JSONPlaceholder demo)
 
 ## Project Structure
 
 ```
 fallout/
-├── public/          # Static assets
+├── public/               # Static assets
 ├── src/
-│   ├── App.tsx      # Main app component
-│   ├── App.css      # App styles
-│   ├── main.tsx     # Entry point
-│   └── index.css    # Global styles
-├── index.html       # HTML template
-├── package.json     # Dependencies
-├── tsconfig.json    # TypeScript config
-└── vite.config.ts   # Vite config
+│   ├── api/
+│   │   ├── axios.ts      # Axios configuration
+│   │   └── services.ts   # API service functions
+│   ├── components/
+│   │   ├── Navigation.tsx
+│   │   └── Navigation.css
+│   ├── pages/
+│   │   ├── Home.tsx
+│   │   ├── Dashboard.tsx
+│   │   ├── Profile.tsx
+│   │   ├── Settings.tsx
+│   │   ├── About.tsx
+│   │   └── NotFound.tsx
+│   ├── store/
+│   │   └── counterStore.ts  # Zustand store
+│   ├── App.tsx           # Main app component
+│   ├── App.css           # App styles
+│   ├── main.tsx          # Entry point with React Query provider
+│   └── index.css         # Global styles
+├── .env.example          # Environment variables template
+├── index.html            # HTML template
+├── package.json          # Dependencies
+├── tsconfig.json         # TypeScript config
+└── vite.config.ts        # Vite config
 ```
+
+## API Integration
+
+The app uses [JSONPlaceholder](https://jsonplaceholder.typicode.com) as a demo REST API.
+
+To configure a different API:
+1. Copy `.env.example` to `.env`
+2. Update `VITE_API_URL` with your API endpoint
+3. Modify services in `src/api/services.ts` as needed
+
+### API Features
+
+- Automatic request/response interceptors
+- Token-based authentication support
+- Centralized error handling
+- TypeScript types for all API responses
+- React Query for caching and state management
