@@ -65,6 +65,8 @@ npm run lint
 - Loading and error states
 - RESTful API integration (JSONPlaceholder demo)
 - Pagination with reusable Pagination component
+- Infinite scroll with React Query's useInfiniteQuery
+- IntersectionObserver-based auto-loading
 
 ## Project Structure
 
@@ -80,10 +82,13 @@ fallout/
 │   │   ├── Navigation.css
 │   │   ├── Pagination.tsx
 │   │   └── Pagination.css
+│   ├── hooks/
+│   │   └── useInfiniteScroll.ts  # Custom hook for infinite scroll
 │   ├── pages/
 │   │   ├── Home.tsx
 │   │   ├── Dashboard.tsx
-│   │   ├── Posts.tsx       # Paginated posts list
+│   │   ├── Posts.tsx          # Paginated posts list
+│   │   ├── InfinitePosts.tsx  # Infinite scroll posts list
 │   │   ├── Profile.tsx
 │   │   ├── Settings.tsx
 │   │   ├── About.tsx
@@ -125,6 +130,7 @@ The application includes the following pages:
 - **Home** (`/`) - Landing page with a counter using Zustand
 - **Dashboard** (`/dashboard`) - Metrics and activity overview with real API data
 - **Posts** (`/posts`) - Paginated list of posts with 10 items per page
+- **Infinite Posts** (`/posts/infinite`) - Infinite scroll version of posts list
 - **Profile** (`/profile`) - User profile with stats from API
 - **Settings** (`/settings`) - App preferences and configuration
 - **About** (`/about`) - Information about the tech stack
@@ -149,3 +155,38 @@ Features:
 - Previous/Next buttons
 - Active page highlighting
 - Responsive design
+
+### Infinite Scroll
+
+A custom hook (`useInfiniteScroll`) combined with React Query's `useInfiniteQuery` for infinite scrolling:
+
+```tsx
+import { useInfiniteScroll } from '../hooks/useInfiniteScroll'
+import { useInfiniteQuery } from '@tanstack/react-query'
+
+const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
+  queryKey: ['infinitePosts'],
+  queryFn: ({ pageParam = 1 }) => postService.getPostsPage(pageParam, 10),
+  getNextPageParam: (lastPage) => lastPage.nextPage,
+  initialPageParam: 1,
+})
+
+const loadMoreRef = useInfiniteScroll({
+  loading: isFetchingNextPage,
+  hasMore: hasNextPage ?? false,
+  onLoadMore: fetchNextPage,
+})
+
+// In JSX:
+<div ref={loadMoreRef} />
+```
+
+Features:
+- IntersectionObserver-based detection
+- Automatic loading when scrolling near bottom
+- Loading spinner while fetching
+- End of content indicator
+- Configurable trigger distance and threshold
+- Switch between pagination and infinite scroll views
+
+Both pagination and infinite scroll patterns are demonstrated in the Posts pages, with a toggle button to switch between them.

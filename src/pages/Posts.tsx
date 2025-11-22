@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { postService } from '../api/services'
 import Pagination from '../components/Pagination'
@@ -30,7 +31,7 @@ function Posts() {
   if (isLoading) {
     return (
       <div className="page posts-page">
-        <h1>Posts</h1>
+        <h1>Posts (Pagination)</h1>
         <div className="loading">Loading posts...</div>
       </div>
     )
@@ -39,7 +40,7 @@ function Posts() {
   if (error) {
     return (
       <div className="page posts-page">
-        <h1>Posts</h1>
+        <h1>Posts (Pagination)</h1>
         <div className="error">Error loading posts: {(error as Error).message}</div>
       </div>
     )
@@ -48,10 +49,17 @@ function Posts() {
   return (
     <div className="page posts-page">
       <div className="posts-header">
-        <h1>Posts</h1>
-        <p>
-          Showing {startIndex + 1}-{Math.min(endIndex, totalPosts)} of {totalPosts} posts
-        </p>
+        <div className="posts-header-content">
+          <div>
+            <h1>Posts (Pagination)</h1>
+            <p>
+              Showing {startIndex + 1}-{Math.min(endIndex, totalPosts)} of {totalPosts} posts
+            </p>
+          </div>
+          <Link to="/posts/infinite" className="view-toggle">
+            Switch to Infinite Scroll
+          </Link>
+        </div>
       </div>
 
       <div className="posts-grid">

@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard'
 import Profile from './pages/Profile'
 import Settings from './pages/Settings'
 import Posts from './pages/Posts'
+import InfinitePosts from './pages/InfinitePosts'
 import NotFound from './pages/NotFound'
 import './App.css'
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/posts" element={<Posts />} />
+            <Route path="/posts/infinite" element={<InfinitePosts />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/about" element={<About />} />
