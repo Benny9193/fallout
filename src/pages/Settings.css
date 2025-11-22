@@ -1,74 +1,221 @@
+/* ============================================
+   CSS Custom Properties
+   ============================================ */
+:root {
+  --animation-duration: 0.3s;
+  --animation-timing: ease-out;
+  --settings-max-width: 800px;
+}
+
+/* ============================================
+   Layout
+   ============================================ */
 .settings-page {
-  max-width: 800px;
+  max-width: var(--settings-max-width);
   margin: 0 auto;
+  padding: 2rem;
+}
+
+.settings-header {
+  margin-bottom: 2rem;
+}
+
+.settings-header h1 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.settings-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
 }
 
 .settings-container {
   background: var(--bg-tertiary);
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--animation-duration) var(--animation-timing);
 }
 
+.settings-container:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   Settings Section
+   ============================================ */
 .settings-section {
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
   border-bottom: 1px solid var(--border-color);
+  transition: border-color var(--animation-duration) var(--animation-timing);
 }
 
 .settings-section:last-of-type {
   border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
 }
 
 .settings-section h2 {
   color: var(--primary-color);
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
+.section-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ============================================
+   Setting Items
+   ============================================ */
 .setting-item {
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .setting-item label {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 0.5rem;
   color: var(--text-primary);
   cursor: pointer;
 }
 
-.setting-item select {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+.setting-label {
+  font-weight: 600;
   font-size: 1rem;
-  margin-top: 0.5rem;
-  background: var(--bg-primary);
   color: var(--text-primary);
 }
 
-.setting-item input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+.setting-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ============================================
+   Form Inputs
+   ============================================ */
+.setting-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: inherit;
+  transition: all var(--animation-duration) var(--animation-timing);
   cursor: pointer;
 }
 
+.setting-input:hover {
+  border-color: var(--primary-color);
+}
+
+.setting-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb, 102, 126, 234), 0.1);
+}
+
+.setting-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   Checkbox Styles
+   ============================================ */
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: background-color var(--animation-duration) var(--animation-timing);
+}
+
+.checkbox-label:hover {
+  background-color: var(--bg-secondary);
+}
+
+.setting-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+  accent-color: var(--primary-color);
+  transition: transform var(--animation-duration) var(--animation-timing);
+}
+
+.setting-checkbox:hover {
+  transform: scale(1.1);
+}
+
+.setting-checkbox:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.checkbox-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+/* ============================================
+   Action Buttons
+   ============================================ */
 .settings-actions {
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  flex-wrap: wrap;
 }
 
 .btn-primary,
 .btn-secondary {
-  padding: 0.75rem 1.5rem;
+  padding: 0.875rem 2rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all var(--animation-duration) var(--animation-timing);
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  min-width: 140px;
+  justify-content: center;
 }
 
 .btn-primary {
@@ -76,15 +223,198 @@
   color: white;
 }
 
-.btn-primary:hover {
-  background-color: var(--primary-hover);
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-hover, var(--primary-color));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 .btn-secondary {
-  background-color: var(--border-color);
+  background-color: var(--bg-secondary);
   color: var(--text-primary);
+  border: 2px solid var(--border-color);
 }
 
 .btn-secondary:hover {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Button States
+   ============================================ */
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.btn-checkmark {
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--success-color, #10b981);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   Scroll Animations
+   ============================================ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--animation-timing), transform 0.8s var(--animation-timing);
+}
+
+.fade-up.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation for setting items */
+.animate-in .setting-item {
+  animation: fadeInUp 0.5s var(--animation-timing) forwards;
+  opacity: 0;
+}
+
+.animate-in .setting-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.animate-in .setting-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.animate-in .setting-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* ============================================
+   Keyframe Animations
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+  .settings-page {
+    padding: 1rem;
+  }
+
+  .settings-header h1 {
+    font-size: 2rem;
+  }
+
+  .settings-header p {
+    font-size: 1rem;
+  }
+
+  .settings-container {
+    padding: 1.5rem;
+  }
+
+  .settings-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .settings-section h2 {
+    font-size: 1.3rem;
+  }
+
+  .section-description {
+    font-size: 0.9rem;
+  }
+
+  .settings-actions {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .checkbox-label {
+    padding: 0.5rem;
+  }
+}
+
+/* ============================================
+   Reduced Motion Support
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .setting-item,
+  .setting-input,
+  .setting-checkbox,
+  .btn-primary,
+  .btn-secondary,
+  .btn-spinner {
+    transition: none;
+    animation: none;
+  }
+
+  .fade-up.animate-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-in .setting-item {
+    opacity: 1;
+    animation: none;
+  }
+
+  .btn-primary:hover:not(:disabled),
+  .btn-secondary:hover {
+    transform: none;
+  }
+
+  .setting-checkbox:hover {
+    transform: none;
+  }
 }

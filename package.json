@@ -1,13 +1,40 @@
 {
   "name": "fallout-web-app",
-  "private": true,
   "version": "0.1.0",
+  "description": "A modern React application demonstrating best practices with TypeScript, React Query, Zustand, and more. Built with React 18, Vite, and modern web technologies.",
   "type": "module",
+  "private": true,
+  "author": "Fallout Web App Team",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "typescript",
+    "vite",
+    "react-query",
+    "zustand",
+    "react-router",
+    "axios",
+    "web-application",
+    "modern-web-development",
+    "spa",
+    "frontend"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
+    "clean": "rm -rf dist node_modules/.vite",
+    "clean:build": "rm -rf dist",
+    "validate": "npm run type-check && npm run lint",
+    "prebuild": "npm run type-check"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.62.11",

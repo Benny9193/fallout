@@ -1,0 +1,82 @@
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  min-height: 300px;
+}
+
+.empty-state-content {
+  max-width: 400px;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: var(--card-background, #f9fafb);
+  border: 1px dashed var(--border-color, #d1d5db);
+  width: 100%;
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.empty-state-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--text-color, #333333);
+}
+
+.empty-state-message {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0 0 1.5rem;
+  color: var(--text-color-secondary, #6b7280);
+}
+
+.empty-state-button {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--primary-color, #3b82f6);
+  color: #ffffff;
+}
+
+.empty-state-button:hover {
+  background-color: var(--primary-color-hover, #2563eb);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.empty-state-button:active {
+  transform: translateY(0);
+}
+
+[data-theme='dark'] .empty-state-content {
+  background-color: var(--card-background, #1f2937);
+  border-color: var(--border-color, #4b5563);
+}
+
+[data-theme='dark'] .empty-state-title {
+  color: var(--text-color, #f9fafb);
+}
+
+[data-theme='dark'] .empty-state-message {
+  color: var(--text-color-secondary, #9ca3af);
+}
+
+[data-theme='dark'] .empty-state-button {
+  background-color: var(--primary-color, #60a5fa);
+}
+
+[data-theme='dark'] .empty-state-button:hover {
+  background-color: var(--primary-color-hover, #3b82f6);
+}
+
