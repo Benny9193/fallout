@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+import { ROUTES } from '../constants/routes'
 import './About.css'
 
 function About() {
@@ -34,7 +36,7 @@ function About() {
           a fast, type-safe, and maintainable development experience.
         </p>
         <p>
-          Check out the <a href="/">Home</a> page to see the counter in action,
+          Check out the <Link to={ROUTES.HOME}>Home</Link> page to see the counter in action,
           or explore the codebase to learn more.
         </p>
       </section>

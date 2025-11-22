@@ -5,6 +5,7 @@ import { useCounterStore } from '../store/counterStore'
 import { dashboardService, type Metric, type Activity } from '../api/services'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { Loading, ErrorDisplay, EmptyState } from '../components'
+import { ROUTES } from '../constants/routes'
 import './Dashboard.css'
 
 interface QuickAction {
@@ -20,28 +21,28 @@ const QUICK_ACTIONS: QuickAction[] = [
     id: 'reports',
     label: 'View Reports',
     icon: '📊',
-    path: '/dashboard',
+    path: ROUTES.DASHBOARD,
     ariaLabel: 'View reports and analytics',
   },
   {
     id: 'settings',
     label: 'Settings',
     icon: '⚙️',
-    path: '/settings',
+    path: ROUTES.SETTINGS,
     ariaLabel: 'Go to settings page',
   },
   {
     id: 'profile',
     label: 'Profile',
     icon: '👤',
-    path: '/profile',
+    path: ROUTES.PROFILE,
     ariaLabel: 'Go to profile page',
   },
   {
     id: 'home',
     label: 'Home',
     icon: '🏠',
-    path: '/',
+    path: ROUTES.HOME,
     ariaLabel: 'Go to home page',
   },
 ] as const

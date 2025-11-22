@@ -2,6 +2,7 @@ import { useMemo, forwardRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useCounterStore } from '../store/counterStore'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { ROUTES } from '../constants/routes'
 import './Home.css'
 
 interface Feature {
@@ -26,7 +27,7 @@ const FEATURES: Feature[] = [
     title: 'Dashboard',
     description: 'View key metrics, recent activity, and get an overview of your application data.',
     icon: '📊',
-    link: '/dashboard',
+    link: ROUTES.DASHBOARD,
     color: '#667eea',
   },
   {
@@ -34,7 +35,7 @@ const FEATURES: Feature[] = [
     title: 'Posts',
     description: 'Browse posts with pagination or infinite scroll. Seamlessly switch between views.',
     icon: '📝',
-    link: '/posts',
+    link: ROUTES.POSTS,
     color: '#f093fb',
   },
   {
@@ -42,7 +43,7 @@ const FEATURES: Feature[] = [
     title: 'Profile',
     description: 'Manage your user profile, view stats, and update your account information.',
     icon: '👤',
-    link: '/profile',
+    link: ROUTES.PROFILE,
     color: '#4facfe',
   },
   {
@@ -50,7 +51,7 @@ const FEATURES: Feature[] = [
     title: 'Settings',
     description: 'Customize your preferences, manage notifications, and configure your experience.',
     icon: '⚙️',
-    link: '/settings',
+    link: ROUTES.SETTINGS,
     color: '#43e97b',
   },
 ]
@@ -102,10 +103,10 @@ function HeroSection() {
           React Query, Zustand, and more.
         </p>
         <div className="hero-buttons">
-          <Link to="/dashboard" className="btn-primary">
+          <Link to={ROUTES.DASHBOARD} className="btn-primary">
             Get Started
           </Link>
-          <Link to="/about" className="btn-secondary">
+          <Link to={ROUTES.ABOUT} className="btn-secondary">
             Learn More
           </Link>
         </div>

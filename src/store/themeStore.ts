@@ -1,4 +1,6 @@
 import { create } from 'zustand'
+import { STORAGE_KEYS } from '../constants/api'
+import { getLocalStorageItem, setLocalStorageItem } from '../utils/storage'
 
 type Theme = 'light' | 'dark' | 'system'
 
@@ -15,8 +17,7 @@ const getSystemTheme = (): 'light' | 'dark' => {
 
 const getStoredTheme = (): Theme => {
   if (typeof window === 'undefined') return 'system'
-  const stored = localStorage.getItem('theme') as Theme
-  return stored || 'system'
+  return getLocalStorageItem<Theme>(STORAGE_KEYS.THEME, 'system')
 }
 
 const calculateEffectiveTheme = (theme: Theme): 'light' | 'dark' => {
@@ -52,7 +53,7 @@ export const useThemeStore = create<ThemeState>((set) => {
     effectiveTheme: initialEffectiveTheme,
     setTheme: (theme: Theme) => {
       const effectiveTheme = calculateEffectiveTheme(theme)
-      localStorage.setItem('theme', theme)
+      setLocalStorageItem(STORAGE_KEYS.THEME, theme)
       document.documentElement.setAttribute('data-theme', effectiveTheme)
       set({ theme, effectiveTheme })
     },

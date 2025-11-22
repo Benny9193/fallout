@@ -20,7 +20,7 @@ function App() {
       <ErrorBoundary>
         <div className="app">
           <Navigation />
-          <main className="app-main" id="main-content">
+          <main className="app-main" id="main-content" tabIndex={-1}>
             <Suspense fallback={<Loading message="Loading page..." fullScreen />}>
               <Routes>
                 <Route path={ROUTES.HOME} element={<Home />} />
