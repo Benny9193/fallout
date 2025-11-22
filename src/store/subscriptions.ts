@@ -11,8 +11,8 @@ export function subscribeToStateChange<T, S>(
 ) {
   let prevState: S | undefined
   const unsubscribe = store.subscribe(
-    (state) => selector(state),
-    (newState: S) => {
+    (state) => {
+      const newState = selector(state)
       if (prevState !== newState) {
         callback(newState, prevState)
         prevState = newState
@@ -30,9 +30,8 @@ export function debugStore<T>(
   label: string
 ) {
   return store.subscribe(
-    (state) => state,
-    (newState: T) => {
-      console.debug(`[${label}]`, newState)
+    (state) => {
+      console.debug(`[${label}]`, state)
     }
   )
 }
@@ -47,8 +46,8 @@ export function syncStoreToExternal<T, S>(
 ) {
   let prevState: S | undefined
   const unsubscribe = store.subscribe(
-    (state) => selector(state),
-    (newState: S) => {
+    (state) => {
+      const newState = selector(state)
       if (prevState !== newState) {
         void sync(newState)
         prevState = newState

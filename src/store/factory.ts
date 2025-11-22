@@ -1,10 +1,5 @@
 import { z } from 'zod'
 
-interface StoreConfig {
-  name: string
-  schema?: z.ZodSchema
-}
-
 /**
  * Validate store state against schema
  * Useful for validating persisted state on rehydration

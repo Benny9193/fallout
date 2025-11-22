@@ -4,7 +4,8 @@
       "Bash(xargs cat:*)",
       "Bash(find:*)",
       "Bash(npm install:*)",
-      "Bash(npm run type-check:*)"
+      "Bash(npm run type-check:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []
