@@ -1,0 +1,37 @@
+.about-section {
+  margin-bottom: 2rem;
+}
+
+.about-section h2 {
+  color: #667eea;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.about-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-section li {
+  padding: 0.5rem 0;
+  color: #666;
+  border-bottom: 1px solid #eee;
+}
+
+.about-section li:last-child {
+  border-bottom: none;
+}
+
+.about-section strong {
+  color: #333;
+}
+
+.about-section a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.about-section a:hover {
+  text-decoration: underline;
+}
