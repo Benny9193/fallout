@@ -1,0 +1,20 @@
+# Fallout Web App - Robots.txt
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private routes if any exist
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://fallout-web-app.com/sitemap.xml
+
+# Crawl-delay for politeness (optional)
+# Crawl-delay: 10
+
+# Prevent indexing of certain file types (optional)
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.txt$
