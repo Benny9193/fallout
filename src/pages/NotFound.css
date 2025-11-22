@@ -6,25 +6,25 @@
 .not-found h1 {
   font-size: 6rem;
   margin: 0;
-  color: #667eea;
+  color: var(--primary-color);
 }
 
 .not-found h2 {
   font-size: 2rem;
   margin: 1rem 0;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .not-found p {
   font-size: 1.2rem;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 2rem;
 }
 
 .home-link {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background-color: #667eea;
+  background-color: var(--primary-color);
   color: white;
   text-decoration: none;
   border-radius: 4px;
@@ -32,5 +32,5 @@
 }
 
 .home-link:hover {
-  background-color: #764ba2;
+  background-color: var(--primary-hover);
 }

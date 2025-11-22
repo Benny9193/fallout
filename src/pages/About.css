@@ -3,7 +3,7 @@
 }
 
 .about-section h2 {
-  color: #667eea;
+  color: var(--primary-color);
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
@@ -15,8 +15,8 @@
 
 .about-section li {
   padding: 0.5rem 0;
-  color: #666;
-  border-bottom: 1px solid #eee;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .about-section li:last-child {
@@ -24,11 +24,11 @@
 }
 
 .about-section strong {
-  color: #333;
+  color: var(--text-primary);
 }
 
 .about-section a {
-  color: #667eea;
+  color: var(--primary-color);
   text-decoration: none;
 }
 

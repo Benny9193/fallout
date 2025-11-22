@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useCounterStore } from '../store/counterStore'
+import ThemeToggle from './ThemeToggle'
 import './Navigation.css'
 
 function Navigation() {
@@ -44,6 +45,7 @@ function Navigation() {
             </NavLink>
           </li>
         </ul>
+        <ThemeToggle />
       </div>
     </nav>
   )

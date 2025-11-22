@@ -71,7 +71,7 @@
 /* Stats Section */
 .stats-section {
   padding: 3rem 2rem;
-  background: #f9f9f9;
+  background: var(--bg-secondary);
 }
 
 .stats-grid {
@@ -83,35 +83,35 @@
 }
 
 .stat-card {
-  background: white;
+  background: var(--bg-primary);
   padding: 2rem;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .stat-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-lg);
 }
 
 .stat-value {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #667eea;
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
 }
 
 .stat-label {
   font-size: 0.95rem;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 0.5rem;
 }
 
 .stat-trend {
   font-size: 0.875rem;
-  color: #22c55e;
+  color: var(--success-color);
   font-weight: 600;
 }
 
@@ -125,14 +125,14 @@
 .section-title {
   text-align: center;
   font-size: 2.5rem;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
 .section-subtitle {
   text-align: center;
   font-size: 1.125rem;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 3rem;
 }
 
@@ -143,10 +143,10 @@
 }
 
 .feature-card {
-  background: white;
+  background: var(--bg-primary);
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-sm);
   text-decoration: none;
   color: inherit;
   transition: all 0.3s;
@@ -169,8 +169,8 @@
 
 .feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-  border-color: var(--accent-color, #667eea);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-color, var(--primary-color));
 }
 
 .feature-card:hover::before {
@@ -185,12 +185,12 @@
 
 .feature-title {
   font-size: 1.5rem;
-  color: #333;
+  color: var(--text-primary);
   margin: 0 0 1rem 0;
 }
 
 .feature-description {
-  color: #666;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin: 0 0 1rem 0;
 }
@@ -243,6 +243,113 @@
   transform: translateY(-2px);
 }
 
+/* Scroll Animations */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-up.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation for child elements */
+.animate-in .stat-card {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-in .stat-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.animate-in .stat-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.animate-in .stat-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.animate-in .stat-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.animate-in .feature-card {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-in .feature-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.animate-in .feature-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.animate-in .feature-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.animate-in .feature-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.animate-in .tech-badge {
+  animation: fadeInScale 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-in .tech-badge:nth-child(1) { animation-delay: 0.1s; }
+.animate-in .tech-badge:nth-child(2) { animation-delay: 0.15s; }
+.animate-in .tech-badge:nth-child(3) { animation-delay: 0.2s; }
+.animate-in .tech-badge:nth-child(4) { animation-delay: 0.25s; }
+.animate-in .tech-badge:nth-child(5) { animation-delay: 0.3s; }
+.animate-in .tech-badge:nth-child(6) { animation-delay: 0.35s; }
+.animate-in .tech-badge:nth-child(7) { animation-delay: 0.4s; }
+.animate-in .tech-badge:nth-child(8) { animation-delay: 0.45s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hero entrance animation */
+.hero-content {
+  animation: heroFadeIn 1s ease-out;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-title {
@@ -264,5 +371,10 @@
 
   .section-title {
     font-size: 2rem;
+  }
+
+  /* Reduce animation intensity on mobile */
+  .fade-up {
+    transform: translateY(20px);
   }
 }

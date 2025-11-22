@@ -4,16 +4,16 @@
 }
 
 .settings-container {
-  background: #f5f5f5;
+  background: var(--bg-tertiary);
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .settings-section {
   margin-bottom: 2rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .settings-section:last-of-type {
@@ -21,7 +21,7 @@
 }
 
 .settings-section h2 {
-  color: #667eea;
+  color: var(--primary-color);
   margin-bottom: 1rem;
   font-size: 1.3rem;
 }
@@ -34,17 +34,19 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #333;
+  color: var(--text-primary);
   cursor: pointer;
 }
 
 .setting-item select {
   width: 100%;
   padding: 0.5rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 1rem;
   margin-top: 0.5rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .setting-item input[type="checkbox"] {
@@ -70,19 +72,19 @@
 }
 
 .btn-primary {
-  background-color: #667eea;
+  background-color: var(--primary-color);
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #764ba2;
+  background-color: var(--primary-hover);
 }
 
 .btn-secondary {
-  background-color: #e0e0e0;
-  color: #333;
+  background-color: var(--border-color);
+  color: var(--text-primary);
 }
 
 .btn-secondary:hover {
-  background-color: #d0d0d0;
+  background-color: var(--bg-secondary);
 }

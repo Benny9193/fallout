@@ -4,9 +4,9 @@
 }
 
 .profile-container {
-  background: #f5f5f5;
+  background: var(--bg-tertiary);
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
 }
 
@@ -75,36 +75,36 @@
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
   padding: 2rem;
-  background: white;
+  background: var(--bg-primary);
 }
 
 .stat-card {
   text-align: center;
   padding: 1rem;
   border-radius: 8px;
-  background: #f9f9f9;
+  background: var(--bg-secondary);
 }
 
 .stat-value {
   font-size: 2rem;
   font-weight: bold;
-  color: #667eea;
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
 }
 
 .stat-label {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
 .profile-details {
   padding: 2rem;
-  background: white;
-  border-top: 1px solid #eee;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
 }
 
 .profile-details h3 {
-  color: #667eea;
+  color: var(--primary-color);
   margin-bottom: 1.5rem;
 }
 
@@ -112,7 +112,7 @@
   display: flex;
   justify-content: space-between;
   padding: 1rem 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .detail-row:last-child {
@@ -120,47 +120,47 @@
 }
 
 .detail-label {
-  color: #666;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
 .detail-value {
-  color: #333;
+  color: var(--text-primary);
 }
 
 .status-active {
-  color: #22c55e;
+  color: var(--success-color);
   font-weight: bold;
 }
 
 .edit-form {
   padding: 2rem;
-  background: white;
-  border-top: 1px solid #eee;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
 }
 
 .edit-form h3 {
-  color: #667eea;
+  color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
 .info-message {
-  color: #666;
+  color: var(--text-secondary);
   font-style: italic;
 }
 
 .loading {
   padding: 2rem;
   text-align: center;
-  color: #667eea;
+  color: var(--primary-color);
   font-size: 1.1rem;
 }
 
 .error {
   padding: 2rem;
   text-align: center;
-  color: #ef4444;
-  background: #fee;
+  color: var(--error-color);
+  background: var(--error-bg);
   border-radius: 8px;
-  border: 1px solid #fcc;
+  border: 1px solid var(--error-border);
 }

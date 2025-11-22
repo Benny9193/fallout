@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useCounterStore } from '../store/counterStore'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import './Home.css'
 
 function Home() {
   const count = useCounterStore((state) => state.count)
+  const statsRef = useScrollAnimation()
+  const featuresRef = useScrollAnimation()
+  const techRef = useScrollAnimation()
 
   const features = [
     {
@@ -65,7 +69,7 @@ function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="stats-section">
+      <section ref={statsRef} className="stats-section fade-up">
         <div className="stats-grid">
           {stats.map((stat, index) => (
             <div key={index} className="stat-card">
@@ -78,7 +82,7 @@ function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="features-section">
+      <section ref={featuresRef} className="features-section fade-up">
         <h2 className="section-title">Explore Features</h2>
         <p className="section-subtitle">
           Discover the powerful features built with modern web technologies
@@ -102,7 +106,7 @@ function Home() {
       </section>
 
       {/* Tech Stack Section */}
-      <section className="tech-section">
+      <section ref={techRef} className="tech-section fade-up">
         <h2 className="section-title">Built With Modern Tech</h2>
         <div className="tech-grid">
           <div className="tech-badge">React 18</div>
