@@ -1,9 +1,9 @@
 import api from './axios'
-import type { User, Post, Activity, Metric, PostsPage, CompendiumArticle, CompendiumCategory, Quest } from '../types/api'
+import type { User, Post, Activity, Metric, PostsPage, CompendiumArticle, CompendiumCategory, Character } from '../types/api'
 import { PAGINATION } from '../constants/app'
 
 // Re-export types for backward compatibility
-export type { User, Post, Activity, Metric, PostsPage, CompendiumArticle, CompendiumCategory, Quest }
+export type { User, Post, Activity, Metric, PostsPage, CompendiumArticle, CompendiumCategory, Character }
 
 // API Services
 export const userService = {
@@ -1265,1355 +1265,236 @@ Side quests transform Fallout from good games into masterpieces. They demonstrat
   },
 }
 
-export const questService = {
-  // Get all quests
-  getQuests: async (): Promise<Quest[]> => {
-    // Fallout universe quests
+export const characterService = {
+  // Get all characters
+  getCharacters: async (): Promise<Character[]> => {
+    // Notable Fallout characters from across the series
     return [
       {
         id: 1,
-        title: 'War Never Changes',
-        type: 'Main',
-        status: 'In Progress',
-        difficulty: 'Medium',
-        description: 'Escape Vault 111 and begin your search for Shaun in the Commonwealth wasteland.',
-        location: 'Vault 111, Sanctuary Hills',
-        giver: 'Codsworth',
-        level: 1,
-        objectives: [
-          { id: 1, description: 'Exit Vault 111', completed: true, optional: false },
-          { id: 2, description: 'Go to Sanctuary Hills', completed: true, optional: false },
-          { id: 3, description: 'Talk to Codsworth', completed: false, optional: false },
-          { id: 4, description: 'Travel to Concord', completed: false, optional: false },
-        ],
-        rewards: [
-          { type: 'XP', value: '200', description: 'Experience Points' },
-          { type: 'Item', value: 'Pip-Boy 3000 Mark IV', description: 'Personal Information Processor' },
-        ],
-        walkthrough: `This is the opening quest of Fallout 4. After witnessing the nuclear apocalypse and being frozen for 200 years, you emerge from Vault 111 to find the world completely changed.
-
-**Starting the Quest:**
-1. Wake up from cryogenic sleep and exit your pod
-2. Navigate through the Vault 111 interior
-3. Collect the Pip-Boy from the Overseer's office
-4. Exit the Vault using the main elevator
-
-**Returning to Sanctuary:**
-Once outside, follow the path back to Sanctuary Hills. The world has been transformed into a wasteland. Your neighborhood is now in ruins, overgrown with vegetation and radiation.
-
-**Meeting Codsworth:**
-Find Codsworth, your pre-war robot butler, still maintaining the property after 210 years. He'll provide crucial information about the passage of time and suggest traveling to Concord to find help.
-
-**Tips:**
-- Loot everything in Vault 111 for early supplies
-- Collect materials in Sanctuary for future settlement building
-- Talk to Codsworth for background information about what happened`,
-        faction: 'Minutemen',
-        relatedQuests: [2, 3],
-        createdAt: '2024-01-15',
-        updatedAt: '2024-11-20',
+        name: 'The Vault Dweller',
+        faction: 'Vault 13',
+        role: 'Protagonist',
+        game: 'Fallout',
+        description: 'The first protagonist of the Fallout series. Exiled from Vault 13 to find a replacement water chip, they ended up saving the wasteland from the Master\'s super mutant army and discovering the truth about the Forced Evolutionary Virus.',
+        status: 'Unknown',
+        type: 'Protagonist',
       },
       {
         id: 2,
-        title: 'When Freedom Calls',
-        type: 'Main',
-        status: 'Not Started',
-        difficulty: 'Medium',
-        description: 'Rescue Preston Garvey and his group from raiders in Concord, then help defend Sanctuary Hills.',
-        location: 'Concord, Museum of Freedom',
-        giver: 'Preston Garvey',
-        level: 2,
-        objectives: [
-          { id: 1, description: 'Investigate Concord', completed: false, optional: false },
-          { id: 2, description: 'Enter the Museum of Freedom', completed: false, optional: false },
-          { id: 3, description: 'Kill the raiders', completed: false, optional: false },
-          { id: 4, description: 'Get the Power Armor', completed: false, optional: false },
-          { id: 5, description: 'Get the Minigun', completed: false, optional: false },
-          { id: 6, description: 'Kill the Deathclaw', completed: false, optional: false },
-          { id: 7, description: 'Talk to Preston Garvey', completed: false, optional: false },
-        ],
-        rewards: [
-          { type: 'XP', value: '300', description: 'Experience Points' },
-          { type: 'Item', value: 'T-45 Power Armor', description: 'First Power Armor set' },
-          { type: 'Item', value: 'Minigun', description: 'Heavy weapon' },
-          { type: 'Perk', value: 'Minutemen Alliance', description: 'Access to Minutemen faction' },
-        ],
-        walkthrough: `This quest introduces you to the Minutemen faction and Power Armor mechanics.
-
-**Arriving in Concord:**
-Travel east from Sanctuary to find Concord under attack. Raiders have trapped survivors in the Museum of Freedom.
-
-**Entering the Museum:**
-1. Fight through raiders on the ground floor
-2. Work your way up to the roof
-3. Meet Preston Garvey and his group
-4. Agree to help them escape
-
-**Getting Power Armor:**
-Preston directs you to the roof where a suit of T-45 Power Armor awaits:
-1. Grab the Fusion Core from the building across the street
-2. Insert the core into the Power Armor
-3. Enter the armor by approaching from behind
-4. Grab the Minigun from the crashed Vertibird
-
-**The Deathclaw Fight:**
-Once you step outside in the Power Armor, a Deathclaw emerges:
-- Use the Minigun's high fire rate to your advantage
-- Keep moving to avoid its devastating melee attacks
-- Aim for the head for maximum damage
-- Use the Power Armor's protection to tank hits
-
-**Aftermath:**
-After defeating the Deathclaw, talk to Preston. He'll ask you to help defend Sanctuary Hills, beginning your alliance with the Minutemen.
-
-**Important Notes:**
-- The Power Armor requires Fusion Cores to operate
-- You can repair and modify it at Power Armor Stations
-- Don't forget to loot the raider corpses for ammunition
-- This quest sets up the Minutemen questline`,
-        faction: 'Minutemen',
-        relatedQuests: [1, 3, 5],
-        createdAt: '2024-01-16',
-        updatedAt: '2024-11-19',
+        name: 'The Chosen One',
+        faction: 'Arroyo',
+        role: 'Protagonist',
+        game: 'Fallout 2',
+        description: 'Grandchild of the Vault Dweller, sent from Arroyo to find a G.E.C.K. and save their dying village. Defeated the Enclave and Frank Horrigan, preventing them from unleashing a modified FEV that would have killed all "mutated" humans.',
+        status: 'Unknown',
+        type: 'Protagonist',
       },
       {
         id: 3,
-        title: 'Reunions',
-        type: 'Main',
-        status: 'Not Started',
-        difficulty: 'Hard',
-        description: 'Track down Kellogg, the mercenary who kidnapped Shaun, and exact your revenge.',
-        location: 'Diamond City, Fort Hagen',
-        giver: 'Nick Valentine',
-        level: 15,
-        objectives: [
-          { id: 1, description: 'Find Kellogg in Diamond City', completed: false, optional: false },
-          { id: 2, description: 'Search Kellogg\'s house', completed: false, optional: false },
-          { id: 3, description: 'Find Dogmeat', completed: false, optional: true },
-          { id: 4, description: 'Follow Dogmeat to Fort Hagen', completed: false, optional: false },
-          { id: 5, description: 'Infiltrate Fort Hagen', completed: false, optional: false },
-          { id: 6, description: 'Confront Kellogg', completed: false, optional: false },
-          { id: 7, description: 'Kill Kellogg', completed: false, optional: false },
-        ],
-        rewards: [
-          { type: 'XP', value: '500', description: 'Experience Points' },
-          { type: 'Item', value: 'Kellogg\'s Pistol', description: 'Unique .44 Magnum' },
-          { type: 'Item', value: 'Kellogg\'s Outfit', description: 'Unique armored coat' },
-          { type: 'Item', value: 'Cybernetic Brain Augmenter', description: 'Quest item for Memory Den' },
-        ],
-        walkthrough: `This quest represents a major turning point in the main story, revealing crucial information about Shaun's fate.
-
-**Finding Kellogg:**
-Travel to Diamond City and investigate Kellogg's house in the upper stands. Nick Valentine helps you search for clues.
-
-**The Investigation:**
-1. Examine the half-smoked cigarettes
-2. Check the blood stains near the bedroom
-3. Find the teleportation residue
-4. Retrieve Dogmeat to track Kellogg's scent
-
-**Following the Trail:**
-Dogmeat leads you west across the Commonwealth toward Fort Hagen. The journey is dangerous—expect to encounter:
-- Super Mutants near relay towers
-- Feral Ghouls in abandoned buildings
-- Raiders at checkpoints
-
-**Fort Hagen Infiltration:**
-The main entrance is sealed. Find the side entrance through the parking garage:
-1. Fight through automated turrets
-2. Battle synths protecting the facility
-3. Navigate the underground complex
-4. Hack terminals for easier access (or pick locks)
-
-**Confronting Kellogg:**
-In the command center, you finally face Kellogg. He reveals shocking information:
-- Shaun is alive but decades have passed
-- The Institute has been watching you
-- Kellogg has cybernetic enhancements, making him extremely dangerous
-
-**The Boss Fight:**
-Kellogg is one of the toughest early-game bosses:
-- He uses cover effectively and grenades
-- Stealth Boys make him temporarily invisible
-- His .44 Magnum deals heavy damage
-- Synths provide backup
-- VATS helps counter his mobility
-- Explosives are highly effective
-- Strong companions like Danse or Strong help significantly
-
-**Aftermath:**
-After killing Kellogg, take his pistol, outfit, and cybernetic augmenter. The augmenter becomes key to accessing his memories at the Memory Den in Goodneighbor.
-
-**Consequences:**
-This quest cannot be avoided and has no alternative solutions. Kellogg must die for the story to progress. His death sets the stage for learning about the Institute and your son's true fate.`,
-        faction: 'None',
-        relatedQuests: [1, 4],
-        createdAt: '2024-01-18',
-        updatedAt: '2024-11-18',
+        name: 'The Lone Wanderer',
+        faction: 'Vault 101',
+        role: 'Protagonist',
+        game: 'Fallout 3',
+        description: 'Born in the wasteland but raised in Vault 101. Left the vault to find their father, James, and became instrumental in Project Purity, bringing clean water to the Capital Wasteland while fighting the Enclave.',
+        status: 'Unknown',
+        type: 'Protagonist',
       },
       {
         id: 4,
-        title: 'The Molecular Level',
-        type: 'Main',
-        status: 'Not Started',
-        difficulty: 'Hard',
-        description: 'Build a device to teleport into the Institute and finally confront your son.',
-        location: 'Various (Faction dependent)',
-        giver: 'Virgil / Faction Leader',
-        level: 20,
-        objectives: [
-          { id: 1, description: 'Analyze Kellogg\'s cybernetics at the Memory Den', completed: false, optional: false },
-          { id: 2, description: 'Talk to Virgil in the Glowing Sea', completed: false, optional: false },
-          { id: 3, description: 'Choose a faction to help build the teleporter', completed: false, optional: false },
-          { id: 4, description: 'Gather signal interceptor components', completed: false, optional: false },
-          { id: 5, description: 'Build the signal interceptor', completed: false, optional: false },
-          { id: 6, description: 'Enter the Institute', completed: false, optional: false },
-        ],
-        rewards: [
-          { type: 'XP', value: '600', description: 'Experience Points' },
-          { type: 'Perk', value: 'Institute Access', description: 'Ability to teleport to the Institute' },
-        ],
-        walkthrough: `This quest involves building a teleporter to infiltrate the Institute, with the approach depending on your chosen faction.
-
-**Accessing Kellogg's Memories:**
-1. Travel to Goodneighbor's Memory Den
-2. Work with Doctor Amari to access Kellogg's brain augmenter
-3. Experience Kellogg's memories and learn about the Institute
-4. Discover the Institute uses teleportation technology
-
-**Journey to the Glowing Sea:**
-The most heavily irradiated zone in the Commonwealth:
-- Bring Power Armor with high radiation resistance
-- Stock up on Rad-X and RadAway
-- Expect hostile Deathclaws and Radscorpions
-- Find Virgil in the Cave (southwest corner of map)
-
-**Meeting Virgil:**
-The ex-Institute scientist provides crucial information:
-- How to infiltrate the Institute
-- The need for a signal interceptor
-- Blueprints for building the device
-- Warning about the Institute's capabilities
-
-**Choosing Your Faction:**
-You can build the teleporter with help from:
-
-**Minutemen (Preston Garvey):**
-- Requires completed Minutemen quests
-- Build at The Castle
-- Most independent path
-
-**Brotherhood of Steel (Proctor Ingram):**
-- Requires joining the Brotherhood
-- Build on the Prydwen
-- Tech support from scribes
-
-**Railroad (Tinker Tom):**
-- Requires Railroad membership
-- Build at Railroad HQ
-- Stealth-focused approach
-
-**Building the Signal Interceptor:**
-Required components:
-- Biometric Scanner
-- Military-Grade Circuit Board
-- Sensor Module
-- Signal Reflector Platform
-
-Find these at:
-- ArcJet Systems (Military Circuit Board)
-- Mass Fusion Building (Sensor Module and Reflector)
-- Various military facilities (Biometric Scanner)
-
-**Assembly:**
-1. Gather all components
-2. Build the platform at your chosen location
-3. Power the device (requires generators)
-4. Activate the teleporter
-
-**Entering the Institute:**
-Step onto the platform and activate it. You'll be teleported deep underground to the Institute, finally reaching your son and the truth about the Commonwealth's most secretive faction.
-
-**Important Choices:**
-The faction you choose affects:
-- Later quest availability
-- Faction relationships
-- Ending possibilities
-- Character reactions
-
-Choose carefully—this decision has far-reaching consequences.`,
-        choices: ['Build with Minutemen', 'Build with Brotherhood', 'Build with Railroad'],
-        consequences: 'Your choice of faction affects future quest options and potential endings.',
-        faction: 'Multiple',
-        relatedQuests: [3, 5],
-        createdAt: '2024-01-20',
-        updatedAt: '2024-11-17',
+        name: 'The Courier',
+        faction: 'Independent',
+        role: 'Protagonist',
+        game: 'Fallout: New Vegas',
+        description: 'A courier shot in the head by Benny and left for dead. Survived and became the deciding factor in the Second Battle of Hoover Dam, determining the fate of the Mojave Wasteland and New Vegas.',
+        status: 'Unknown',
+        type: 'Protagonist',
       },
       {
         id: 5,
-        title: 'Blind Betrayal',
-        type: 'Faction',
-        status: 'Not Started',
-        difficulty: 'Medium',
-        description: 'Elder Maxson orders you to execute Paladin Danse after discovering he is a synth.',
-        location: 'Listening Post Bravo',
-        giver: 'Elder Maxson',
-        level: 18,
-        objectives: [
-          { id: 1, description: 'Talk to Elder Maxson', completed: false, optional: false },
-          { id: 2, description: 'Travel to Listening Post Bravo', completed: false, optional: false },
-          { id: 3, description: 'Confront Paladin Danse', completed: false, optional: false },
-          { id: 4, description: 'Decide Danse\'s fate', completed: false, optional: false },
-          { id: 5, description: 'Return to Elder Maxson', completed: false, optional: false },
-        ],
-        rewards: [
-          { type: 'XP', value: '450', description: 'Experience Points' },
-          { type: 'Perk', value: 'Know Your Enemy (if Danse lives)', description: '+20% damage vs synths' },
-          { type: 'Item', value: 'Danse\'s Power Armor (if executed)', description: 'Unique Brotherhood T-60' },
-          { type: 'Reputation', value: 'Brotherhood of Steel', description: 'Major faction impact' },
-        ],
-        walkthrough: `One of Fallout 4's most morally complex quests, forcing you to choose between loyalty and mercy.
-
-**The Revelation:**
-Elder Maxson summons you with disturbing news: Paladin Danse, your loyal Brotherhood companion and friend, is a synth. The Brotherhood's doctrine demands his immediate execution.
-
-**Orders:**
-Maxson orders you to:
-1. Travel to Listening Post Bravo
-2. Confront Danse
-3. Execute him as an abomination
-4. Return with confirmation
-
-**Journey to Listening Post Bravo:**
-The isolated bunker in the northeast Commonwealth serves as Danse's self-imposed exile. He's already learned the truth about his nature and awaits judgment.
-
-**The Confrontation:**
-Upon arrival, Danse is:
-- Devastated by the revelation
-- Accepting of death as Brotherhood doctrine demands
-- Willing to be executed by you, his friend
-- Unable to reconcile his identity with his beliefs
-
-**The Choice:**
-
-**Option 1: Execute Danse**
-- Follow Maxson's orders
-- Maintain Brotherhood standing
-- Receive Danse's unique power armor
-- Lose Danse as a companion permanently
-- Maxson approves completely
-
-**Option 2: Spare Danse**
-- Refuse to kill him
-- Persuade Maxson to allow exile (requires high Charisma)
-- Danse can still be used as a companion
-- Gain unique perk "Know Your Enemy"
-- Danse lives in hiding at the Listening Post
-- Slightly strains relationship with Maxson
-
-**Persuading Maxson:**
-If you choose to spare Danse:
-1. Return to the Prydwen
-2. Confront Maxson about the execution
-3. Use persuasion checks (speech challenges)
-4. Argue that Danse's service and loyalty transcend his nature
-5. Maxson reluctantly agrees to exile instead of execution
-
-**Aftermath:**
-
-**If Danse Lives:**
-- He goes into permanent exile
-- You can still visit him at Listening Post Bravo
-- He remains available as a companion (but hides from Brotherhood)
-- He gives you his unique perk
-- He's permanently depressed about his identity
-- Brotherhood members won't mention him
-
-**If Danse Dies:**
-- Brotherhood honors his "sacrifice"
-- You receive his power armor and weapon
-- Other Brotherhood members respect your loyalty
-- Lose access to his companion perk
-- His death is never questioned
-
-**The Moral Dilemma:**
-This quest challenges Brotherhood ideology:
-- Is Danse less valuable because he's a synth?
-- Do his years of service mean nothing?
-- Can artificial beings have genuine loyalty and honor?
-- Is the Brotherhood's anti-synth doctrine too extreme?
-
-**Recommended Approach:**
-Most players spare Danse due to:
-- His proven loyalty and service
-- The unique companion perk
-- Moral opposition to executing a friend
-- Challenge to Brotherhood extremism
-
-However, killing him provides unique loot and maintains pure Brotherhood standing.
-
-**Requirements:**
-- Must have completed "Shadow of Steel" and other Brotherhood quests
-- Must have Danse as a companion for several missions
-- Must achieve high affinity with Danse
-- Cannot complete if Brotherhood is destroyed before this quest`,
-        choices: ['Execute Paladin Danse', 'Spare Danse and persuade Maxson'],
-        consequences: 'Sparing Danse requires persuasion and affects Brotherhood relationships. Killing him provides unique equipment but loses companion.',
-        faction: 'Brotherhood of Steel',
-        relatedQuests: [6],
-        createdAt: '2024-01-22',
-        updatedAt: '2024-11-16',
+        name: 'The Sole Survivor',
+        faction: 'Vault 111',
+        role: 'Protagonist',
+        game: 'Fallout 4',
+        description: 'A pre-war survivor frozen in Vault 111 for 210 years. Emerged to find their spouse murdered and infant son kidnapped. Their search for Shaun led them to the Institute and forced them to choose the Commonwealth\'s future.',
+        status: 'Alive',
+        type: 'Protagonist',
       },
       {
         id: 6,
-        title: 'Tactical Thinking',
-        type: 'Faction',
-        status: 'Not Started',
-        difficulty: 'Very Hard',
-        description: 'Lead the Brotherhood of Steel assault on the Institute to destroy synth production.',
-        location: 'Institute, Commonwealth',
-        giver: 'Elder Maxson',
-        level: 25,
-        objectives: [
-          { id: 1, description: 'Attend briefing on the Prydwen', completed: false, optional: false },
-          { id: 2, description: 'Plant the Institute bomb', completed: false, optional: false },
-          { id: 3, description: 'Evacuate or eliminate Institute personnel', completed: false, optional: true },
-          { id: 4, description: 'Detonate the bomb', completed: false, optional: false },
-          { id: 5, description: 'Escape the Institute', completed: false, optional: false },
-          { id: 6, description: 'Return to Elder Maxson', completed: false, optional: false },
-        ],
-        rewards: [
-          { type: 'XP', value: '800', description: 'Experience Points' },
-          { type: 'Perk', value: 'Sentinel', description: 'Brotherhood highest rank' },
-          { type: 'Item', value: 'Final Judgment', description: 'Legendary Gatling Laser' },
-          { type: 'Reputation', value: 'Brotherhood Victory', description: 'Brotherhood controls Commonwealth' },
-        ],
-        walkthrough: `The Brotherhood's final assault on the Institute represents their solution to the synth threat: complete annihilation.
-
-**Preparation:**
-Elder Maxson briefs you aboard the Prydwen:
-- The Institute must be destroyed completely
-- Synth production must end permanently
-- All Institute technology is too dangerous to preserve
-- You will lead the assault as a Paladin
-
-**The Assault Plan:**
-1. Liberty Prime will break through to the Institute
-2. You'll teleport in with the assault team
-3. Plant a nuclear device in the reactor
-4. Evacuate Brotherhood forces
-5. Detonate, destroying everything
-
-**Liberty Prime:**
-The massive pre-war robot serves as the Brotherhood's ultimate weapon:
-- Immune to small arms fire
-- Throws nuclear bombs
-- Laser eye beams destroy obstacles
-- Presence terrifies Institute synths
-
-**Infiltrating the Institute:**
-Once inside:
-- Fight through synth defenders
-- Locate the reactor level
-- Install the explosive device
-- Set the timer
-
-**The Moral Choice:**
-Before detonation, you can:
-
-**Option 1: Evacuate Institute Scientists**
-- Use the intercom to order evacuation
-- Allow non-combatants to escape
-- Shows mercy to civilians
-- Maxson disapproves but accepts it
-
-**Option 2: Seal Everyone Inside**
-- Lock down all exits
-- Ensure total destruction
-- No survivors, no escapees
-- Maxson fully approves
-
-**The Detonation:**
-Once armed:
-- You have limited time to escape
-- Fight through synth defenders
-- Reach the relay room
-- Teleport out before detonation
-
-**The Destruction:**
-The nuclear explosion:
-- Destroys the Institute completely
-- Kills all remaining personnel
-- Creates a new crater in the Commonwealth
-- Ends synth production forever
-- Eliminates the "synth threat"
-
-**Return to the Prydwen:**
-Elder Maxson promotes you to Sentinel:
-- Highest rank in the Brotherhood
-- Complete respect from all members
-- Access to Brotherhood resources
-- Final Judgment weapon reward
-
-**Consequences:**
-
-**For the Commonwealth:**
-- No more synth infiltrators
-- Institute technology lost forever
-- Railroad's purpose becomes questionable
-- Scientific knowledge destroyed
-- Brotherhood maintains military presence
-
-**For Factions:**
-- Institute: Destroyed
-- Railroad: Devastated (their reason for existing)
-- Minutemen: Concerned about Brotherhood control
-- Brotherhood: Complete victory
-
-**For Companions:**
-- Danse: Approves (if alive)
-- Nick Valentine: Disapproves strongly
-- Piper: Mixed feelings
-- Curie: Horrified
-- X6-88: Hostile permanently
-
-**Alternative Paths:**
-Completing this quest locks out:
-- Institute ending
-- Railroad ending (they become hostile)
-- Peaceful solutions
-- Recovering Institute technology
-
-**Moral Implications:**
-This ending raises questions:
-- Was destroying all Institute knowledge necessary?
-- Did civilian scientists deserve to die?
-- Is the Brotherhood's technological fascism justified?
-- Could the Institute have been reformed instead?
-
-The Brotherhood sees this as protecting humanity from dangerous technology. Critics see it as destroying humanity's best hope for advancement.
-
-**Point of No Return:**
-Once you plant the bomb, the Institute path becomes permanently locked. Choose carefully.`,
-        choices: ['Evacuate Institute civilians', 'Seal everyone inside'],
-        consequences: 'Destroys the Institute completely. Makes Railroad hostile. Brotherhood controls the Commonwealth.',
+        name: 'Elder Arthur Maxson',
         faction: 'Brotherhood of Steel',
-        relatedQuests: [5],
-        createdAt: '2024-01-25',
-        updatedAt: '2024-11-15',
+        role: 'Elder',
+        game: 'Fallout 4',
+        description: 'The youngest Elder in Brotherhood history. United the East Coast Brotherhood and led them to the Commonwealth aboard the Prydwen. Combines Lyon\'s humanitarian ideals with traditional Brotherhood doctrine, making him both respected and feared.',
+        status: 'Alive',
+        type: 'Faction Leader',
       },
       {
         id: 7,
-        title: 'Tradecraft',
-        type: 'Faction',
-        status: 'Not Started',
-        difficulty: 'Medium',
-        description: 'Help Deacon prove your worth to the Railroad by completing a covert operation.',
-        location: 'Lexington, Railroad HQ',
-        giver: 'Deacon',
-        level: 8,
-        objectives: [
-          { id: 1, description: 'Meet Deacon at the Old Highway', completed: false, optional: false },
-          { id: 2, description: 'Follow Deacon to the safehouse', completed: false, optional: false },
-          { id: 3, description: 'Clear the safehouse of hostiles', completed: false, optional: false },
-          { id: 4, description: 'Retrieve the prototype', completed: false, optional: false },
-          { id: 5, description: 'Return to Railroad HQ', completed: false, optional: false },
-        ],
-        rewards: [
-          { type: 'XP', value: '350', description: 'Experience Points' },
-          { type: 'Item', value: 'Deliverer', description: 'Unique silenced 10mm pistol' },
-          { type: 'Perk', value: 'Railroad Membership', description: 'Access to Railroad services' },
-          { type: 'Reputation', value: 'Railroad', description: 'Join the faction' },
-        ],
-        walkthrough: `Your first official mission for the Railroad tests your stealth and combat abilities while introducing Railroad operations.
-
-**Meeting Deacon:**
-The mysterious Railroad agent meets you on the Old Highway northwest of Lexington. He's been watching you, testing your character and abilities.
-
-**The Mission:**
-Deacon explains:
-- Railroad agents used a safehouse in Lexington
-- Raiders have taken it over
-- A crucial prototype remains inside
-- You must retrieve it without drawing attention
-
-**Approach to Lexington:**
-The city is dangerous:
-- Heavily infested with feral ghouls
-- Raiders occupy key buildings
-- Super Mutants patrol the outskirts
-- Lexington Raider base is a major stronghold
-
-**The Safehouse:**
-Located in a nondescript building:
-- Raiders have fortified it
-- Multiple hostiles inside
-- The prototype is in a hidden compartment
-- Deacon provides tactical support
-
-**Combat vs. Stealth:**
-
-**Stealth Approach (Recommended):**
-- Use silenced weapons
-- Pick off isolated raiders
-- Utilize shadows and cover
-- Deacon appreciates subtlety
-- Fewer reinforcements triggered
-
-**Loud Approach:**
-- Direct assault
-- Heavy firepower
-- More raider reinforcements
-- Higher risk, faster completion
-- Deacon still supports you
-
-**The Deliverer:**
-Upon completion, Tinker Tom presents you with the Deliverer:
-- Unique 10mm pistol
-- Built-in suppressor
-- Enhanced VATS accuracy
-- Railroad's signature weapon
-- Excellent for stealth builds
-
-**Railroad Membership:**
-Completing this quest grants:
-- Full Railroad membership
-- Access to Railroad safehouse
-- Ballistic Weave armor mod (from Tinker Tom)
-- Railroad radiant quests
-- Dead drops and caches
-
-**Ballistic Weave:**
-The most valuable Railroad reward:
-- Armor modification for clothing
-- Adds massive defense to any outfit
-- Works on hats, caps, and certain clothing
-- Allows fashionable protection
-- Unlocked by completing more Railroad quests
-
-**Deacon as Companion:**
-Successfully completing Tradecraft allows recruiting Deacon:
-- Excellent stealth support
-- Bonus XP from stealth kills and discovering locations
-- Disguise expertise
-- Lies constantly (for fun and deception)
-- Maximum affinity perk: Cloak and Dagger
-
-**Tips:**
-- Bring silenced weapons for stealth
-- Stock up on stimpaks
-- Lexington is very dangerous for low levels
-- Deacon is essential (can't die during this quest)
-- Explore the area for valuable loot
-
-**Railroad Philosophy:**
-This quest demonstrates Railroad values:
-- Protecting synths from Institute control
-- Operating in secrecy
-- Valuing freedom over security
-- Opposing both Institute and Brotherhood
-- Individual liberty above all
-
-**Future Implications:**
-Joining the Railroad:
-- Opposes Institute directly
-- Conflicts with Brotherhood (eventually)
-- Supports synth liberation
-- Covert operations focus
-- Affects ending choices`,
-        faction: 'Railroad',
-        relatedQuests: [8],
-        createdAt: '2024-02-01',
-        updatedAt: '2024-11-14',
+        name: 'Caesar (Edward Sallow)',
+        faction: 'Caesar\'s Legion',
+        role: 'Founder and Dictator',
+        game: 'Fallout: New Vegas',
+        description: 'Former Follower of the Apocalypse who founded Caesar\'s Legion after being saved by the Blackfoot tribe. Created a brutal slave empire modeled on ancient Rome. Brilliant but dying from a brain tumor.',
+        status: 'Unknown',
+        type: 'Faction Leader',
       },
       {
         id: 8,
-        title: 'Underground Undercover',
-        type: 'Faction',
-        status: 'Not Started',
-        difficulty: 'Very Hard',
-        description: 'Infiltrate the Institute as a Railroad double agent and sabotage it from within.',
-        location: 'Institute, Railroad HQ',
-        giver: 'Desdemona',
-        level: 22,
-        objectives: [
-          { id: 1, description: 'Continue Institute missions to gain trust', completed: false, optional: false },
-          { id: 2, description: 'Report to Desdemona periodically', completed: false, optional: false },
-          { id: 3, description: 'Make contact with Patriot', completed: false, optional: false },
-          { id: 4, description: 'Plant network scanner in Institute', completed: false, optional: false },
-          { id: 5, description: 'Warn escaped synths', completed: false, optional: false },
-          { id: 6, description: 'Prepare for Railroad assault', completed: false, optional: false },
-        ],
-        rewards: [
-          { type: 'XP', value: '700', description: 'Experience Points' },
-          { type: 'Reputation', value: 'Railroad', description: 'Maximum trust' },
-          { type: 'Perk', value: 'Freedom\'s Whisper', description: 'Special Railroad ability' },
-        ],
-        walkthrough: `The Railroad's most dangerous operation: infiltrating the Institute as a double agent to destroy it from within.
-
-**The Assignment:**
-Desdemona gives you a critical mission:
-- Join the Institute
-- Pretend to be loyal
-- Gather intelligence
-- Sabotage operations when possible
-- Prepare for the final assault
-
-**Playing Both Sides:**
-You must balance:
-- Institute missions (to maintain cover)
-- Railroad reports (your true loyalty)
-- Not arousing suspicion
-- Protecting escaped synths
-- Preparing sabotage
-
-**Gaining Institute Trust:**
-Complete Institute quests:
-- Synth retrieval missions
-- Research assistance
-- Facility defense
-- Division errands
-- Director's special assignments
-
-Each mission deepens your cover but troubles your conscience.
-
-**The Patriot:**
-Contact the mysterious Railroad mole inside the Institute:
-- Liam Binet in Robotics
-- Secretly helps synths escape
-- Provides insider information
-- Risks everything for synth freedom
-- Crucial ally in your mission
-
-**Network Scanner:**
-Plant Railroad surveillance equipment:
-- Access restricted terminals
-- Install monitoring software
-- Avoid detection by security
-- Report data to Tinker Tom
-- Map Institute defenses
-
-**Warning Escaped Synths:**
-The Institute hunts escaped synths:
-- You receive notice of Synth Retention operations
-- Warn the Railroad in advance
-- Save synths from recapture
-- Maintain your cover
-- Risk exposure with each warning
-
-**The Balancing Act:**
-Managing both factions requires:
-- Careful timing of reports
-- Plausible explanations for absences
-- Not completing missions that harm the Railroad
-- Gathering maximum intelligence
-- Preparing escape routes
-
-**Point of No Return:**
-Eventually, you must choose:
-
-**Railroad Ending:**
-- Turn against Father
-- Rally Railroad forces
-- Assault the Institute from within
-- Free all synths
-- Destroy synth production
-- Evacuate synths before detonation
-
-**Institute Ending:**
-- Betray the Railroad
-- Reveal Desdemona's plans
-- Institute raids Railroad HQ
-- Railroad destroyed
-- You remain Institute Director
-
-**The Railroad Assault:**
-If you stay loyal to Railroad:
-1. Upload shutdown codes for synth defenders
-2. Open doors for Railroad strike team
-3. Free synths from containment
-4. Evacuate before detonation
-5. Destroy the Institute completely
-
-**Companion Reactions:**
-
-**Approve Railroad Path:**
-- Deacon (extremely)
-- Nick Valentine
-- Piper
-- Curie
-
-**Disapprove:**
-- X6-88 (becomes hostile)
-- Danse (if Brotherhood)
-- Strong
-
-**Consequences:**
-
-**Railroad Victory:**
-- Synths freed from Institute control
-- Production facility destroyed
-- Scientific knowledge lost
-- Railroad continues synth liberation
-- Commonwealth loses advanced tech
-
-**Personal Impact:**
-- Father dies (your son)
-- Shaun's legacy ends
-- Institute scientists killed
-- You choose freedom over family
-- Moral burden of betrayal
-
-**Rewards:**
-- Railroad gratitude
-- Synth allies throughout Commonwealth
-- Access to freed synths as settlers
-- Railroad safehouse network
-- Ballistic Weave upgrades
-
-**The Moral Weight:**
-This quest forces impossible choices:
-- Betray your son or betray your conscience?
-- Save synths or preserve technology?
-- Freedom or progress?
-- Family or principle?
-
-Most players choose Railroad because:
-- Synth freedom resonates morally
-- Father's Institute is too morally compromised
-- Personal liberty trumps scientific advancement
-- The Institute's experiments are unforgivable
-
-**Tips:**
-- Save frequently during double-agent phase
-- Document mission contradictions
-- Prepare strong alibis
-- Keep Railroad informed
-- Don't get attached to Institute personnel
-- Remember you're destroying your son's life work
-
-This quest represents Fallout 4's most complex moral scenario, with no clearly "right" answer.`,
-        choices: ['Stay loyal to Railroad', 'Betray Railroad to Institute'],
-        consequences: 'Railroad path destroys Institute but frees synths. Institute path destroys Railroad but preserves technology.',
-        faction: 'Railroad',
-        relatedQuests: [7],
-        createdAt: '2024-02-05',
-        updatedAt: '2024-11-13',
+        name: 'Father (Shaun)',
+        faction: 'The Institute',
+        role: 'Director',
+        game: 'Fallout 4',
+        description: 'The Sole Survivor\'s son, kidnapped as an infant and raised in the Institute. Became Director and led the Institute\'s scientific pursuits. Dying of cancer, he orchestrated his parent\'s release to ensure the Institute\'s future.',
+        status: 'Deceased',
+        type: 'Faction Leader',
       },
       {
         id: 9,
-        title: 'The Silver Shroud',
-        type: 'Side',
-        status: 'Not Started',
-        difficulty: 'Medium',
-        description: 'Become the Silver Shroud, a pre-war radio vigilante, and clean up Goodneighbor\'s criminal underworld.',
-        location: 'Goodneighbor, Hubris Comics',
-        giver: 'Kent Connolly',
-        level: 10,
-        objectives: [
-          { id: 1, description: 'Talk to Kent Connolly', completed: false, optional: false },
-          { id: 2, description: 'Get the Silver Shroud costume', completed: false, optional: false },
-          { id: 3, description: 'Kill AJ', completed: false, optional: false },
-          { id: 4, description: 'Kill Smiling Kate', completed: false, optional: false },
-          { id: 5, description: 'Kill Kendra', completed: false, optional: false },
-          { id: 6, description: 'Rescue Kent Connolly', completed: false, optional: false },
-          { id: 7, description: 'Defeat Sinjin', completed: false, optional: false },
-        ],
-        rewards: [
-          { type: 'XP', value: '400', description: 'Experience Points' },
-          { type: 'Item', value: 'Silver Shroud Costume', description: 'Unique ballistic weave armor' },
-          { type: 'Item', value: 'Silver Shroud Submachine Gun', description: 'Unique weapon' },
-          { type: 'Perk', value: 'Shroud Upgrades', description: 'Kent upgrades costume as you level' },
-        ],
-        walkthrough: `One of Fallout 4's most entertaining side quests, allowing you to roleplay as a pre-war superhero.
-
-**Meeting Kent:**
-Visit the Memory Den in Goodneighbor and meet Kent Connolly, an obsessive Silver Shroud fan. He knows you're a hero and wants you to become the Shroud.
-
-**The Silver Shroud:**
-A pre-war radio serial about a vigilante fighting crime:
-- Wore a distinctive costume
-- Had a dramatic persona
-- Spoke in noir dialogue
-- Fought criminals with justice
-- Inspired pre-war America
-
-**Getting the Costume:**
-Travel to Hubris Comics in downtown Boston:
-- Building is infested with feral ghouls
-- The costume is in a display case upstairs
-- Collect holotapes about the Shroud
-- Return to Kent with the costume
-
-**Becoming the Shroud:**
-Kent gives you targets to eliminate:
-- Use the Silver Shroud persona
-- Special dialogue options become available
-- Intimidate criminals with Shroud voice
-- Leave Silver Shroud calling cards
-
-**The Targets:**
-
-**AJ:**
-- Small-time crook in Goodneighbor
-- Easy first target
-- Demonstrates Shroud tactics
-
-**Smiling Kate:**
-- Raider leader
-- Slightly tougher fight
-- More calling cards left
-
-**Kendra:**
-- Dangerous criminal
-- Well-protected
-- Tests your Shroud abilities
-
-**The Kidnapping:**
-After killing the targets, Sinjin kidnaps Kent:
-- Sinjin is a Silver Shroud super-fan turned villain
-- Wants to kill the "fake" Shroud
-- Holds Kent hostage
-- Sets a trap at the Milton General Hospital
-
-**Milton General Hospital:**
-Sinjin's hideout:
-- Heavily defended by raiders
-- Traps throughout the building
-- Kent held in the upper floors
-- Final confrontation with Sinjin
-
-**The Boss Fight:**
-Sinjin challenges you:
-- He wears makeshift villain costume
-- Has powerful weapons
-- Raider backup
-- Kent is in danger
-
-**Two Approaches:**
-
-**Save Kent:**
-- Kill Sinjin quickly
-- Don't let him kill Kent
-- Requires good positioning and fast damage
-- Kent survives, rewards you
-
-**Kent Dies:**
-- Too slow
-- Sinjin executes Kent
-- You still get rewards but lose upgrade service
-
-**Rewards:**
-
-**Silver Shroud Costume:**
-- Unique armor with ballistic weave
-- Bonus to Agility and Perception
-- Intimidation bonuses
-- Upgradeable by Kent
-- Looks amazing
-
-**Silver Submachine Gun:**
-- Bonus damage
-- Unique appearance
-- Fast fire rate
-- Effective against unarmored enemies
-
-**Costume Upgrades:**
-If Kent survives:
-- He upgrades the costume as you level
-- Mark II at level 25
-- Mark III at level 35
-- Mark IV at level 45
-- Maintains relevance throughout game
-
-**Roleplay Opportunities:**
-Special dialogue throughout the quest:
-- "Speak as the Shroud" options
-- Intimidate criminals with dramatic lines
-- Kent's enthusiastic reactions
-- Hancock's amusement
-- Unique radio broadcast
-
-**Tips:**
-- Fully embrace the roleplay for maximum fun
-- Always choose Shroud dialogue options
-- Hubris Comics has valuable loot
-- Save before confronting Sinjin (to save Kent)
-- The costume works with ballistic weave
-- Keep it for the entire game
-
-**Companion Reactions:**
-- MacCready: Finds it hilarious
-- Hancock: Loves the Shroud act
-- Nick Valentine: Appreciates the noir style
-- Deacon: Impressed by the disguise
-- Piper: Amused but supportive
-
-**Cultural Impact:**
-This quest celebrates:
-- Classic radio serials
-- Noir detective fiction
-- Comic book heroes
-- Pre-war pop culture
-- Fallout's retro-futuristic aesthetic
-
-One of the most beloved side quests for good reason—pure fun with practical rewards.`,
-        faction: 'Goodneighbor',
-        createdAt: '2024-02-10',
-        updatedAt: '2024-11-12',
+        name: 'Paladin Danse',
+        faction: 'Brotherhood of Steel',
+        role: 'Paladin',
+        game: 'Fallout 4',
+        description: 'A devoted Brotherhood Paladin and commander of Recon Squad Gladius. His unwavering loyalty to the Brotherhood is tested when he discovers he is actually a synth, forcing him to confront his own identity and beliefs.',
+        status: 'Alive',
+        type: 'Companion',
       },
       {
         id: 10,
-        title: 'The Last Voyage of the U.S.S. Constitution',
-        type: 'Side',
-        status: 'Not Started',
-        difficulty: 'Easy',
-        description: 'Help Captain Ironsides and his robot crew repair their ship and complete their 200-year mission.',
-        location: 'Boston Harbor, Weatherby Savings & Loan',
-        giver: 'Captain Ironsides',
-        level: 8,
-        objectives: [
-          { id: 1, description: 'Talk to Captain Ironsides', completed: false, optional: false },
-          { id: 2, description: 'Get power relay coil', completed: false, optional: false },
-          { id: 3, description: 'Get replacement radar transmitter', completed: false, optional: false },
-          { id: 4, description: 'Get guidance chip', completed: false, optional: false },
-          { id: 5, description: 'Defend the ship from scavengers', completed: false, optional: false },
-          { id: 6, description: 'Launch the U.S.S. Constitution', completed: false, optional: false },
-        ],
-        rewards: [
-          { type: 'XP', value: '350', description: 'Experience Points' },
-          { type: 'Item', value: 'Broadsider', description: 'Unique ship cannon weapon' },
-          { type: 'Item', value: 'Caps and ammo', description: 'Various supplies' },
-          { type: 'Item', value: 'Captain\'s Hat (if betray)', description: 'Unique headwear' },
-        ],
-        walkthrough: `One of Fallout 4's most absurd and delightful quests featuring a sailing ship lodged in a building and crewed by Revolutionary-era robots.
-
-**Discovering the Constitution:**
-Near Boston Harbor, you'll find the U.S.S. Constitution—a pre-war sailing ship—somehow stuck in the side of Weatherby Savings & Loan building, several stories up. Yes, really.
-
-**Meeting Captain Ironsides:**
-An Assaultron robot programmed with Revolutionary War-era naval protocol:
-- Commands a crew of Protectron "sailors"
-- Speaks in 18th-century naval terminology
-- Has been trying to reach the Atlantic Ocean for 200 years
-- Takes his mission absolutely seriously
-- Addresses you as "Civilian" or "Ensign"
-
-**The Ship's Problem:**
-The Constitution has been grounded since the bombs fell. Ironsides has jury-rigged rocket engines to "sail" to the ocean. They just need a few replacement parts.
-
-**Required Components:**
-
-**Power Relay Coil:**
-- Located in a nearby building
-- Guarded by scavengers
-- Relatively easy retrieval
-- Return to first mate Bosun
-
-**Radar Transmitter:**
-- In another location
-- More scavengers
-- Needed for navigation
-- Install in the ship's systems
-
-**Guidance Chip:**
-- Most difficult component
-- Well-defended location
-- Critical for flight control
-- Final piece needed
-
-**The Scavenger Attack:**
-Once you've gathered components, scavengers assault the ship:
-- Multiple waves of enemies
-- Defend the Constitution's hull
-- Protect the robot crew
-- Man the ship's cannons
-- Epic naval battle... in a building
-
-**The Choice:**
-
-**Side with Ironsides (Recommended):**
-- Help repair the ship
-- Defend against scavengers
-- Launch the Constitution
-- Receive the Broadsider weapon
-- Witness the glorious launch
-
-**Side with Scavengers:**
-- Betray the robots
-- Shut down the ship's systems
-- Kill the crew
-- Receive Captain's Hat
-- Miss the spectacular ending
-
-**The Launch:**
-If you help Ironsides:
-1. All components installed
-2. Scavengers defeated
-3. Prepare for launch
-4. Fire the rockets
-5. Watch the ship "fly"
-
-**The Result:**
-The Constitution fires its rockets and:
-- Launches into the air
-- Flies majestically for a few seconds
-- Crashes into another building
-- Ends up on top of the Bank Tower
-- Ironsides declares complete success
-- Mission accomplished!
-
-**The Broadsider:**
-Unique weapon reward:
-- Fires cannonballs
-- Massive damage
-- Slow reload
-- Ammunition found in Nahant Oceanological Society
-- Basically a hand-held naval cannon
-- Absurdly fun to use
-
-**Why This Quest is Amazing:**
-- Completely absurd premise
-- Played completely straight
-- Ironsides' unwavering seriousness
-- Robot crew using naval terminology
-- Sailing ship with rocket engines
-- Naval battle in downtown Boston
-- The spectacular crash landing
-- Everyone considers it a success
-
-**Dialogue Highlights:**
-Ironsides speaks in perfect naval officer style:
-- "Hail, civilian!"
-- "Avast! Enemy boarding party!"
-- "Prepare to weigh anchor!"
-- "Full speed ahead!"
-- All while being a robot on a landlocked ship
-
-**Tips:**
-- Don't betray Ironsides (not worth it)
-- Bring heavy weapons for scavenger defense
-- The Broadsider is a great reward
-- Visit the ship after launch (new location)
-- Crew celebrates their "successful voyage"
-- Take screenshots of the launch
-
-**Companion Reactions:**
-- Everyone finds this ridiculous and entertaining
-- Codsworth appreciates the adherence to protocol
-- Strong is confused but enjoys the fighting
-- Deacon makes jokes about it for days
-
-**Post-Quest:**
-Visit the Constitution's new location:
-- Top of another building
-- Crew maintaining the ship
-- Ironsides planning the next voyage
-- They've moved ~500 feet closer to the ocean
-- Only 10 more relocations to go!
-
-One of Fallout 4's most memorable quests through sheer audacity and commitment to the bit.`,
-        faction: 'None',
-        createdAt: '2024-02-15',
-        updatedAt: '2024-11-11',
+        name: 'Nick Valentine',
+        faction: 'Independent',
+        role: 'Private Detective',
+        game: 'Fallout 4',
+        description: 'A unique synth detective in Diamond City. A prototype Gen-2 synth with the memories of a pre-war detective. Cynical but kind-hearted, he helps solve cases across the Commonwealth despite facing discrimination.',
+        status: 'Alive',
+        type: 'Companion',
       },
       {
         id: 11,
-        title: 'Here Kitty, Kitty',
-        type: 'Companion',
-        status: 'Not Started',
-        difficulty: 'Easy',
-        description: 'Help Erin Combes find her missing cat in the Sanctuary Hills area.',
-        location: 'Sanctuary Hills',
-        giver: 'Erin Combes',
-        level: 1,
-        objectives: [
-          { id: 1, description: 'Talk to Erin about her missing cat', completed: false, optional: false },
-          { id: 2, description: 'Search for Ashes around Sanctuary', completed: false, optional: false },
-          { id: 3, description: 'Return Ashes to Erin', completed: false, optional: false },
-        ],
-        rewards: [
-          { type: 'XP', value: '100', description: 'Experience Points' },
-          { type: 'Caps', value: '50', description: 'Bottle caps' },
-          { type: 'Reputation', value: 'Sanctuary Settlement', description: 'Increased happiness' },
-        ],
-        walkthrough: `A simple but heartwarming quest showing that even small acts of kindness matter in the wasteland.
-
-**Meeting Erin:**
-After establishing Sanctuary Hills as a settlement, Erin Combes (if recruited) may ask for help finding her cat, Ashes.
-
-**The Search:**
-Ashes has wandered off somewhere in Sanctuary:
-- Check around houses
-- Look near the Red Rocket truck stop
-- Search the playground area
-- Check under debris
-
-**Finding Ashes:**
-The cat is usually:
-- Hiding under debris
-- Near the river
-- In one of the ruined houses
-- Sometimes at Red Rocket
-
-**Returning the Cat:**
-Bring Ashes back to Erin:
-- She's very grateful
-- Sanctuary happiness increases
-- Small caps reward
-- Satisfaction of a good deed
-
-**Tips:**
-- Simple quest for early game
-- Quick caps if needed
-- Helps settlement happiness
-- Wholesome wasteland moment`,
+        name: 'Preston Garvey',
         faction: 'Minutemen',
-        createdAt: '2024-02-20',
-        updatedAt: '2024-11-10',
+        role: 'Minuteman',
+        game: 'Fallout 4',
+        description: 'One of the last surviving Minutemen. After the Quincy Massacre, he struggled to rebuild the Minutemen. Deeply committed to helping settlements and protecting the innocent, though sometimes to an exhausting degree.',
+        status: 'Alive',
+        type: 'Companion',
       },
       {
         id: 12,
-        title: 'Blood Ties',
-        type: 'Side',
-        status: 'Not Started',
-        difficulty: 'Medium',
-        description: 'Investigate mysterious deaths in Arefu and discover a family of wasteland vampires.',
-        location: 'Arefu, Meresti Metro Station',
-        giver: 'Evan King',
-        level: 12,
-        objectives: [
-          { id: 1, description: 'Investigate the Arefu deaths', completed: false, optional: false },
-          { id: 2, description: 'Find Ian West', completed: false, optional: false },
-          { id: 3, description: 'Talk to Vance, leader of The Family', completed: false, optional: false },
-          { id: 4, description: 'Negotiate peace or violence', completed: false, optional: false },
-          { id: 5, description: 'Return to Evan King', completed: false, optional: false },
-        ],
-        rewards: [
-          { type: 'XP', value: '400', description: 'Experience Points' },
-          { type: 'Caps', value: '300', description: 'Bottle caps' },
-          { type: 'Item', value: 'Vampire Serum (if peaceful)', description: 'Unique consumable' },
-          { type: 'Reputation', value: 'Arefu and The Family', description: 'Faction standing' },
-        ],
-        walkthrough: `A Fallout 3 classic quest dealing with cannibalism, blood packs, and wastelanders who believe they're vampires.
-
-**The Mystery:**
-Arefu, a small settlement built on a highway overpass, has been experiencing deaths. Evan King, the settlement leader, asks you to investigate.
-
-**The Victims:**
-The West family has been killed:
-- Parents found dead
-- Blood drained
-- Ian West is missing
-- Mysterious circumstances
-
-**Following the Trail:**
-Clues lead to Meresti Metro Station:
-- Underground tunnel system
-- Inhabited by "The Family"
-- Require password for entry
-- Can fight your way in or talk
-
-**The Family:**
-A group who believe they're vampires:
-- Led by Vance
-- Drink blood packs, not human blood (mostly)
-- Have a code against killing
-- Recruit those with "the thirst"
-- Ian West recently joined them
-
-**Meeting Vance:**
-The charismatic leader explains:
-- The Family helps people with cannibalistic urges
-- They use blood packs instead of eating people
-- It's harm reduction for dangerous impulses
-- Ian killed his family during "awakening"
-- Ian doesn't remember what he did
-
-**The Choice:**
-
-**Peaceful Resolution:**
-- Convince Vance to share blood packs with Arefu
-- Negotiate protection treaty
-- Ian stays with The Family (learns control)
-- Arefu gains protection
-- Everyone benefits
-- Receive Vampire Serum
-
-**Violent Resolution:**
-- Kill The Family
-- Force Ian to return
-- Ian never learns control (dangerous)
-- Arefu remains vulnerable
-- More caps but worse outcome
-
-**Talking to Ian:**
-Convince Ian to:
-- Stay with The Family (recommended)
-- Return to Arefu (risky)
-- His choice affects the outcome
-
-**The Treaty:**
-Best outcome involves:
-- The Family protects Arefu from raiders
-- Arefu provides blood packs
-- Mutual benefit arrangement
-- Ian finds a new family
-- Everyone lives
-
-**Consequences:**
-- Arefu becomes safer
-- The Family gets legitimate blood source
-- Ian controls his urges
-- Wasteland cooperation prevails
-
-**Tips:**
-- High speech helps negotiations
-- Explore Meresti for lore
-- Blood packs found throughout metro
-- Peaceful route has best rewards
-- The Family's backstories are tragic`,
-        faction: 'None',
-        createdAt: '2024-02-25',
-        updatedAt: '2024-11-09',
+        name: 'Piper Wright',
+        faction: 'Independent',
+        role: 'Reporter',
+        game: 'Fallout 4',
+        description: 'Editor and publisher of Publick Occurrences in Diamond City. A tenacious investigative journalist determined to expose the truth about synths and corruption, even when it makes her unpopular with Diamond City\'s mayor.',
+        status: 'Alive',
+        type: 'Companion',
+      },
+      {
+        id: 13,
+        name: 'Dogmeat',
+        faction: 'Independent',
+        role: 'Loyal Companion',
+        game: 'Fallout 4',
+        description: 'A German Shepherd who becomes the Sole Survivor\'s faithful companion. Found near the Red Rocket truck stop. Brave, loyal, and helpful in tracking and combat. The goodest boy in the Commonwealth.',
+        status: 'Alive',
+        type: 'Companion',
+      },
+      {
+        id: 14,
+        name: 'Benny',
+        faction: 'The Chairmen',
+        role: 'Chairman',
+        game: 'Fallout: New Vegas',
+        description: 'Leader of the Chairmen and owner of The Tops casino. Shot the Courier in the head to steal the Platinum Chip. Smooth-talking and ambitious, he planned to use the chip to take control of New Vegas from Mr. House.',
+        status: 'Unknown',
+        type: 'Antagonist',
+      },
+      {
+        id: 15,
+        name: 'Mr. House',
+        faction: 'Independent (New Vegas)',
+        role: 'CEO and Ruler',
+        game: 'Fallout: New Vegas',
+        description: 'Pre-war businessman who preserved himself in a life-support chamber. Saved Las Vegas from nuclear destruction and transformed it into New Vegas. Cold, calculating, and determined to bring humanity back to its former glory through technology.',
+        status: 'Alive',
+        type: 'Faction Leader',
+      },
+      {
+        id: 16,
+        name: 'Veronica Santangelo',
+        faction: 'Brotherhood of Steel',
+        role: 'Scribe',
+        game: 'Fallout: New Vegas',
+        description: 'A Brotherhood of Steel Scribe who questions the Brotherhood\'s isolationist ways. Struggles between her loyalty to the Brotherhood and her belief that they need to change to survive. Former girlfriend of Christine Royce.',
+        status: 'Alive',
+        type: 'Companion',
+      },
+      {
+        id: 17,
+        name: 'Boone',
+        faction: 'Independent (former NCR)',
+        role: 'Sniper',
+        game: 'Fallout: New Vegas',
+        description: 'Former NCR First Recon sniper haunted by his past. Stationed in Novac, seeking revenge for his wife\'s kidnapping and enslavement by the Legion. One of the deadliest companions with his sniper rifle.',
+        status: 'Alive',
+        type: 'Companion',
+      },
+      {
+        id: 18,
+        name: 'The Master',
+        faction: 'Unity',
+        role: 'Founder',
+        game: 'Fallout',
+        description: 'Richard Grey, transformed by FEV into a nightmarish biomass. Believed super mutants were the next step in human evolution and sought to "unify" humanity through forced mutation. The first major antagonist of the Fallout series.',
+        status: 'Deceased',
+        type: 'Antagonist',
+      },
+      {
+        id: 19,
+        name: 'Colonel Autumn',
+        faction: 'Enclave',
+        role: 'Colonel',
+        game: 'Fallout 3',
+        description: 'Commander of Enclave forces in the Capital Wasteland. More pragmatic than President Eden, he wanted to use Project Purity to gain control over the wasteland rather than genocide. Conflicts with both the Lone Wanderer and Eden.',
+        status: 'Unknown',
+        type: 'Antagonist',
+      },
+      {
+        id: 20,
+        name: 'Three Dog',
+        faction: 'Independent',
+        role: 'Radio DJ',
+        game: 'Fallout 3',
+        description: 'Charismatic DJ of Galaxy News Radio. Broadcasts news, music, and commentary across the Capital Wasteland. His energetic personality and dedication to fighting the "Good Fight" made him a wasteland icon.',
+        status: 'Alive',
+        type: 'NPC',
       },
     ]
   },
 
-  // Get quest by ID
-  getQuest: async (questId: number): Promise<Quest> => {
-    const quests = await questService.getQuests()
-    const quest = quests.find((q) => q.id === questId)
-    if (!quest) {
-      throw new Error(`Quest with ID ${questId} not found`)
-    }
-    return quest
+  // Get character by ID
+  getCharacter: async (id: number): Promise<Character | undefined> => {
+    const characters = await characterService.getCharacters()
+    return characters.find((char) => char.id === id)
   },
 
-  // Get quests by type
-  getQuestsByType: async (type: string): Promise<Quest[]> => {
-    const quests = await questService.getQuests()
-    if (type === 'All') return quests
-    return quests.filter((q) => q.type === type)
+  // Get characters by type
+  getCharactersByType: async (type: Character['type']): Promise<Character[]> => {
+    const characters = await characterService.getCharacters()
+    return characters.filter((char) => char.type === type)
   },
 
-  // Get quests by status
-  getQuestsByStatus: async (status: string): Promise<Quest[]> => {
-    const quests = await questService.getQuests()
-    if (status === 'All') return quests
-    return quests.filter((q) => q.status === status)
-  },
-
-  // Search quests
-  searchQuests: async (query: string): Promise<Quest[]> => {
-    const quests = await questService.getQuests()
+  // Search characters
+  searchCharacters: async (query: string): Promise<Character[]> => {
+    const characters = await characterService.getCharacters()
     const lowerQuery = query.toLowerCase()
-    return quests.filter(
-      (quest) =>
-        quest.title.toLowerCase().includes(lowerQuery) ||
-        quest.description.toLowerCase().includes(lowerQuery) ||
-        quest.location.toLowerCase().includes(lowerQuery) ||
-        quest.giver.toLowerCase().includes(lowerQuery),
+    return characters.filter(
+      (char) =>
+        char.name.toLowerCase().includes(lowerQuery) ||
+        char.faction.toLowerCase().includes(lowerQuery) ||
+        char.description.toLowerCase().includes(lowerQuery) ||
+        char.game.toLowerCase().includes(lowerQuery),
     )
   },
 }
