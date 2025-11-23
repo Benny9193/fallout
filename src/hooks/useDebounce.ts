@@ -33,7 +33,7 @@ export function useDebounceCallback<T extends (...args: unknown[]) => void>(
   callback: T,
   delay: number = DEBOUNCE.DEFAULT_DELAY
 ): T {
-  const [debounceTimer, setDebounceTimer] = useState<NodeJS.Timeout | null>(null)
+  const [debounceTimer, setDebounceTimer] = useState<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     return () => {

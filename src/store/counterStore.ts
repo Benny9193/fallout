@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
-import { persist } from 'zustand/middleware/persist'
+import { persist } from 'zustand/middleware'
 import { CounterStateSchema } from './schemas'
 
 interface CounterState {
@@ -32,7 +32,7 @@ export const useCounterStore = create<CounterState>()(
           if (state) {
             try {
               CounterStateSchema.parse({ count: state.count })
-            } catch (error) {
+            } catch {
               console.warn('Counter state validation failed, resetting to default')
               state.count = 0
             }
