@@ -5,34 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>Fallout Web App - Modern React Application</title>
-    <meta name="title" content="Fallout Web App - Modern React Application" />
-    <meta name="description" content="A modern React application demonstrating best practices with TypeScript, React Query, Zustand, and more. Built with React 18, Vite, and modern web technologies." />
-    <meta name="keywords" content="React, TypeScript, Vite, React Query, Zustand, React Router, web application, modern web development" />
-    <meta name="author" content="Fallout Web App" />
+    <title>Fallout Web App - Modern React Application | TypeScript & Vite</title>
+    <meta name="title" content="Fallout Web App - Modern React Application | TypeScript & Vite" />
+    <meta name="description" content="A modern, production-ready React application demonstrating enterprise-grade best practices with TypeScript, React Query, Zustand, and more. Built with React 18, Vite 6, and cutting-edge web technologies featuring infinite scroll, pagination, and state management." />
+    <meta name="keywords" content="React, TypeScript, Vite, React Query, Zustand, React Router, web application, modern web development, SPA, single page application, infinite scroll, pagination, state management, REST API, axios, Immer, Zod, ESLint" />
+    <meta name="author" content="Fallout Web App Team" />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
-    <meta name="theme-color" content="#667eea" />
+    <meta name="theme-color" content="#667eea" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#4c51bf" media="(prefers-color-scheme: dark)" />
+    <meta name="application-name" content="Fallout Web App" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://fallout-web-app.com/" />
     <meta property="og:title" content="Fallout Web App - Modern React Application" />
-    <meta property="og:description" content="A modern React application demonstrating best practices with TypeScript, React Query, Zustand, and more." />
+    <meta property="og:description" content="A modern React application demonstrating best practices with TypeScript, React Query, Zustand, and more. Features include infinite scroll, smart pagination, and enterprise-level state management." />
     <meta property="og:image" content="/og-image.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Fallout Web App - Modern React Stack" />
     <meta property="og:site_name" content="Fallout Web App" />
+    <meta property="og:locale" content="en_US" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://fallout-web-app.com/" />
     <meta name="twitter:title" content="Fallout Web App - Modern React Application" />
-    <meta name="twitter:description" content="A modern React application demonstrating best practices with TypeScript, React Query, Zustand, and more." />
+    <meta name="twitter:description" content="Enterprise-grade React app with TypeScript, React Query, Zustand, and modern best practices. Featuring infinite scroll, pagination, and comprehensive state management." />
     <meta name="twitter:image" content="/og-image.svg" />
+    <meta name="twitter:image:alt" content="Fallout Web App - Modern React Stack" />
+    <meta name="twitter:creator" content="@falloutwebapp" />
     
     <!-- Apple -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Fallout App" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- Microsoft -->
+    <meta name="msapplication-TileColor" content="#667eea" />
+    <meta name="msapplication-tap-highlight" content="no" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -47,18 +60,62 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://jsonplaceholder.typicode.com" />
+    <link rel="preconnect" href="https://jsonplaceholder.typicode.com" />
+    
+    <!-- Resource Hints for Better Performance -->
+    <link rel="preload" as="style" href="/src/index.css" />
+    <link rel="modulepreload" href="/src/main.tsx" />
     
     <!-- Security -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     
     <!-- Accessibility -->
     <meta name="color-scheme" content="light dark" />
+    
+    <!-- PWA Support -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Fallout" />
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Fallout Web App",
+      "description": "A modern React application demonstrating best practices with TypeScript, React Query, Zustand, and more",
+      "url": "https://fallout-web-app.com",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Fallout Web App Team"
+      },
+      "programmingLanguage": [
+        "TypeScript",
+        "JavaScript"
+      ],
+      "softwareVersion": "0.1.0",
+      "datePublished": "2025-11-22"
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="padding: 2rem; text-align: center; font-family: system-ui, -apple-system, sans-serif;">
+        <h1>JavaScript Required</h1>
+        <p>This application requires JavaScript to run. Please enable JavaScript in your browser settings.</p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
