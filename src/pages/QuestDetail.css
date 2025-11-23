@@ -1,0 +1,473 @@
+/* Quest Detail Page Styles */
+
+.quest-detail-page {
+  padding: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Back Link */
+.quest-back {
+  margin-bottom: 1.5rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-radius: 0.375rem;
+}
+
+.back-link:hover {
+  background-color: var(--bg-hover);
+  transform: translateX(-4px);
+}
+
+/* Quest Header */
+.quest-header {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.quest-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.quest-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+  flex: 1;
+}
+
+.quest-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.quest-description {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Info Grid */
+.quest-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.info-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.info-icon {
+  font-size: 1.5rem;
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.info-value {
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Quest Sections */
+.quest-section {
+  margin-bottom: 2.5rem;
+}
+
+.quest-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.quest-section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Progress Section */
+.quest-progress-section {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 0.75rem;
+  background-color: var(--bg-tertiary);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+  border-radius: 1rem;
+  transition: width 0.3s ease;
+}
+
+.progress-percentage {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  min-width: 3.5rem;
+  text-align: right;
+}
+
+.progress-text {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+}
+
+/* Objectives */
+.objectives-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.objective-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.objective-item.completed {
+  background-color: var(--bg-success);
+  border-color: #16a34a;
+}
+
+.objective-item.completed .objective-text {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.objective-item.optional {
+  border-style: dashed;
+}
+
+.objective-checkbox {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.objective-item.completed .objective-checkbox {
+  color: #16a34a;
+}
+
+.objective-text {
+  color: var(--text-primary);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.optional-tag {
+  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Rewards */
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.reward-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.reward-card:hover {
+  border-color: #eab308;
+  box-shadow: 0 2px 8px rgba(234, 179, 8, 0.2);
+}
+
+.reward-icon {
+  font-size: 2rem;
+}
+
+.reward-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.reward-type {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.reward-value {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.reward-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Walkthrough */
+.walkthrough-content {
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+.walkthrough-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.walkthrough-content p {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.walkthrough-content ul,
+.walkthrough-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.walkthrough-content li {
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.walkthrough-content ul li {
+  list-style-type: disc;
+}
+
+.walkthrough-content strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Choices */
+.choices-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.choice-item {
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border-left: 4px solid var(--primary-color);
+  border-radius: 0.375rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.consequences-box {
+  padding: 1rem;
+  background-color: var(--bg-warning);
+  border-left: 4px solid #eab308;
+  border-radius: 0.375rem;
+  margin-top: 1rem;
+}
+
+.consequences-box p {
+  margin: 0;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Related Quests */
+.related-quests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.related-quest-card {
+  display: block;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.related-quest-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color);
+}
+
+.related-quest-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem 0;
+}
+
+.related-quest-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.related-quest-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Metadata */
+.quest-metadata {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+  background-color: var(--bg-tertiary);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-top: 2rem;
+}
+
+.metadata-item {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.metadata-label {
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quest-detail-page {
+    padding: 1rem;
+  }
+
+  .quest-header-content {
+    flex-direction: column;
+  }
+
+  .quest-title {
+    font-size: 1.5rem;
+  }
+
+  .quest-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .progress-percentage {
+    align-self: flex-end;
+  }
+
+  .rewards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .related-quests-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quest-metadata {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

@@ -851,6 +851,336 @@ Mankind redefined—but at what cost?`,
         readTime: 11,
         views: 2108,
       },
+      {
+        id: 9,
+        title: 'Main Quest Guide: The Road to Revenge',
+        category: 'Quests & Missions',
+        description: 'Complete walkthrough of Fallout 4\'s main storyline, from Vault 111 to the final confrontation with the Institute.',
+        content: `The main quest of Fallout 4 tells a deeply personal story of loss, revenge, and difficult moral choices that shape the Commonwealth's future.
+
+## Act I: Awakening
+
+## Out of Time
+The journey begins in pre-war Sanctuary Hills on October 23, 2077. After witnessing the nuclear apocalypse and being frozen for 210 years, you awaken to find your spouse murdered and your infant son kidnapped by a mysterious mercenary named Kellogg. This personal tragedy drives the entire narrative forward.
+
+## War Never Changes
+Emerging from Vault 111 into the Commonwealth wasteland, you return to your ruined neighborhood. Codsworth, your pre-war robot butler, provides crucial context: 210 years have passed. The quest introduces basic survival mechanics and directs you toward Concord to find help.
+
+## When Freedom Calls
+In Concord, you rescue Preston Garvey and the last remnants of the Minutemen from raiders. This quest introduces:
+- Power Armor mechanics (T-45d suit on the roof)
+- Heavy weapons (Minigun from crashed Vertibird)
+- Large enemy combat (Deathclaw boss fight)
+- Faction introduction (Minutemen)
+
+Preston's group becomes the foundation for rebuilding the Minutemen and establishing settlements throughout the Commonwealth.
+
+## Act II: The Investigation
+
+## Unlikely Valentine
+Following leads to Diamond City, you meet Nick Valentine, a synth detective. Despite being artificial, Nick proves instrumental in your search. His unique perspective as a synth who retained a human's memories makes him one of the most complex companions.
+
+## Getting a Clue
+With Nick's help, investigate Kellogg's abandoned house in Diamond City. Use Dogmeat to track Kellogg's scent across the Commonwealth to Fort Hagen. This quest showcases detective work and environmental storytelling.
+
+## Reunions
+The confrontation with Kellogg represents the first major story climax. Fort Hagen's fortifications require tactical combat against synths and automated defenses. In the command center, Kellogg reveals shocking truths:
+- Shaun is alive but has aged decades
+- The Institute has been watching you
+- Your release from cryostasis was an experiment
+
+The boss fight against Kellogg tests combat skills. His cybernetic enhancements, Stealth Boys, and synth backup make this one of the game's toughest early encounters. After killing him, retrieve his cybernetic brain augmenter—it becomes crucial later.
+
+## Dangerous Minds
+Take Kellogg's augmenter to Doctor Amari in Goodneighbor's Memory Den. Using advanced technology, you access Kellogg's memories, experiencing key moments from his life. This reveals:
+- The Institute's teleportation technology
+- Kellogg's role in kidnapping Shaun
+- Your son's current status
+- The Institute's location deep underground
+
+## The Glowing Sea
+Journey to the Commonwealth's most irradiated zone to find Virgil, an ex-Institute scientist. This quest requires:
+- Power Armor with radiation protection
+- Abundant RadAway and Rad-X
+- Preparation for Deathclaws and Radscorpions
+
+Virgil provides blueprints for the signal interceptor, the device needed to teleport into the Institute.
+
+## Act III: Faction Choices
+
+## The Molecular Level
+This quest represents your first major faction choice. You can build the signal interceptor with:
+
+**Minutemen**: Independent path, build at The Castle
+**Brotherhood of Steel**: Military support, build on Prydwen
+**Railroad**: Stealth approach, build at Railroad HQ
+
+Each faction offers different resources and philosophical approaches. This decision influences later quests and available endings.
+
+## Institutionalized
+Teleporting into the Institute reveals advanced technology and pristine conditions contrasting the surface wasteland. The biggest shock: your son Shaun is now an elderly man, director of the Institute, known as "Father."
+
+Shaun explains:
+- You were frozen for different durations than you realized
+- Infant Shaun was the perfect unradiated DNA source
+- Adult Shaun became the Institute's leader
+- He orchestrated your release as an experiment
+- He wants you to join the Institute
+
+This revelation forces impossible questions: Is this man still your son? Can you forgive the Institute's actions? Should you embrace or oppose their vision?
+
+## Act IV: The Final Choice
+
+After Institutionalized, the main quest branches based on faction loyalty:
+
+## Brotherhood Ending: Tactical Thinking
+Elder Maxson orders the Institute's complete destruction. Liberty Prime assaults the facility while you plant a nuclear device in the reactor. The Brotherhood sees synths as abominations and Institute technology as too dangerous to preserve. This ending represents technological fascism—safety through destruction.
+
+## Railroad Ending: Underground Undercover
+As a double agent, you sabotage the Institute from within, ultimately facilitating a Railroad assault that frees all synths before destroying synth production facilities. This ending prioritizes individual freedom over technological advancement.
+
+## Institute Ending: Powering Up
+Fully commit to the Institute, becoming its new director after Father's death. Destroy the Railroad and Brotherhood to secure the Institute's future. This ending represents technocratic elitism—believing only the Institute can guide humanity's future.
+
+## Minutemen Ending: Nuclear Option
+If alienated from other factions, the Minutemen assault the Institute. This represents the "people's choice"—Commonwealth settlers deciding their own fate without submitting to external powers.
+
+## Major Themes
+
+**Family vs. Ideology**: Is Shaun still your son despite his actions? Does family obligation transcend moral disagreement?
+
+**Progress vs. Ethics**: Does scientific advancement justify human experimentation? Can the Institute be reformed or must it be destroyed?
+
+**Freedom vs. Security**: Should synths have rights? Is the Brotherhood's protection worth their authoritarianism? Can the Railroad's idealism survive pragmatic reality?
+
+**Humanity Redefined**: What makes someone human? Are synths people? Does the Institute's vision represent humanity's future or its corruption?
+
+## Critical Quests
+
+Several quests significantly impact the story:
+
+**Blind Betrayal** (Brotherhood): Discovering Paladin Danse is a synth tests Brotherhood ideology
+**Underground Undercover** (Railroad): Extended double-agent operation
+**Mass Fusion** (Point of No Return): Choosing Institute locks out Brotherhood
+**Airship Down** (Railroad): Destroying the Prydwen
+**Ad Victoriam** (Brotherhood): Final Brotherhood assault
+
+## Tips for Main Quest
+
+**Before Choosing Sides:**
+- Complete companion quests for all factions
+- Max affinity with faction leaders
+- Explore all faction questlines as far as possible
+- Save before points of no return
+
+**Combat Preparation:**
+- Stock ammunition for preferred weapons
+- Bring companions aligned with chosen faction
+- Upgrade Power Armor for final assaults
+- Prepare healing items and stimpaks
+
+**Moral Considerations:**
+- No choice is "correct"—all have consequences
+- Consider long-term Commonwealth impacts
+- Evaluate companion reactions
+- Think beyond immediate quest rewards
+
+**Multiple Playthroughs:**
+Most players complete the main quest multiple times to experience all endings. Save before critical faction decisions to explore alternatives.
+
+The main quest typically requires 20-30 hours depending on playstyle, with faction quests adding another 10-20 hours. The personal stakes—finding your son—combined with Commonwealth-wide consequences create Fallout 4's most compelling narrative.`,
+        createdAt: '2024-04-01',
+        updatedAt: '2024-11-22',
+        readTime: 14,
+        views: 2891,
+      },
+      {
+        id: 10,
+        title: 'Side Quest Masterpieces: Hidden Gems of the Wasteland',
+        category: 'Quests & Missions',
+        description: 'Guide to Fallout\'s most memorable side quests, from the Silver Shroud to the USS Constitution.',
+        content: `While main quests drive the story, side quests provide Fallout's most creative, hilarious, and emotionally resonant moments. These optional adventures showcase the series' distinctive personality.
+
+## The Silver Shroud (Fallout 4)
+
+Kent Connolly, an obsessive fan of the pre-war Silver Shroud radio serial, recruits you to become the vigilante hero. This quest celebrates pulp fiction and noir aesthetics while providing practical rewards.
+
+**Highlights:**
+- Special "Speak as the Shroud" dialogue options
+- Intimidating criminals with dramatic Shroud voice
+- Silver Shroud costume with upgradeable stats
+- Kent's enthusiastic reactions to your heroics
+- Sinjin's supervillain confrontation
+
+**Why It's Beloved:**
+The quest fully commits to its absurd premise. Kent's genuine belief in the Silver Shroud, combined with your ability to roleplay the character through special dialogue, creates moments of pure joy. The costume remains viable throughout the game thanks to Kent's upgrades.
+
+**Moral Stakes:**
+Saving Kent from Sinjin requires quick combat decisions. His survival means continued costume upgrades—practical and emotional incentives align perfectly.
+
+## The Last Voyage of the USS Constitution (Fallout 4)
+
+A pre-war sailing ship, somehow lodged in a Boston building, crewed by Revolutionary War-programmed robots attempting to "sail" to the ocean using rocket engines. Yes, really.
+
+**The Absurdity:**
+- Captain Ironsides speaks in 18th-century naval terminology
+- Robot crew maintains sailing protocols on a landlocked ship
+- Rocket engines jury-rigged for "sailing"
+- Naval battle against scavengers in downtown Boston
+- Ship "successfully" flies 500 feet before crashing into another building
+
+**Why It Works:**
+The quest's success comes from complete sincerity. Ironsides never breaks character, treating his impossible mission with absolute seriousness. The crew celebrates their catastrophic crash as a victory because they moved closer to the ocean.
+
+**Rewards:**
+The Broadsider—a man-portable naval cannon firing cannonballs. Absurdly impractical. Absolutely hilarious.
+
+## Beyond the Beef (Fallout: New Vegas)
+
+Investigate a missing person case at the Ultra-Luxe casino, uncovering a conspiracy involving the White Glove Society's cannibalistic past.
+
+**Investigation Layers:**
+- Missing son of Brahmin baron
+- White Glove Society's secret
+- Mortimer's plan to revive cannibalism
+- Multiple solution paths
+- Speech, stealth, or violence approaches
+
+**Complex Solutions:**
+- Replace human meat with Brahmin
+- Expose Mortimer to the Society
+- Join the cannibals
+- Rescue the victim violently
+- Frame someone else
+
+**Why It's Memorable:**
+The quest respects player intelligence, providing multiple viable approaches with different consequences. No single "correct" solution exists—moral complexity reigns.
+
+## Blood Ties (Fallout 3)
+
+Investigate mysterious deaths in Arefu, discovering "The Family"—wastelanders who believe they're vampires and practice harm reduction for cannibalistic urges.
+
+**The Family's Philosophy:**
+Instead of eating people, they drink blood packs. Leader Vance created this system to help people with dangerous impulses control themselves. Ian West, who killed his family during his "awakening," learns to manage his urges.
+
+**Moral Complexity:**
+The Family isn't evil—they're people with a psychological condition finding ways to coexist peacefully. The peaceful resolution benefits everyone:
+- The Family gains legitimate blood supply
+- Arefu receives protection from raiders
+- Ian finds acceptance and control
+- Wasteland cooperation prevails
+
+**Why It's Impactful:**
+The quest avoids simple good/evil dichotomy. The Family represents harm reduction philosophy in the wasteland—not perfect, but better than the alternative.
+
+## Come Fly With Me (Fallout: New Vegas)
+
+Help ghouls repair pre-war rockets to reach their "promised land" while dealing with Nightkin (stealth-capable super mutants) who believe their Stealth Boy supply is hidden at the REPCONN facility.
+
+**The Setup:**
+- Jason Bright leads "Bright Brotherhood" ghouls
+- Nightkin seek imaginary Stealth Boy shipment
+- Pre-war rockets might actually work
+- Harland trapped in basement
+- Multiple faction negotiations possible
+
+**Resolution Choices:**
+- Help both ghouls and Nightkin peacefully
+- Kill everyone
+- Sabotage the rockets (cruel and hilarious)
+- Redirect rockets to different destinations
+
+**Memorable Moment:**
+Watching the rockets actually launch, carrying ghouls toward their destiny, remains one of New Vegas's most surreal and touching moments.
+
+## The Superhuman Gambit (Fallout 3)
+
+Two wastelanders with mental health issues—the AntAgonizer and the Mechanist—fight in costumes they believe grant superpowers. Neither actually has powers. Both are dangerous because they control giant ants and robots, respectively.
+
+**The Comedy:**
+- Serious superhero/supervillain roleplay
+- Neither recognizes the other's "true identity"
+- Actual threat from their controlled creatures
+- Option to become a supervillain yourself
+- Can convince them to stop by revealing "secret identities"
+
+**Solutions:**
+- Kill both
+- Kill one
+- Convince them their costumes are powerless
+- Take a costume and become a costumed hero/villain
+
+**Tonal Mastery:**
+The quest balances genuine danger with absurdist comedy, never mocking the characters while acknowledging the situation's ridiculousness.
+
+## Those! (Fallout: New Vegas)
+
+Investigate giant ants threatening a caravan route. Seems standard until you discover the truth: Doctor Borous from the Big MT created these ants. The quest connects to the Old World Blues DLC, revealing pre-war Think Tank experiments.
+
+**Environmental Storytelling:**
+- Ant eggs throughout the area
+- Scientist notes revealing experiments
+- Connection to larger lore
+- Simple premise, complex background
+
+## Wang Dang Atomic Tango (Fallout: New Vegas)
+
+The Atomic Wrangler needs employees for their escort service. Find various specialists with specific... attributes. This quest showcases Fallout's mature humor and wastelander pragmatism.
+
+**Recruitment Targets:**
+- Ghoul cowboy with smooth talking
+- Super mutant with surprising gentleness
+- Robot with "fisto" programming
+- Human with specific skills
+
+**Why It's Noteworthy:**
+The quest treats sex work pragmatically, neither glorifying nor condemning it. Recruits express agency in their choices, and the Atomic Wrangler operates professionally.
+
+## The Power of the Atom (Fallout 3)
+
+Megaton's founding tension: the unexploded atomic bomb in the town center. Either disarm it for the settlement's safety or detonate it for Tenpenny Tower's entertainment.
+
+**The Stakes:**
+- Entire town's survival
+- Your karma permanently affected
+- Unique rewards from each choice
+- Visible consequences (Megaton crater)
+
+**Detonation Consequences:**
+If you detonate Megaton for Tenpenny and caps:
+- Entire town dies (including potential companions)
+- Massive karma loss
+- Tenpenny Tower suite reward
+- Megaton becomes permanent crater
+- Many quests become unavailable
+
+**Why It's Significant:**
+Few video game choices have such visible, permanent consequences. The mushroom cloud serves as a constant reminder of your decision.
+
+## Common Elements of Great Side Quests
+
+**Moral Complexity**: Best quests avoid simple good/evil choices
+**Humor**: Fallout's dark comedy shines in side content
+**Player Agency**: Multiple solutions respect different playstyles
+**Consequences**: Choices affect the world meaningfully
+**Environmental Storytelling**: Locations tell stories through design
+**Character Depth**: Even minor NPCs have motivations and personalities
+
+## Rewards Beyond Loot
+
+The best side quests provide:
+- Unique weapons with personality
+- Companions with depth
+- Lore expanding world understanding
+- Moral questions worth considering
+- Stories worth retelling
+
+Side quests transform Fallout from good games into masterpieces. They demonstrate that the wasteland, despite its horrors, contains humor, humanity, and hope. Between rescuing cats and launching ghouls into space, these quests define the Fallout experience.`,
+        createdAt: '2024-04-05',
+        updatedAt: '2024-11-21',
+        readTime: 13,
+        views: 2543,
+      },
     ]
   },
 
