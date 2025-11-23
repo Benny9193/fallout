@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { questService } from '../api/services'
-import { Loading, ErrorDisplay } from '../components'
+import { Loading, ErrorDisplay, MarkdownEditor, QuestProgressManager } from '../components'
 import { ROUTES } from '../constants'
 import { useQuestProgressStore } from '../store/questProgressStore'
 import type { QuestType, QuestStatus, QuestDifficulty } from '../types/api'
@@ -22,10 +22,14 @@ function QuestDetail() {
   const toggleObjective = useQuestProgressStore((state) => state.toggleObjective)
   const isObjectiveCompleted = useQuestProgressStore((state) => state.isObjectiveCompleted)
   const setQuestNote = useQuestProgressStore((state) => state.setQuestNote)
+  const addNoteAttachment = useQuestProgressStore((state) => state.addNoteAttachment)
+  const removeNoteAttachment = useQuestProgressStore((state) => state.removeNoteAttachment)
+  const exportAllProgress = useQuestProgressStore((state) => state.exportAllProgress)
 
   // Local state for notes
   const [noteText, setNoteText] = useState('')
   const [isEditingNote, setIsEditingNote] = useState(false)
+  const [showProgressManager, setShowProgressManager] = useState(false)
 
   // Fetch the quest
   const { data: quest, isLoading, error } = useQuery({
@@ -126,6 +130,56 @@ function QuestDetail() {
     setIsEditingNote(false)
   }
 
+  // Handle image upload
+  const handleImageUpload = (file: File) => {
+    const reader = new FileReader()
+    reader.onload = () => {
+      const base64 = reader.result as string
+      addNoteAttachment(questId, {
+        name: file.name,
+        type: file.type,
+        data: base64,
+        size: file.size,
+      })
+    }
+    reader.readAsDataURL(file)
+  }
+
+  // Share quest notes
+  const handleShareNotes = () => {
+    if (!questProgress?.notes && (!questProgress?.attachments || questProgress.attachments.length === 0)) {
+      alert('No notes to share')
+      return
+    }
+
+    const shareText = `## ${questWithProgress.title}\n\n${questProgress?.notes || 'No notes'}`
+    navigator.clipboard.writeText(shareText).then(() => {
+      alert('Notes copied to clipboard!')
+    })
+  }
+
+  // Export this quest
+  const handleExportQuest = () => {
+    const questData = {
+      quest: {
+        id: quest!.id,
+        title: quest!.title,
+        type: quest!.type,
+        difficulty: quest!.difficulty,
+      },
+      progress: questProgress,
+    }
+    const blob = new Blob([JSON.stringify(questData, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = `quest-${questId}-${quest!.title.replace(/\s+/g, '-').toLowerCase()}.json`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+  }
+
   if (error || !questWithProgress) {
     return (
       <div className="page quest-detail-page">
@@ -207,6 +261,13 @@ function QuestDetail() {
               Reset Quest
             </button>
           )}
+          <button
+            onClick={() => setShowProgressManager(true)}
+            className="btn-secondary"
+            title="Export or Import quest progress"
+          >
+            📊 Manage Progress
+          </button>
         </div>
       </div>
 
@@ -294,28 +355,42 @@ function QuestDetail() {
       {/* Quest Notes */}
       <div className="quest-section notes-section">
         <div className="notes-header">
-          <h2>Quest Notes</h2>
-          {!isEditingNote && (
-            <button
-              onClick={() => setIsEditingNote(true)}
-              className="btn-secondary btn-small"
-            >
-              {questProgress?.notes ? 'Edit Note' : 'Add Note'}
-            </button>
-          )}
+          <h2>Quest Notes & Strategy</h2>
+          <div className="notes-header-actions">
+            {!isEditingNote && (
+              <>
+                <button
+                  onClick={() => setIsEditingNote(true)}
+                  className="btn-secondary btn-small"
+                >
+                  {questProgress?.notes ? 'Edit Note' : 'Add Note'}
+                </button>
+                {(questProgress?.notes || questProgress?.attachments?.length) && (
+                  <>
+                    <button onClick={handleShareNotes} className="btn-secondary btn-small">
+                      📋 Share
+                    </button>
+                    <button onClick={handleExportQuest} className="btn-secondary btn-small">
+                      💾 Export
+                    </button>
+                  </>
+                )}
+              </>
+            )}
+          </div>
         </div>
         {isEditingNote ? (
           <div className="notes-editor">
-            <textarea
+            <MarkdownEditor
               value={noteText}
-              onChange={(e) => setNoteText(e.target.value)}
-              placeholder="Add personal notes about this quest..."
-              className="notes-textarea"
-              rows={6}
+              onChange={setNoteText}
+              placeholder="Write your quest notes and strategy in markdown..."
+              onImageUpload={handleImageUpload}
+              minRows={8}
             />
             <div className="notes-actions">
               <button onClick={handleSaveNote} className="btn-primary btn-small">
-                Save Note
+                💾 Save Note
               </button>
               <button
                 onClick={() => {
@@ -329,13 +404,62 @@ function QuestDetail() {
             </div>
           </div>
         ) : (
-          <div className="notes-display">
-            {questProgress?.notes ? (
-              <p className="note-text">{questProgress.notes}</p>
-            ) : (
-              <p className="note-placeholder">No notes yet. Click "Add Note" to add your personal notes about this quest.</p>
+          <>
+            <div className="notes-display">
+              {questProgress?.notes ? (
+                <div
+                  className="note-text markdown-content"
+                  dangerouslySetInnerHTML={{
+                    __html: questProgress.notes
+                      .replace(/&/g, '&amp;')
+                      .replace(/</g, '&lt;')
+                      .replace(/>/g, '&gt;')
+                      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                      .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+                      .replace(/`([^`]+)`/g, '<code>$1</code>')
+                      .replace(/^## (.*$)/gim, '<h3>$1</h3>')
+                      .replace(/\n/g, '<br>'),
+                  }}
+                />
+              ) : (
+                <p className="note-placeholder">
+                  No notes yet. Click "Add Note" to add your personal notes and strategy for this quest.
+                </p>
+              )}
+            </div>
+
+            {/* Attachments Display */}
+            {questProgress?.attachments && questProgress.attachments.length > 0 && (
+              <div className="notes-attachments">
+                <h4>Attachments ({questProgress.attachments.length})</h4>
+                <div className="attachments-grid">
+                  {questProgress.attachments.map((attachment) => (
+                    <div key={attachment.id} className="attachment-card">
+                      {attachment.type.startsWith('image/') ? (
+                        <img
+                          src={attachment.data}
+                          alt={attachment.name}
+                          className="attachment-image"
+                        />
+                      ) : (
+                        <div className="attachment-file">
+                          <span className="attachment-icon">📎</span>
+                          <span className="attachment-name">{attachment.name}</span>
+                        </div>
+                      )}
+                      <button
+                        onClick={() => removeNoteAttachment(questId, attachment.id)}
+                        className="attachment-remove"
+                        title="Remove attachment"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
             )}
-          </div>
+          </>
         )}
       </div>
 
@@ -481,6 +605,11 @@ function QuestDetail() {
           </div>
         )}
       </div>
+
+      {/* Quest Progress Manager Modal */}
+      {showProgressManager && (
+        <QuestProgressManager onClose={() => setShowProgressManager(false)} />
+      )}
     </div>
   )
 }

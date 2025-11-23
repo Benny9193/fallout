@@ -8,4 +8,6 @@ export { default as ErrorBoundary } from './ErrorBoundary'
 export { default as Loading } from './Loading'
 export { default as ErrorDisplay } from './ErrorDisplay'
 export { default as EmptyState } from './EmptyState'
+export { default as MarkdownEditor } from './MarkdownEditor'
+export { default as QuestProgressManager } from './QuestProgressManager'
 

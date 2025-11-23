@@ -1,0 +1,204 @@
+/* Markdown Editor Styles */
+
+.markdown-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Toolbar */
+.markdown-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+}
+
+.toolbar-group {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0 0.5rem;
+  border-right: 1px solid var(--border-color);
+}
+
+.toolbar-group:last-child {
+  border-right: none;
+}
+
+.toolbar-right {
+  margin-left: auto;
+  padding-right: 0;
+}
+
+.toolbar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toolbar-button:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-hover);
+  border-color: var(--border-color);
+}
+
+.toolbar-button.active {
+  color: var(--primary-color);
+  background-color: rgba(59, 130, 246, 0.1);
+  border-color: var(--primary-color);
+}
+
+.toolbar-button strong,
+.toolbar-button em {
+  font-size: 1rem;
+}
+
+/* Content Area */
+.markdown-content {
+  min-height: 150px;
+  flex: 1;
+}
+
+.markdown-textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  border: none;
+  resize: vertical;
+  outline: none;
+}
+
+.markdown-textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+/* Preview */
+.markdown-preview {
+  min-height: 150px;
+  padding: 1rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.markdown-preview h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 1rem 0 0.5rem 0;
+}
+
+.markdown-preview h3:first-child {
+  margin-top: 0;
+}
+
+.markdown-preview strong {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.markdown-preview em {
+  font-style: italic;
+}
+
+.markdown-preview code {
+  padding: 0.125rem 0.375rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.875rem;
+  background-color: var(--bg-tertiary);
+  border-radius: 0.25rem;
+}
+
+.markdown-preview pre {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: var(--bg-tertiary);
+  border-radius: 0.375rem;
+  overflow-x: auto;
+}
+
+.markdown-preview pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.markdown-preview li {
+  margin: 0.25rem 0;
+}
+
+.markdown-preview blockquote {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-left: 4px solid var(--primary-color);
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.markdown-preview a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.markdown-preview a:hover {
+  text-decoration: none;
+}
+
+/* Help Text */
+.markdown-help {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background-color: var(--bg-tertiary);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .markdown-toolbar {
+    padding: 0.5rem;
+  }
+
+  .toolbar-group {
+    padding: 0 0.25rem;
+  }
+
+  .toolbar-button {
+    min-width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.75rem;
+    padding: 0 0.375rem;
+  }
+
+  .markdown-help {
+    font-size: 0.6875rem;
+  }
+}

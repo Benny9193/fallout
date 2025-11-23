@@ -21,12 +21,23 @@ export interface CollectedReward {
   collectedAt: string
 }
 
+// Note attachment tracking
+export interface NoteAttachment {
+  id: string
+  name: string
+  type: string // MIME type (e.g., 'image/png')
+  data: string // Base64 encoded data
+  size: number // Size in bytes
+  uploadedAt: string
+}
+
 // Quest progress tracking
 interface QuestProgress {
   questId: number
   status: QuestStatus
   completedObjectives: number[] // IDs of completed objectives
   notes: string
+  attachments?: NoteAttachment[] // Image/file attachments for notes
   startedAt?: string
   completedAt?: string
   failedAt?: string
@@ -55,6 +66,14 @@ interface QuestProgressState {
   resetQuest: (questId: number) => void
   resetAllProgress: () => void
 
+  // Note attachments
+  addNoteAttachment: (questId: number, attachment: Omit<NoteAttachment, 'id' | 'uploadedAt'>) => void
+  removeNoteAttachment: (questId: number, attachmentId: string) => void
+
+  // Export/Import
+  exportAllProgress: () => string
+  importProgress: (data: string, merge?: boolean) => boolean
+
   // Getters
   getQuestProgress: (questId: number) => QuestProgress | undefined
   isObjectiveCompleted: (questId: number, objectiveId: number) => boolean
@@ -73,6 +92,7 @@ const defaultProgress: Partial<QuestProgress> = {
   completedObjectives: [],
   notes: '',
   collectedRewards: [],
+  attachments: [],
 }
 
 // Helper to generate unique IDs
@@ -392,10 +412,124 @@ export const useQuestProgressStore = create<QuestProgressState>()(
             new Date(b.collectedAt).getTime() - new Date(a.collectedAt).getTime()
           )
         },
+
+        // Note attachments
+        addNoteAttachment: (questId: number, attachment: Omit<NoteAttachment, 'id' | 'uploadedAt'>) => set((state) => {
+          const timestamp = new Date().toISOString()
+
+          if (!state.questProgress[questId]) {
+            state.questProgress[questId] = {
+              questId,
+              status: 'Not Started',
+              completedObjectives: [],
+              notes: '',
+              collectedRewards: [],
+              attachments: [],
+            }
+          }
+
+          if (!state.questProgress[questId].attachments) {
+            state.questProgress[questId].attachments = []
+          }
+
+          state.questProgress[questId].attachments!.push({
+            ...attachment,
+            id: generateId(),
+            uploadedAt: timestamp,
+          })
+        }),
+
+        removeNoteAttachment: (questId: number, attachmentId: string) => set((state) => {
+          if (state.questProgress[questId]?.attachments) {
+            state.questProgress[questId].attachments = state.questProgress[questId].attachments!.filter(
+              (att) => att.id !== attachmentId
+            )
+          }
+        }),
+
+        // Export/Import
+        exportAllProgress: () => {
+          const state = get()
+          const exportData = {
+            version: 2,
+            exportedAt: new Date().toISOString(),
+            questProgress: state.questProgress,
+            timeline: state.timeline,
+            totalRewards: state.totalRewards,
+          }
+          return JSON.stringify(exportData, null, 2)
+        },
+
+        importProgress: (data: string, merge = false) => {
+          try {
+            const importData = JSON.parse(data)
+
+            // Validate import data
+            if (!importData.version || !importData.questProgress) {
+              console.error('Invalid import data format')
+              return false
+            }
+
+            set((state) => {
+              if (merge) {
+                // Merge imported data with existing data
+                Object.entries(importData.questProgress).forEach(([questId, progress]) => {
+                  state.questProgress[Number(questId)] = progress as QuestProgress
+                })
+
+                // Merge timeline (remove duplicates by id)
+                const existingIds = new Set(state.timeline.map((e) => e.id))
+                const newEvents = (importData.timeline || []).filter(
+                  (e: TimelineEvent) => !existingIds.has(e.id)
+                )
+                state.timeline.push(...newEvents)
+                state.timeline.sort((a, b) =>
+                  new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+                )
+
+                // Merge total rewards
+                if (importData.totalRewards) {
+                  state.totalRewards.xp += importData.totalRewards.xp || 0
+                  state.totalRewards.caps += importData.totalRewards.caps || 0
+
+                  // Merge items and perks (remove duplicates)
+                  const newItems = importData.totalRewards.items || []
+                  newItems.forEach((item: string) => {
+                    if (!state.totalRewards.items.includes(item)) {
+                      state.totalRewards.items.push(item)
+                    }
+                  })
+
+                  const newPerks = importData.totalRewards.perks || []
+                  newPerks.forEach((perk: string) => {
+                    if (!state.totalRewards.perks.includes(perk)) {
+                      state.totalRewards.perks.push(perk)
+                    }
+                  })
+                }
+              } else {
+                // Replace all data
+                state.questProgress = importData.questProgress
+                state.timeline = importData.timeline || []
+                state.totalRewards = importData.totalRewards || {
+                  xp: 0,
+                  caps: 0,
+                  items: [],
+                  perks: [],
+                }
+              }
+            })
+
+            return true
+          } catch (error) {
+            console.error('Failed to import progress:', error)
+            return false
+          }
+        },
       }),
       {
         name: 'quest-progress-store',
-        version: 2,
+        version: 3,
       }
     )
   )
