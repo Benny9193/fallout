@@ -34,6 +34,7 @@ function Characters() {
           character.name.toLowerCase().includes(query) ||
           character.faction.toLowerCase().includes(query) ||
           character.game.toLowerCase().includes(query) ||
+          character.role.toLowerCase().includes(query) ||
           character.description.toLowerCase().includes(query),
       )
     }
