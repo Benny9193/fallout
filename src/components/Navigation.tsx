@@ -65,6 +65,11 @@ function Navigation() {
               About
             </NavLink>
           </li>
+          <li role="none">
+            <NavLink to={ROUTES.COMPENDIUM} role="menuitem" aria-label="Go to compendium">
+              Compendium
+            </NavLink>
+          </li>
         </ul>
         <ThemeToggle />
       </div>

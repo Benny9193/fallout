@@ -43,3 +43,22 @@ export interface ApiError {
   code?: string
 }
 
+export interface CompendiumArticle {
+  id: number
+  title: string
+  category: string
+  description: string
+  content: string
+  createdAt: string
+  updatedAt: string
+  readTime: number // minutes
+  views: number
+}
+
+export interface CompendiumCategory {
+  id: string
+  name: string
+  description: string
+  count: number
+}
+
