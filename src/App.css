@@ -16,3 +16,10 @@
 .app-main[tabindex="-1"]:focus {
   outline: none;
 }
+
+/* Mobile Bottom Navigation Padding */
+@media (max-width: 768px) {
+  .app-main {
+    padding-bottom: 70px;
+  }
+}
