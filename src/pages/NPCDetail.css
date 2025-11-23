@@ -1,0 +1,317 @@
+.npc-detail-page {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: translateX(-4px);
+}
+
+.npc-detail-header {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.npc-detail-icon {
+  font-size: 6rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.npc-detail-header-content {
+  flex: 1;
+}
+
+.npc-detail-header-content h1 {
+  margin: 0 0 1rem 0;
+  font-size: 2.5rem;
+  color: var(--text-primary);
+}
+
+.npc-detail-badges {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.npc-detail-badges .badge {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.npc-detail-description {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.npc-detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.npc-section {
+  padding: 2rem;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.npc-section h2 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.75rem;
+  color: var(--text-primary);
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.npc-section h3 {
+  margin: 1.5rem 0 0.75rem 0;
+  font-size: 1.25rem;
+  color: var(--accent-color);
+}
+
+.npc-stats .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.npc-stats .stat-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.npc-stats .stat-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.npc-stats .stat-value {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--accent-color);
+}
+
+.npc-biography .biography-content {
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.npc-biography .biography-content p {
+  margin: 1rem 0;
+}
+
+.npc-biography .biography-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.35rem;
+  color: var(--accent-color);
+}
+
+.npc-biography .biography-content ul,
+.npc-biography .biography-content ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.npc-biography .biography-content li {
+  margin: 0.5rem 0;
+}
+
+.npc-perks .perks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.npc-perks .perk-item {
+  padding: 1.5rem;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  border: 2px solid var(--border-color);
+  transition: border-color 0.3s ease;
+}
+
+.npc-perks .perk-item:hover {
+  border-color: var(--accent-color);
+}
+
+.npc-perks .perk-name {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.25rem;
+  color: var(--accent-color);
+}
+
+.npc-perks .perk-description {
+  margin: 0 0 0.5rem 0;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.npc-perks .perk-requirement {
+  margin: 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.npc-location p {
+  margin: 0;
+  font-size: 1.125rem;
+  color: var(--text-primary);
+}
+
+.npc-inventory .inventory-list,
+.npc-quests .quests-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0.75rem;
+}
+
+.npc-inventory .inventory-item,
+.npc-quests .quest-item {
+  padding: 1rem;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.npc-inventory .inventory-item:hover,
+.npc-quests .quest-item:hover {
+  border-color: var(--accent-color);
+  transform: translateX(4px);
+}
+
+.npc-dialogue .dialogue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.npc-dialogue .dialogue-item {
+  margin: 0;
+  padding: 1.5rem;
+  background: var(--bg-tertiary);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 8px;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+.npc-relationships .relationships-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.npc-relationships .relationship-group h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.npc-relationships .relationship-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.npc-relationships .relationship-list li {
+  padding: 0.75rem 1rem;
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.npc-relationships .relationship-list li:hover {
+  border-color: var(--accent-color);
+  transform: translateX(4px);
+}
+
+.npc-detail-footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.npc-detail-footer .last-updated {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .npc-detail-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .npc-detail-icon {
+    align-self: center;
+  }
+
+  .npc-detail-header-content h1 {
+    font-size: 2rem;
+  }
+
+  .npc-detail-badges {
+    justify-content: center;
+  }
+
+  .npc-stats .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .npc-relationships .relationships-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .npc-inventory .inventory-list,
+  .npc-quests .quests-list {
+    grid-template-columns: 1fr;
+  }
+}

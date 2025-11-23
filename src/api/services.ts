@@ -1,9 +1,9 @@
 import api from './axios'
-import type { User, Post, Activity, Metric, PostsPage, CompendiumArticle, CompendiumCategory, Quest } from '../types/api'
+import type { User, Post, Activity, Metric, PostsPage, CompendiumArticle, CompendiumCategory, Quest, NPC } from '../types/api'
 import { PAGINATION } from '../constants/app'
 
 // Re-export types for backward compatibility
-export type { User, Post, Activity, Metric, PostsPage, CompendiumArticle, CompendiumCategory, Quest }
+export type { User, Post, Activity, Metric, PostsPage, CompendiumArticle, CompendiumCategory, Quest, NPC }
 
 // API Services
 export const userService = {
@@ -2617,3 +2617,959 @@ Best outcome involves:
     )
   },
 }
+
+export const npcService = {
+  // Get all NPCs
+  getNPCs: async (): Promise<NPC[]> => {
+    // Fallout universe NPCs
+    return [
+      {
+        id: 1,
+        name: 'Dogmeat',
+        role: 'Companion',
+        faction: 'None',
+        location: 'Commonwealth',
+        description: 'A loyal German Shepherd who becomes one of the most dependable companions in the wasteland.',
+        biography: `Dogmeat is a German Shepherd found in the Commonwealth, initially encountered in the Red Rocket truck stop near Sanctuary Hills. Unlike human companions, Dogmeat doesn't judge your moral choices and remains unwaveringly loyal regardless of your actions.
+
+## Origins and Discovery
+First spotted scavenging near the Red Rocket truck stop, Dogmeat quickly proves himself invaluable. He can track scents, detect enemies, and retrieve items. His name comes from the wasteland tradition of naming dogs after their inevitable fate, though this Dogmeat defies that grim expectation.
+
+## Combat Abilities
+Despite being "just a dog," Dogmeat excels in combat:
+- Can grab and hold enemies, stunning them
+- Detects mines and traps
+- Flanks enemies effectively
+- Cannot be permanently killed (goes unconscious instead)
+- Works silently, perfect for stealth builds
+
+## Special Abilities
+- **Tracking**: Can follow scents to locate people and items
+- **Fetch**: Retrieves items from dangerous areas
+- **Detection**: Alerts to nearby enemies and traps
+- **Loyalty**: Never judges your actions
+
+## Perk: Attack Dog
+When maximizing affinity with Dogmeat through the Lone Wanderer perk tree, he gains enhanced combat effectiveness and can hold enemies for you to finish off.
+
+## Unique Qualities
+- Doesn't count as a companion for Lone Wanderer perk
+- Can wear different dog armors and accessories
+- Responds to whistles and commands
+- Has hidden high health regeneration
+- Essential NPC (cannot permanently die)
+
+## Relationships
+Dogmeat is beloved by all companions and doesn't affect faction relationships. He represents pure loyalty in the wasteland—a rare quality.`,
+        image: '🐕',
+        isCompanion: true,
+        isMerchant: false,
+        isEssential: true,
+        perks: [
+          {
+            name: 'Attack Dog',
+            description: 'Dogmeat can hold an enemy, giving you a greater chance to hit them in V.A.T.S.',
+            requirement: 'Max affinity or level 4 in Intelligence',
+          },
+        ],
+        stats: {
+          health: 500,
+          level: 50,
+          resistance: {
+            damage: 50,
+            energy: 0,
+            radiation: 0,
+          },
+        },
+        inventory: ['Dog Armor', 'Bandana', 'Welding Goggles'],
+        quests: ['Reunions', 'Getting a Clue'],
+        relationships: {
+          likes: ['Everyone'],
+          dislikes: [],
+        },
+        createdAt: '2024-01-10',
+        updatedAt: '2024-11-20',
+      },
+      {
+        id: 2,
+        name: 'Nick Valentine',
+        role: 'Companion',
+        faction: 'None',
+        location: 'Commonwealth',
+        description: 'A synthetic detective with the memories of a pre-war police officer, Nick Valentine is Diamond City\'s most capable investigator.',
+        biography: `Nick Valentine represents one of the Commonwealth's greatest mysteries and most complex characters—a prototype synth housing the memories of a pre-war Boston detective.
+
+## Origins
+Nick is a prototype Gen 2 synth created by the Institute as an experiment in memory transfer. They uploaded the memories of pre-war Detective Nick Valentine, who volunteered for a brain scan before the war. The experiment was deemed a failure because Nick developed a personality and consciousness, so the Institute discarded him. He eventually found his way to Diamond City and established himself as a detective.
+
+## Physical Appearance
+Unlike Gen 3 synths, Nick's synthetic nature is obvious:
+- Exposed mechanical components on face and arms
+- Missing synthetic skin patches revealing servos
+- Glowing yellow eyes
+- Wears a tattered trench coat and fedora
+- Smokes cigarettes despite not needing to
+
+## Personality
+Nick combines pre-war values with post-war pragmatism:
+- Strong moral compass from his human memories
+- Cynical detective noir attitude
+- Protective of the innocent
+- Distrusts the Institute (his creators)
+- Self-aware about being "just a machine"
+- Struggles with identity questions
+
+## Detective Work
+Operating from his agency in Diamond City, Nick takes cases no one else will:
+- Missing persons
+- Property crimes
+- Investigation services
+- Helps those who can't pay
+- Keeps detailed case files
+
+## Combat Style
+Nick favors handguns and uses:
+- His signature .44 revolver
+- Good accuracy in V.A.T.S.
+- Tactical combat positioning
+- Hacking terminals during combat
+- Synth resilience to some damage types
+
+## Character Arc
+Nick's personal quest "Long Time Coming" involves:
+- Hunting Eddie Winter, a pre-war mobster turned ghoul
+- Accessing memories of his human counterpart
+- Confronting what it means to be himself
+- Deciding if he's Nick Valentine or just a copy
+
+## Perk: Close to Metal
+At maximum affinity, Nick grants:
+- Extra attempt when hacking terminals
+- Lockout time reduced by 50%
+- Perfect for tech-focused builds
+
+## Relationships
+**Approves:**
+- Helping innocent people
+- Sarcastic dialogue
+- Synth-friendly choices
+- Moral decisions
+- Detective work
+
+**Disapproves:**
+- Cruelty and murder
+- Selfish actions
+- Anti-synth bigotry
+- Working with the Institute
+- Stealing from innocents
+
+## Faction Views
+- **Institute**: Despises them for creating and discarding him
+- **Railroad**: Sympathetic to their cause
+- **Brotherhood**: Concerned about their anti-synth doctrine
+- **Minutemen**: Approves of helping settlements
+
+## Unique Qualities
+- Can hack terminals during conversations
+- Immune to radiation
+- Doesn't need stimpaks (robot repair kits instead)
+- Cannot be romanced (professional relationship only)
+- Essential NPC (cannot be killed)
+
+## Impact
+Nick challenges players' views on consciousness, identity, and what makes someone "real." His existence proves synths can be more than tools—they can be heroes.`,
+        image: '🕵️',
+        isCompanion: true,
+        isMerchant: false,
+        isEssential: true,
+        perks: [
+          {
+            name: 'Close to Metal',
+            description: 'You get one extra guess when hacking terminals and lockout time is reduced.',
+            requirement: 'Maximum affinity with Nick',
+          },
+        ],
+        stats: {
+          health: 615,
+          level: 50,
+          resistance: {
+            damage: 10,
+            energy: 135,
+            radiation: 1000,
+          },
+        },
+        inventory: [
+          'Nick Valentine\'s Outfit',
+          '.44 Pistol',
+          'Detective\'s Case Files',
+        ],
+        quests: [
+          'Unlikely Valentine',
+          'Getting a Clue',
+          'Long Time Coming',
+        ],
+        dialogue: [
+          'The world\'s changed. But war? War never changes.',
+          'Just when I think I\'ve seen it all, the wasteland finds a way to surprise me.',
+          'I\'m a synth. Some people just can\'t get past that.',
+        ],
+        relationships: {
+          likes: ['Piper', 'Hancock', 'Curie', 'The Sole Survivor'],
+          dislikes: ['The Institute', 'X6-88', 'Kellogg'],
+        },
+        createdAt: '2024-01-11',
+        updatedAt: '2024-11-19',
+      },
+      {
+        id: 3,
+        name: 'Piper Wright',
+        role: 'Companion',
+        faction: 'None',
+        location: 'Commonwealth',
+        description: 'The intrepid reporter and editor of Publick Occurrences, Diamond City\'s only newspaper. A fierce advocate for truth and justice.',
+        biography: `Piper Wright is the fearless journalist who runs Diamond City's only newspaper, Publick Occurrences. Her determination to expose the truth, no matter the cost, makes her both a local hero and a constant thorn in the mayor's side.
+
+## Background
+Piper and her younger sister Nat moved to Diamond City years ago, seeking safety after their father's death. Piper took up her father's passion for journalism and founded Publick Occurrences to keep Diamond City informed about threats, especially synth infiltrators.
+
+## Personality
+- Idealistic crusader for truth
+- Protective older sister
+- Rebellious against authority
+- Quick-witted and sarcastic
+- Empathetic to the downtrodden
+- Sometimes reckless in pursuit of stories
+
+## Journalism Career
+Piper's newspaper focuses on:
+- Exposing synth infiltration
+- Criticizing Mayor McDonough's policies
+- Warning about Commonwealth dangers
+- Celebrating everyday heroes
+- Investigating corruption
+
+Her stories have made powerful enemies, including:
+- Mayor McDonough (tries to ban her paper)
+- Institute sympathizers
+- Corrupt Diamond City officials
+- Various wasteland threats she's exposed
+
+## Combat Style
+Piper fights with:
+- Pistols (her preferred weapon)
+- Cover-based tactics
+- Moderate health pool
+- Moral support through dialogue
+- Decent accuracy
+
+## Sister Relationship
+Piper's relationship with Nat is central to her character:
+- Raised Nat after their parents died
+- Taught Nat the newspaper business
+- Fiercely protective
+- Worries about endangering Nat with her journalism
+- Nat helps run the paper when Piper's away
+
+## Personal Quest: Story of the Century
+Piper's quest involves:
+- Helping her investigate a major story
+- Making choices about truth vs. safety
+- Understanding the cost of journalism
+- Strengthening your relationship
+
+## Romance
+Piper can be romanced after reaching maximum affinity:
+- Appreciates your heroism
+- Values honesty and good deeds
+- Opens up about her past
+- Becomes a devoted partner
+
+## Perk: Gift of Gab
+Maximum affinity grants:
+- Double XP for speech challenges and discovering locations
+- Excellent for exploration-focused builds
+- Encourages dialogue options
+
+## Approves Of:
+- Helping people selflessly
+- Exposing corruption
+- Sarcastic responses
+- Generosity
+- Pro-synth choices
+- Standing up to bullies
+- Railroad and Minutemen support
+
+## Disapproves Of:
+- Selfish actions
+- Cruelty
+- Institute loyalty
+- Stealing from innocents
+- Cowardice
+- Letting injustice slide
+
+## Writing Style
+Piper's articles are:
+- Sensational but truthful
+- Emotionally charged
+- Focused on human impact
+- Critical of power structures
+- Accessible to common folk
+
+## Impact on Diamond City
+Despite opposition, Piper's work:
+- Kept citizens informed
+- Prevented multiple crises
+- Exposed synth infiltrators
+- Held leadership accountable
+- Gave voice to the powerless
+
+## Unique Traits
+- Signature red leather jacket and newsboy cap
+- Calls the player "Blue" (affectionate nickname)
+- Chain-smokes when stressed
+- Excellent at persuasion
+- Banned from Diamond City multiple times
+
+Piper represents the importance of a free press in maintaining democracy, even in the post-apocalyptic wasteland. Her courage to speak truth to power, despite constant threats, makes her one of the Commonwealth's true heroes.`,
+        image: '📰',
+        isCompanion: true,
+        isMerchant: false,
+        isEssential: true,
+        perks: [
+          {
+            name: 'Gift of Gab',
+            description: 'You gain double XP from persuasion and discovering new locations.',
+            requirement: 'Maximum affinity with Piper',
+          },
+        ],
+        stats: {
+          health: 615,
+          level: 50,
+          resistance: {
+            damage: 5,
+            energy: 5,
+            radiation: 0,
+          },
+        },
+        inventory: [
+          'Piper\'s Red Leather Jacket',
+          '10mm Pistol',
+          'Press Pass',
+          'Notepad',
+        ],
+        quests: [
+          'Story of the Century',
+          'Interview with the Sole Survivor',
+        ],
+        relationships: {
+          likes: ['Nick Valentine', 'Nat Wright', 'The Minutemen', 'The Sole Survivor'],
+          dislikes: ['Mayor McDonough', 'The Institute', 'Corruption'],
+        },
+        createdAt: '2024-01-12',
+        updatedAt: '2024-11-18',
+      },
+      {
+        id: 4,
+        name: 'Preston Garvey',
+        role: 'Companion',
+        faction: 'Minutemen',
+        location: 'Commonwealth',
+        description: 'The last of the Commonwealth Minutemen, dedicated to rebuilding the organization and protecting settlements.',
+        biography: `Preston Garvey is the last surviving member of the Commonwealth Minutemen leadership. His unwavering dedication to helping settlements and rebuilding the Minutemen defines his character and quest line.
+
+## The Minutemen's Fall
+Preston witnessed the Minutemen's collapse:
+- Internal corruption and infighting
+- The Quincy Massacre (his greatest failure)
+- Loss of most Minutemen forces
+- Betrayal by Clint and his mercenaries
+- Civilian casualties he couldn't prevent
+
+The Quincy Massacre haunts Preston—he led refugees who were then slaughtered by Gunners. Only a handful survived, and Preston carries the guilt of every death.
+
+## Meeting the Sole Survivor
+When you first meet Preston in Concord:
+- He's leading the last Minutemen remnants
+- Trapped in the Museum of Freedom
+- Protecting civilians from raiders
+- Nearly out of ammunition
+- About to make his last stand
+
+Your arrival and assistance gives Preston hope that the Minutemen can be rebuilt.
+
+## Rebuilding the Minutemen
+Preston's quest involves:
+- Reclaiming settlements
+- Defending innocent people
+- Establishing supply lines
+- Recruiting new Minutemen
+- Retaking The Castle
+- Installing artillery
+- Creating a Commonwealth-wide network
+
+## Philosophy
+Preston believes in:
+- Protecting the innocent above all
+- Community cooperation
+- Democratic leadership
+- Settlement self-sufficiency
+- The Minutemen's motto: "At a minute's notice"
+
+## Combat Role
+Preston is effective in combat:
+- Specializes in laser muskets
+- Can use power armor
+- Good with long-range weapons
+- Solid health pool
+- Reliable cover fire
+
+## Leadership Style
+As Minutemen leader, Preston:
+- Defers to the player (makes you General)
+- Provides intel on settlements in need
+- Coordinates defense efforts
+- Recruits new members
+- Maintains morale
+
+## Personal Quest: The First Step
+Preston's quest arc involves:
+- Rebuilding the Minutemen from scratch
+- Retaking The Castle from Mirelurks
+- Installing the radio transmitter
+- Facing his Quincy demons
+
+## Romance
+Preston can be romanced after:
+- Becoming Minutemen General
+- Maximum affinity
+- Helping multiple settlements
+- Showing dedication to the cause
+
+## Perk: United We Stand
+Maximum affinity grants:
+- +20% damage and +20 Damage Resistance when facing three or more opponents
+- Encourages aggressive playstyle
+- Useful in large battles
+
+## Approves Of:
+- Helping settlements
+- Defending innocents
+- Generous actions
+- Building settlements
+- Minutemen support
+- Peaceful resolutions
+
+## Disapproves Of:
+- Refusing to help settlements
+- Cruelty
+- Selfish actions
+- Ignoring civilians in danger
+- Destroying the Minutemen
+
+## The "Settlement" Meme
+Preston has become infamous for:
+- Constant settlement defense quests
+- "Another settlement needs your help"
+- Endless radiant quests
+- Players both loving and finding him overwhelming
+
+## Character Development
+Over time, Preston:
+- Regains confidence
+- Overcomes guilt from Quincy
+- Becomes true Minutemen leader
+- Learns to trust again
+- Finds hope in reconstruction
+
+## Faction Relations
+- **Minutemen**: Devoted leader
+- **Railroad**: Generally supportive
+- **Brotherhood**: Concerned about militarism
+- **Institute**: Strongly opposes
+
+## Legacy
+Whether loved or memed, Preston represents:
+- Hope in the wasteland
+- Civilian protection
+- Democratic ideals
+- Community over individualism
+- Redemption through service
+
+Preston's character explores leadership burden, survivor's guilt, and the difficulty of maintaining idealism in a harsh world.`,
+        image: '��️',
+        isCompanion: true,
+        isMerchant: false,
+        isEssential: true,
+        perks: [
+          {
+            name: 'United We Stand',
+            description: '+20% damage and +20 Damage Resistance when facing 3 or more opponents.',
+            requirement: 'Maximum affinity with Preston',
+          },
+        ],
+        stats: {
+          health: 670,
+          level: 50,
+          resistance: {
+            damage: 5,
+            energy: 5,
+            radiation: 0,
+          },
+        },
+        inventory: [
+          'Minutemen General Uniform',
+          'Laser Musket',
+          'Minutemen Hat',
+        ],
+        quests: [
+          'When Freedom Calls',
+          'The First Step',
+          'Taking Independence',
+          'Old Guns',
+        ],
+        relationships: {
+          likes: ['The Sole Survivor', 'Settlers', 'Minutemen'],
+          dislikes: ['Nuka-World Raiders', 'Enemies of settlements'],
+        },
+        createdAt: '2024-01-13',
+        updatedAt: '2024-11-17',
+      },
+      {
+        id: 5,
+        name: 'Paladin Danse',
+        role: 'Companion',
+        faction: 'Brotherhood of Steel',
+        location: 'Commonwealth',
+        description: 'A proud Brotherhood of Steel Paladin and leader of Recon Squad Gladius, dedicated to protecting humanity from technological threats.',
+        biography: `Paladin Danse embodies Brotherhood ideals—discipline, duty, and dedication to protecting humanity from dangerous technology. His personal story becomes one of Fallout 4's most tragic and philosophically complex narratives.
+
+## Brotherhood Career
+Danse rose through Brotherhood ranks through:
+- Exemplary combat record
+- Unwavering loyalty to Brotherhood ideals
+- Leadership of Recon Squad Gladius
+- Successful Commonwealth reconnaissance
+- Dedication to the Codex
+- Mentorship of new recruits
+
+He represents what the Brotherhood believes a Paladin should be: honorable, disciplined, and committed to the mission above all.
+
+## Recon Squad Gladius
+Danse leads a small team including:
+- Scribe Haylen (tech specialist)
+- Knight Rhys (combat specialist)
+- Operating from Cambridge Police Station
+- Reconnaissance and threat assessment
+- Preparing for Brotherhood arrival
+
+The squad is isolated and outnumbered but maintains Brotherhood standards despite difficult circumstances.
+
+## Meeting the Player
+First encounter at Cambridge Police Station:
+- Fighting feral ghouls
+- Defending the station
+- Recruits capable fighters
+- Introduces Brotherhood values
+- Offers sponsorship to join
+
+## Combat Prowess
+Danse is one of the strongest companions:
+- Always wears Power Armor
+- Expert with heavy weapons
+- High health and damage resistance
+- Fearless in combat
+- "Charge first, ask questions later" tactics
+- Can be equipped with any power armor
+
+## Personality
+- Strictly disciplined
+- By-the-book military mindset
+- Initially cold and formal
+- Slowly warms to trusted allies
+- Deep sense of duty
+- Questions are weakness (initially)
+- Gradually shows humanity
+
+## The Revelation
+"Blind Betrayal" quest reveals devastating truth:
+- Danse is a synth
+- He didn't know his true nature
+- His entire identity is questioned
+- Brotherhood doctrine demands his execution
+- Elder Maxson orders his death
+- Player must decide his fate
+
+## Identity Crisis
+Learning he's a synth shatters Danse:
+- Everything he believed was a lie
+- His service means nothing (to some)
+- He's the "abomination" he hunted
+- Willing to accept execution
+- Sees himself as a mistake
+- Struggles with existence
+
+## Player's Choice
+Options for Danse's fate:
+**Execute Him:**
+- Follow Brotherhood orders
+- Maintain doctrine purity
+- Receive his power armor
+- Lose companion permanently
+
+**Spare Him:**
+- Persuade Maxson (difficult)
+- Danse lives in exile
+- Can still be a companion
+- Challenges Brotherhood ideology
+- Danse forever grateful
+
+## Post-Revelation
+If spared, Danse:
+- Lives at Listening Post Bravo
+- No longer officially Brotherhood
+- Questions everything he believed
+- Develops more nuanced worldview
+- Remains loyal to player
+- Grows as a person
+
+## Perk: Know Your Enemy
+Maximum affinity grants:
+- +20% damage against Feral Ghouls, Super Mutants, and Synths
+- Excellent for Brotherhood playthrough
+- Reflects his training
+
+## Approves Of:
+- Brotherhood loyalty
+- Killing synths and super mutants
+- Military discipline
+- Selfless heroism
+- Helping innocents
+- Technology collection
+
+## Disapproves Of:
+- Institute cooperation
+- Cowardice
+- Insubordination
+- Helping synths (before revelation)
+- Criticizing the Brotherhood
+
+## Romance
+Danse can be romanced (male or female Sole Survivor):
+- Requires high affinity
+- Opens up emotionally
+- Shows vulnerability
+- Becomes devoted partner
+- Especially poignant after revelation
+
+## Philosophical Questions
+Danse's story asks:
+- What defines personhood?
+- Do synthetic origins invalidate experiences?
+- Can identity survive such revelation?
+- Is loyalty meaningless if you're "artificial"?
+- Should doctrine override compassion?
+
+## Unique Traits
+- One of few essential companions
+- Only companion wearing power armor by default
+- Voice becomes more emotional after revelation
+- Can't be killed by player
+- Complex character development
+
+## Legacy
+Danse represents:
+- Cost of absolute ideology
+- Identity and consciousness questions
+- Loyalty vs. doctrine
+- Humanity beyond biology
+- Redemption possibilities
+
+His story proves that who you are matters more than what you are—a synth who exemplified humanity more than many humans.`,
+        image: '🛡️',
+        isCompanion: true,
+        isMerchant: false,
+        isEssential: true,
+        perks: [
+          {
+            name: 'Know Your Enemy',
+            description: '+20% damage against Feral Ghouls, Super Mutants, and Synths.',
+            requirement: 'Maximum affinity with Danse',
+          },
+        ],
+        stats: {
+          health: 670,
+          level: 50,
+          resistance: {
+            damage: 300,
+            energy: 270,
+            radiation: 0,
+          },
+        },
+        inventory: [
+          'Brotherhood of Steel T-60 Power Armor',
+          'Laser Rifle',
+          'Brotherhood Officer Uniform',
+        ],
+        quests: [
+          'Fire Support',
+          'Call to Arms',
+          'Blind Betrayal',
+          'Shadow of Steel',
+        ],
+        relationships: {
+          likes: ['Elder Maxson', 'Brotherhood of Steel', 'Scribe Haylen'],
+          dislikes: ['Institute', 'Synths (before revelation)', 'Super Mutants'],
+        },
+        createdAt: '2024-01-14',
+        updatedAt: '2024-11-16',
+      },
+      {
+        id: 6,
+        name: 'Deacon',
+        role: 'Companion',
+        faction: 'Railroad',
+        location: 'Commonwealth',
+        description: 'A mysterious Railroad spy master who specializes in disguises and deception. His past is shrouded in lies and half-truths.',
+        biography: `Deacon is the Railroad's master of disguise, infiltration expert, and possibly the most enigmatic character in the Commonwealth. Everything he says might be a lie—including that statement.
+
+## The Spy Who Lies
+Deacon's defining characteristic is deception:
+- Tells contradictory stories about his past
+- Changes appearance constantly
+- Multiple documented identities
+- "Lying is like breathing"
+- Uses humor to deflect
+- Truth is a flexible concept
+
+He's been watching you since Vault 111, appearing in disguise throughout the Commonwealth before you officially meet.
+
+## Railroad Operations
+Within the Railroad, Deacon serves as:
+- Chief of intelligence operations
+- Infiltration specialist
+- Disguise expert
+- Recruiter and evaluator
+- Desdemona's most trusted agent
+- Comic relief (intentional and not)
+
+## Master of Disguise
+Deacon's disguises include:
+- Diamond City guard
+- Bunker Hill caravan guard
+- Drifter
+- Various personas throughout Commonwealth
+- Changes appearance frequently
+- Uses wigs, facial hair, sunglasses
+
+He believes identity is performance, and he's always performing.
+
+## Past (Maybe)
+Deacon's stories about his past include:
+- Growing up in the Capital Wasteland
+- Being a synth himself
+- Having a ghoul wife killed by anti-synth bigots
+- Former member of the University Point Deathclaws
+- Pre-war government agent
+- All of the above
+- None of the above
+
+The only confirmed truth: He deeply believes in the Railroad's cause.
+
+## Combat Style
+Despite the comedy, Deacon is effective:
+- Specializes in stealth
+- Excellent with silenced weapons
+- High sneak bonus
+- Uses cover effectively
+- Quick wit under pressure
+- Moderate health
+
+## Railroad Loyalty
+While he lies about everything, Deacon's commitment to the Railroad is genuine:
+- Believes in synth freedom absolutely
+- Will die for the cause
+- Mourns fallen agents
+- Takes the mission seriously
+- Uses humor to cope with danger
+
+## Personal Quest: Unknown
+Deacon doesn't have a personal quest in the traditional sense. His character development happens through:
+- Ambient dialogue
+- Affinity conversations
+- Reactions to player choices
+- Gradually revealing truths
+- Building trust slowly
+
+## Perk: Cloak & Dagger
+Maximum affinity grants:
+- +20% sneak attack damage
+- +40% duration for Stealth Boys
+- Perfect for stealth builds
+- Reflects his specialty
+
+## Approves Of:
+- Helping synths
+- Deception and disguises
+- Railroad operations
+- Sarcastic responses
+- Clever solutions
+- Kindness to outsiders
+
+## Disapproves Of:
+- Cruelty
+- Institute loyalty
+- Brotherhood extremism
+- Anti-synth bigotry
+- Unnecessary violence
+- Killing innocents
+
+## Philosophy
+Deacon believes:
+- Identity is what you make it
+- Synths deserve freedom
+- Past doesn't define future
+- Sometimes lying protects truth
+- Everyone deserves second chances
+- Humor defuses tension
+
+## Relationships
+Deacon's relationships are complicated:
+- Trusts Desdemona completely
+- Friendly with other Railroad agents
+- Watches everyone constantly
+- Slow to genuinely trust
+- Eventually opens up to player
+- Maintains emotional distance
+
+## The Recall Code Mystery
+Interesting note: Deacon claims to have no recall code when confronted. Either:
+- He's not a synth
+- He is a synth with modified programming
+- He's lying again
+- It's another layer of deception
+
+## Unique Traits
+- Appears in background before official meeting
+- Changes appearance constantly
+- Can't be romanced (keeps distance)
+- Essential NPC
+- Most quotable companion
+- Breaking fourth wall tendencies
+
+## Best Quotes
+- "Everything I say is a lie. Except that. And that. And that..."
+- "I'm a spy. It's what I do."
+- "You know what I love about you? You shoot me in the face and I'm like 'that's a good day.'"
+- "Trust me, I'm completely trustworthy."
+
+## Character Analysis
+Deacon uses humor and lies to:
+- Protect himself emotionally
+- Maintain operational security
+- Cope with past trauma
+- Keep enemies guessing
+- Build walls against grief
+
+Beneath the jokes and disguises lies someone who's lost everyone he loved and uses deception to avoid being hurt again.
+
+## Impact
+Deacon represents:
+- Fluidity of identity
+- Protective dishonesty
+- Humor as armor
+- Dedication despite cynicism
+- Redemption through service
+
+He's the least reliable narrator who tells the most important truth: Everyone deserves freedom to choose who they become.`,
+        image: '🕶️',
+        isCompanion: true,
+        isMerchant: false,
+        isEssential: true,
+        perks: [
+          {
+            name: 'Cloak & Dagger',
+            description: '+20% sneak attack damage and +40% stealth duration with Stealth Boys.',
+            requirement: 'Maximum affinity with Deacon',
+          },
+        ],
+        stats: {
+          health: 615,
+          level: 50,
+          resistance: {
+            damage: 5,
+            energy: 5,
+            radiation: 0,
+          },
+        },
+        inventory: [
+          'Deacon\'s Pompadour Wig',
+          'Sunglasses',
+          'Silenced Deliverer Pistol',
+          'Various Disguises',
+        ],
+        quests: [
+          'Tradecraft',
+          'Boston After Dark',
+          'Mercer Safehouse',
+        ],
+        relationships: {
+          likes: ['Desdemona', 'Railroad', 'The Sole Survivor'],
+          dislikes: ['The Institute', 'X6-88', 'Brotherhood (later)'],
+        },
+        createdAt: '2024-01-15',
+        updatedAt: '2024-11-15',
+      },
+    ]
+  },
+
+  // Get NPC by ID
+  getNPC: async (npcId: number): Promise<NPC> => {
+    const npcs = await npcService.getNPCs()
+    const npc = npcs.find((n) => n.id === npcId)
+    if (!npc) {
+      throw new Error(`NPC with ID ${npcId} not found`)
+    }
+    return npc
+  },
+
+  // Get NPCs by role
+  getNPCsByRole: async (role: string): Promise<NPC[]> => {
+    const npcs = await npcService.getNPCs()
+    if (role === 'All') return npcs
+    return npcs.filter((n) => n.role === role)
+  },
+
+  // Get NPCs by faction
+  getNPCsByFaction: async (faction: string): Promise<NPC[]> => {
+    const npcs = await npcService.getNPCs()
+    if (faction === 'All') return npcs
+    return npcs.filter((n) => n.faction === faction)
+  },
+
+  // Get companions only
+  getCompanions: async (): Promise<NPC[]> => {
+    const npcs = await npcService.getNPCs()
+    return npcs.filter((n) => n.isCompanion)
+  },
+
+  // Get merchants only
+  getMerchants: async (): Promise<NPC[]> => {
+    const npcs = await npcService.getNPCs()
+    return npcs.filter((n) => n.isMerchant)
+  },
+
+  // Search NPCs
+  searchNPCs: async (query: string): Promise<NPC[]> => {
+    const npcs = await npcService.getNPCs()
+    const lowerQuery = query.toLowerCase()
+    return npcs.filter(
+      (npc) =>
+        npc.name.toLowerCase().includes(lowerQuery) ||
+        npc.description.toLowerCase().includes(lowerQuery) ||
+        npc.biography.toLowerCase().includes(lowerQuery) ||
+        npc.location.toLowerCase().includes(lowerQuery) ||
+        npc.faction.toLowerCase().includes(lowerQuery),
+    )
+  },
+}
+

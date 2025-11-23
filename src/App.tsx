@@ -16,6 +16,8 @@ const Compendium = lazy(() => import('./pages/Compendium'))
 const CompendiumArticle = lazy(() => import('./pages/CompendiumArticle'))
 const Quests = lazy(() => import('./pages/Quests'))
 const QuestDetail = lazy(() => import('./pages/QuestDetail'))
+const NPCs = lazy(() => import('./pages/NPCs'))
+const NPCDetail = lazy(() => import('./pages/NPCDetail'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
                 <Route path={ROUTES.COMPENDIUM_ARTICLE} element={<CompendiumArticle />} />
                 <Route path={ROUTES.QUESTS} element={<Quests />} />
                 <Route path={ROUTES.QUEST_DETAIL} element={<QuestDetail />} />
+                <Route path={ROUTES.NPCS} element={<NPCs />} />
+                <Route path={ROUTES.NPC_DETAIL} element={<NPCDetail />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
