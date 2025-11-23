@@ -1,0 +1,505 @@
+/* Quest Statistics Page Styles */
+
+.quest-stats-page {
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  gap: 1.5rem;
+}
+
+.stats-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.stats-header p {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Overview Stats */
+.stats-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card.stat-total {
+  border-color: #3b82f6;
+}
+
+.stat-card.stat-completed {
+  border-color: #16a34a;
+}
+
+.stat-card.stat-in-progress {
+  border-color: #eab308;
+}
+
+.stat-card.stat-failed {
+  border-color: #dc2626;
+}
+
+.stat-card.stat-completion {
+  border-color: #8b5cf6;
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* Stats Content Layout */
+.stats-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.stats-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Stats Section */
+.stats-section {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.stats-section h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1.25rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.stats-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+/* Progress Chart */
+.progress-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chart-bar {
+  display: flex;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: var(--bg-tertiary);
+}
+
+.chart-segment {
+  height: 100%;
+  transition: width 0.3s ease;
+  cursor: pointer;
+}
+
+.chart-segment:hover {
+  opacity: 0.8;
+}
+
+.segment-completed {
+  background: linear-gradient(90deg, #16a34a 0%, #22c55e 100%);
+}
+
+.segment-in-progress {
+  background: linear-gradient(90deg, #eab308 0%, #fbbf24 100%);
+}
+
+.segment-failed {
+  background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+}
+
+.segment-not-started {
+  background: linear-gradient(90deg, #6b7280 0%, #9ca3af 100%);
+}
+
+/* Chart Legend */
+.chart-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.legend-color {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.25rem;
+  flex-shrink: 0;
+}
+
+.legend-completed {
+  background-color: #16a34a;
+}
+
+.legend-in-progress {
+  background-color: #eab308;
+}
+
+.legend-failed {
+  background-color: #dc2626;
+}
+
+.legend-not-started {
+  background-color: #6b7280;
+}
+
+/* Type Breakdown */
+.type-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.type-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.type-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.type-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.type-stats {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.type-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.type-progress .progress-bar {
+  flex: 1;
+  height: 0.5rem;
+  background-color: var(--bg-tertiary);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.type-progress .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+  border-radius: 1rem;
+  transition: width 0.3s ease;
+}
+
+.type-percentage {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 3rem;
+  text-align: right;
+}
+
+/* Rewards Section */
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.reward-stat {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.reward-stat:hover {
+  border-color: #eab308;
+  transform: translateY(-2px);
+}
+
+.reward-stat .reward-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.reward-stat .reward-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.reward-stat .reward-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.reward-stat .reward-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* Reward Details */
+.reward-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.reward-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.reward-list li {
+  padding: 0.5rem 0.75rem;
+  background-color: var(--bg-secondary);
+  border-left: 3px solid #eab308;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+/* Timeline */
+.timeline-section {
+  height: fit-content;
+  position: sticky;
+  top: 1.5rem;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.timeline::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.timeline::-webkit-scrollbar-track {
+  background-color: var(--bg-tertiary);
+  border-radius: 0.25rem;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 0.25rem;
+}
+
+.timeline::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-color);
+}
+
+.timeline-event {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--bg-secondary);
+  border-left: 3px solid var(--border-color);
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.timeline-event:hover {
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-event.event-started {
+  border-left-color: #3b82f6;
+}
+
+.timeline-event.event-objective {
+  border-left-color: #10b981;
+}
+
+.timeline-event.event-completed {
+  border-left-color: #16a34a;
+}
+
+.timeline-event.event-failed {
+  border-left-color: #dc2626;
+}
+
+.timeline-event.event-note {
+  border-left-color: #8b5cf6;
+}
+
+.event-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.event-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.event-description {
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.event-time {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.timeline-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.timeline-footer p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .stats-content {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-section {
+    position: static;
+  }
+
+  .timeline {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .quest-stats-page {
+    padding: 1rem;
+  }
+
+  .stats-header {
+    flex-direction: column;
+  }
+
+  .stats-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .stats-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .rewards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-legend {
+    grid-template-columns: 1fr;
+  }
+
+  .reward-details {
+    grid-template-columns: 1fr;
+  }
+}

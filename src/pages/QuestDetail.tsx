@@ -177,7 +177,7 @@ function QuestDetail() {
         <div className="quest-actions">
           {questWithProgress.status === 'Not Started' && (
             <button
-              onClick={() => startQuest(questId)}
+              onClick={() => startQuest(questId, questWithProgress.title)}
               className="btn-primary"
             >
               Start Quest
@@ -186,13 +186,13 @@ function QuestDetail() {
           {questWithProgress.status === 'In Progress' && (
             <>
               <button
-                onClick={() => completeQuest(questId)}
+                onClick={() => completeQuest(questId, questWithProgress.title)}
                 className="btn-success"
               >
                 Mark Complete
               </button>
               <button
-                onClick={() => failQuest(questId)}
+                onClick={() => failQuest(questId, questWithProgress.title)}
                 className="btn-danger"
               >
                 Mark Failed
@@ -270,12 +270,12 @@ function QuestDetail() {
             <li
               key={objective.id}
               className={`objective-item ${objective.completed ? 'completed' : ''} ${objective.optional ? 'optional' : ''} interactive`}
-              onClick={() => toggleObjective(questId, objective.id)}
+              onClick={() => toggleObjective(questId, objective.id, objective.description)}
               role="button"
               tabIndex={0}
               onKeyPress={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
-                  toggleObjective(questId, objective.id)
+                  toggleObjective(questId, objective.id, objective.description)
                 }
               }}
             >

@@ -140,22 +140,27 @@ function Quests() {
           <h1>Quests</h1>
           <p>Main storylines, side missions, and faction quests</p>
         </div>
-        <div className="quests-stats">
-          <div className="stat">
-            <span className="stat-label">Total</span>
-            <span className="stat-value">{quests?.length || 0}</span>
-          </div>
-          <div className="stat">
-            <span className="stat-label">Active</span>
-            <span className="stat-value">
-              {questsWithProgress?.filter((q) => q.status === 'In Progress').length || 0}
-            </span>
-          </div>
-          <div className="stat">
-            <span className="stat-label">Completed</span>
-            <span className="stat-value">
-              {questsWithProgress?.filter((q) => q.status === 'Completed').length || 0}
-            </span>
+        <div className="quests-header-right">
+          <Link to={ROUTES.QUEST_STATS} className="btn-primary">
+            📊 View Statistics
+          </Link>
+          <div className="quests-stats">
+            <div className="stat">
+              <span className="stat-label">Total</span>
+              <span className="stat-value">{quests?.length || 0}</span>
+            </div>
+            <div className="stat">
+              <span className="stat-label">Active</span>
+              <span className="stat-value">
+                {questsWithProgress?.filter((q) => q.status === 'In Progress').length || 0}
+              </span>
+            </div>
+            <div className="stat">
+              <span className="stat-label">Completed</span>
+              <span className="stat-value">
+                {questsWithProgress?.filter((q) => q.status === 'Completed').length || 0}
+              </span>
+            </div>
           </div>
         </div>
       </div>

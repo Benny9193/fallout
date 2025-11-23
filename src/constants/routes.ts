@@ -14,6 +14,7 @@ export const ROUTES = {
   COMPENDIUM_ARTICLE: '/compendium/:id',
   QUESTS: '/quests',
   QUEST_DETAIL: '/quests/:id',
+  QUEST_STATS: '/quests/stats',
 } as const
 
 export type Route = typeof ROUTES[keyof typeof ROUTES]
