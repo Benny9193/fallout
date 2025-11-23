@@ -29,6 +29,7 @@ function Navigation() {
     { to: ROUTES.SETTINGS, label: 'Settings', icon: '⚙️' },
     { to: ROUTES.ABOUT, label: 'About', icon: 'ℹ️' },
     { to: ROUTES.COMPENDIUM, label: 'Compendium', icon: '📚' },
+    { to: ROUTES.CHARACTERS, label: 'Characters', icon: '🎭' },
   ]
 
   return (

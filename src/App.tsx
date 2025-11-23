@@ -14,6 +14,7 @@ const Posts = lazy(() => import('./pages/Posts'))
 const InfinitePosts = lazy(() => import('./pages/InfinitePosts'))
 const Compendium = lazy(() => import('./pages/Compendium'))
 const CompendiumArticle = lazy(() => import('./pages/CompendiumArticle'))
+const Characters = lazy(() => import('./pages/Characters'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
                 <Route path={ROUTES.ABOUT} element={<About />} />
                 <Route path={ROUTES.COMPENDIUM} element={<Compendium />} />
                 <Route path={ROUTES.COMPENDIUM_ARTICLE} element={<CompendiumArticle />} />
+                <Route path={ROUTES.CHARACTERS} element={<Characters />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>

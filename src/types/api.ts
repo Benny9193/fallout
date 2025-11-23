@@ -62,3 +62,15 @@ export interface CompendiumCategory {
   count: number
 }
 
+export interface Character {
+  id: number
+  name: string
+  faction: string
+  role: string
+  game: string
+  description: string
+  imageUrl?: string
+  status: 'Alive' | 'Deceased' | 'Unknown'
+  type: 'Protagonist' | 'Companion' | 'Antagonist' | 'NPC' | 'Faction Leader'
+}
+

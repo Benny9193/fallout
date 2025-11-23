@@ -1,9 +1,9 @@
 import api from './axios'
-import type { User, Post, Activity, Metric, PostsPage, CompendiumArticle, CompendiumCategory } from '../types/api'
+import type { User, Post, Activity, Metric, PostsPage, CompendiumArticle, CompendiumCategory, Character } from '../types/api'
 import { PAGINATION } from '../constants/app'
 
 // Re-export types for backward compatibility
-export type { User, Post, Activity, Metric, PostsPage, CompendiumArticle, CompendiumCategory }
+export type { User, Post, Activity, Metric, PostsPage, CompendiumArticle, CompendiumCategory, Character }
 
 // API Services
 export const userService = {
@@ -931,6 +931,240 @@ Mankind redefined—but at what cost?`,
         article.title.toLowerCase().includes(lowerQuery) ||
         article.description.toLowerCase().includes(lowerQuery) ||
         article.content.toLowerCase().includes(lowerQuery),
+    )
+  },
+}
+
+export const characterService = {
+  // Get all characters
+  getCharacters: async (): Promise<Character[]> => {
+    // Notable Fallout characters from across the series
+    return [
+      {
+        id: 1,
+        name: 'The Vault Dweller',
+        faction: 'Vault 13',
+        role: 'Protagonist',
+        game: 'Fallout',
+        description: 'The first protagonist of the Fallout series. Exiled from Vault 13 to find a replacement water chip, they ended up saving the wasteland from the Master\'s super mutant army and discovering the truth about the Forced Evolutionary Virus.',
+        status: 'Unknown',
+        type: 'Protagonist',
+      },
+      {
+        id: 2,
+        name: 'The Chosen One',
+        faction: 'Arroyo',
+        role: 'Protagonist',
+        game: 'Fallout 2',
+        description: 'Grandchild of the Vault Dweller, sent from Arroyo to find a G.E.C.K. and save their dying village. Defeated the Enclave and Frank Horrigan, preventing them from unleashing a modified FEV that would have killed all "mutated" humans.',
+        status: 'Unknown',
+        type: 'Protagonist',
+      },
+      {
+        id: 3,
+        name: 'The Lone Wanderer',
+        faction: 'Vault 101',
+        role: 'Protagonist',
+        game: 'Fallout 3',
+        description: 'Born in the wasteland but raised in Vault 101. Left the vault to find their father, James, and became instrumental in Project Purity, bringing clean water to the Capital Wasteland while fighting the Enclave.',
+        status: 'Unknown',
+        type: 'Protagonist',
+      },
+      {
+        id: 4,
+        name: 'The Courier',
+        faction: 'Independent',
+        role: 'Protagonist',
+        game: 'Fallout: New Vegas',
+        description: 'A courier shot in the head by Benny and left for dead. Survived and became the deciding factor in the Second Battle of Hoover Dam, determining the fate of the Mojave Wasteland and New Vegas.',
+        status: 'Unknown',
+        type: 'Protagonist',
+      },
+      {
+        id: 5,
+        name: 'The Sole Survivor',
+        faction: 'Vault 111',
+        role: 'Protagonist',
+        game: 'Fallout 4',
+        description: 'A pre-war survivor frozen in Vault 111 for 210 years. Emerged to find their spouse murdered and infant son kidnapped. Their search for Shaun led them to the Institute and forced them to choose the Commonwealth\'s future.',
+        status: 'Alive',
+        type: 'Protagonist',
+      },
+      {
+        id: 6,
+        name: 'Elder Arthur Maxson',
+        faction: 'Brotherhood of Steel',
+        role: 'Elder',
+        game: 'Fallout 4',
+        description: 'The youngest Elder in Brotherhood history. United the East Coast Brotherhood and led them to the Commonwealth aboard the Prydwen. Combines Lyon\'s humanitarian ideals with traditional Brotherhood doctrine, making him both respected and feared.',
+        status: 'Alive',
+        type: 'Faction Leader',
+      },
+      {
+        id: 7,
+        name: 'Caesar (Edward Sallow)',
+        faction: 'Caesar\'s Legion',
+        role: 'Founder and Dictator',
+        game: 'Fallout: New Vegas',
+        description: 'Former Follower of the Apocalypse who founded Caesar\'s Legion after being saved by the Blackfoot tribe. Created a brutal slave empire modeled on ancient Rome. Brilliant but dying from a brain tumor.',
+        status: 'Unknown',
+        type: 'Faction Leader',
+      },
+      {
+        id: 8,
+        name: 'Father (Shaun)',
+        faction: 'The Institute',
+        role: 'Director',
+        game: 'Fallout 4',
+        description: 'The Sole Survivor\'s son, kidnapped as an infant and raised in the Institute. Became Director and led the Institute\'s scientific pursuits. Dying of cancer, he orchestrated his parent\'s release to ensure the Institute\'s future.',
+        status: 'Deceased',
+        type: 'Faction Leader',
+      },
+      {
+        id: 9,
+        name: 'Paladin Danse',
+        faction: 'Brotherhood of Steel',
+        role: 'Paladin',
+        game: 'Fallout 4',
+        description: 'A devoted Brotherhood Paladin and commander of Recon Squad Gladius. His unwavering loyalty to the Brotherhood is tested when he discovers he is actually a synth, forcing him to confront his own identity and beliefs.',
+        status: 'Alive',
+        type: 'Companion',
+      },
+      {
+        id: 10,
+        name: 'Nick Valentine',
+        faction: 'Independent',
+        role: 'Private Detective',
+        game: 'Fallout 4',
+        description: 'A unique synth detective in Diamond City. A prototype Gen-2 synth with the memories of a pre-war detective. Cynical but kind-hearted, he helps solve cases across the Commonwealth despite facing discrimination.',
+        status: 'Alive',
+        type: 'Companion',
+      },
+      {
+        id: 11,
+        name: 'Preston Garvey',
+        faction: 'Minutemen',
+        role: 'Minuteman',
+        game: 'Fallout 4',
+        description: 'One of the last surviving Minutemen. After the Quincy Massacre, he struggled to rebuild the Minutemen. Deeply committed to helping settlements and protecting the innocent, though sometimes to an exhausting degree.',
+        status: 'Alive',
+        type: 'Companion',
+      },
+      {
+        id: 12,
+        name: 'Piper Wright',
+        faction: 'Independent',
+        role: 'Reporter',
+        game: 'Fallout 4',
+        description: 'Editor and publisher of Publick Occurrences in Diamond City. A tenacious investigative journalist determined to expose the truth about synths and corruption, even when it makes her unpopular with Diamond City\'s mayor.',
+        status: 'Alive',
+        type: 'Companion',
+      },
+      {
+        id: 13,
+        name: 'Dogmeat',
+        faction: 'Independent',
+        role: 'Loyal Companion',
+        game: 'Fallout 4',
+        description: 'A German Shepherd who becomes the Sole Survivor\'s faithful companion. Found near the Red Rocket truck stop. Brave, loyal, and helpful in tracking and combat. The goodest boy in the Commonwealth.',
+        status: 'Alive',
+        type: 'Companion',
+      },
+      {
+        id: 14,
+        name: 'Benny',
+        faction: 'The Chairmen',
+        role: 'Chairman',
+        game: 'Fallout: New Vegas',
+        description: 'Leader of the Chairmen and owner of The Tops casino. Shot the Courier in the head to steal the Platinum Chip. Smooth-talking and ambitious, he planned to use the chip to take control of New Vegas from Mr. House.',
+        status: 'Unknown',
+        type: 'Antagonist',
+      },
+      {
+        id: 15,
+        name: 'Mr. House',
+        faction: 'Independent (New Vegas)',
+        role: 'CEO and Ruler',
+        game: 'Fallout: New Vegas',
+        description: 'Pre-war businessman who preserved himself in a life-support chamber. Saved Las Vegas from nuclear destruction and transformed it into New Vegas. Cold, calculating, and determined to bring humanity back to its former glory through technology.',
+        status: 'Alive',
+        type: 'Faction Leader',
+      },
+      {
+        id: 16,
+        name: 'Veronica Santangelo',
+        faction: 'Brotherhood of Steel',
+        role: 'Scribe',
+        game: 'Fallout: New Vegas',
+        description: 'A Brotherhood of Steel Scribe who questions the Brotherhood\'s isolationist ways. Struggles between her loyalty to the Brotherhood and her belief that they need to change to survive. Former girlfriend of Christine Royce.',
+        status: 'Alive',
+        type: 'Companion',
+      },
+      {
+        id: 17,
+        name: 'Boone',
+        faction: 'Independent (former NCR)',
+        role: 'Sniper',
+        game: 'Fallout: New Vegas',
+        description: 'Former NCR First Recon sniper haunted by his past. Stationed in Novac, seeking revenge for his wife\'s kidnapping and enslavement by the Legion. One of the deadliest companions with his sniper rifle.',
+        status: 'Alive',
+        type: 'Companion',
+      },
+      {
+        id: 18,
+        name: 'The Master',
+        faction: 'Unity',
+        role: 'Founder',
+        game: 'Fallout',
+        description: 'Richard Grey, transformed by FEV into a nightmarish biomass. Believed super mutants were the next step in human evolution and sought to "unify" humanity through forced mutation. The first major antagonist of the Fallout series.',
+        status: 'Deceased',
+        type: 'Antagonist',
+      },
+      {
+        id: 19,
+        name: 'Colonel Autumn',
+        faction: 'Enclave',
+        role: 'Colonel',
+        game: 'Fallout 3',
+        description: 'Commander of Enclave forces in the Capital Wasteland. More pragmatic than President Eden, he wanted to use Project Purity to gain control over the wasteland rather than genocide. Conflicts with both the Lone Wanderer and Eden.',
+        status: 'Unknown',
+        type: 'Antagonist',
+      },
+      {
+        id: 20,
+        name: 'Three Dog',
+        faction: 'Independent',
+        role: 'Radio DJ',
+        game: 'Fallout 3',
+        description: 'Charismatic DJ of Galaxy News Radio. Broadcasts news, music, and commentary across the Capital Wasteland. His energetic personality and dedication to fighting the "Good Fight" made him a wasteland icon.',
+        status: 'Alive',
+        type: 'NPC',
+      },
+    ]
+  },
+
+  // Get character by ID
+  getCharacter: async (id: number): Promise<Character | undefined> => {
+    const characters = await characterService.getCharacters()
+    return characters.find((char) => char.id === id)
+  },
+
+  // Get characters by type
+  getCharactersByType: async (type: Character['type']): Promise<Character[]> => {
+    const characters = await characterService.getCharacters()
+    return characters.filter((char) => char.type === type)
+  },
+
+  // Search characters
+  searchCharacters: async (query: string): Promise<Character[]> => {
+    const characters = await characterService.getCharacters()
+    const lowerQuery = query.toLowerCase()
+    return characters.filter(
+      (char) =>
+        char.name.toLowerCase().includes(lowerQuery) ||
+        char.faction.toLowerCase().includes(lowerQuery) ||
+        char.description.toLowerCase().includes(lowerQuery) ||
+        char.game.toLowerCase().includes(lowerQuery),
     )
   },
 }
