@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useCounterStore } from '../store/counterStore'
 import { ROUTES } from '../constants/routes'
@@ -6,6 +7,7 @@ import './Navigation.css'
 
 function Navigation() {
   const count = useCounterStore((state) => state.count)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const handleSkipToContent = () => {
     const mainContent = document.getElementById('main-content')
@@ -15,65 +17,117 @@ function Navigation() {
     }
   }
 
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false)
+  }
+
+  const navItems = [
+    { to: ROUTES.HOME, label: 'Home', icon: '🏠' },
+    { to: ROUTES.DASHBOARD, label: 'Dashboard', icon: '📊' },
+    { to: ROUTES.POSTS, label: 'Posts', icon: '📝' },
+    { to: ROUTES.PROFILE, label: 'Profile', icon: '👤' },
+    { to: ROUTES.SETTINGS, label: 'Settings', icon: '⚙️' },
+    { to: ROUTES.ABOUT, label: 'About', icon: 'ℹ️' },
+    { to: ROUTES.COMPENDIUM, label: 'Compendium', icon: '📚' },
+  ]
+
   return (
-    <nav className="navigation" aria-label="Main navigation">
-      <a
-        href="#main-content"
-        className="skip-to-content"
-        onClick={(e) => {
-          e.preventDefault()
-          handleSkipToContent()
-        }}
-      >
-        Skip to main content
-      </a>
-      <div className="nav-container">
-        <div className="nav-brand">
-          <h2>Fallout App</h2>
-          <span className="counter-badge" aria-label={`Counter: ${count}`}>
-            {count}
-          </span>
+    <>
+      <nav className="navigation" aria-label="Main navigation">
+        <a
+          href="#main-content"
+          className="skip-to-content"
+          onClick={(e) => {
+            e.preventDefault()
+            handleSkipToContent()
+          }}
+        >
+          Skip to main content
+        </a>
+        <div className="nav-container">
+          <div className="nav-brand">
+            <h2>Fallout App</h2>
+            <span className="counter-badge" aria-label={`Counter: ${count}`}>
+              {count}
+            </span>
+          </div>
+
+          {/* Desktop Navigation */}
+          <ul className="nav-links desktop-nav" role="menubar">
+            {navItems.map((item) => (
+              <li key={item.to} role="none">
+                <NavLink
+                  to={item.to}
+                  end={item.to === ROUTES.HOME}
+                  role="menuitem"
+                  aria-label={`Go to ${item.label.toLowerCase()}`}
+                >
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            className="mobile-menu-toggle"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            <span className="hamburger-icon">
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
+            </span>
+          </button>
+
+          <ThemeToggle />
         </div>
-        <ul className="nav-links" role="menubar">
-          <li role="none">
-            <NavLink to={ROUTES.HOME} end role="menuitem" aria-label="Go to home page">
-              Home
-            </NavLink>
-          </li>
-          <li role="none">
-            <NavLink to={ROUTES.DASHBOARD} role="menuitem" aria-label="Go to dashboard">
-              Dashboard
-            </NavLink>
-          </li>
-          <li role="none">
-            <NavLink to={ROUTES.POSTS} role="menuitem" aria-label="Go to posts">
-              Posts
-            </NavLink>
-          </li>
-          <li role="none">
-            <NavLink to={ROUTES.PROFILE} role="menuitem" aria-label="Go to profile">
-              Profile
-            </NavLink>
-          </li>
-          <li role="none">
-            <NavLink to={ROUTES.SETTINGS} role="menuitem" aria-label="Go to settings">
-              Settings
-            </NavLink>
-          </li>
-          <li role="none">
-            <NavLink to={ROUTES.ABOUT} role="menuitem" aria-label="Go to about page">
-              About
-            </NavLink>
-          </li>
-          <li role="none">
-            <NavLink to={ROUTES.COMPENDIUM} role="menuitem" aria-label="Go to compendium">
-              Compendium
-            </NavLink>
-          </li>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="mobile-menu">
+            <ul className="mobile-nav-links" role="menubar">
+              {navItems.map((item) => (
+                <li key={item.to} role="none">
+                  <NavLink
+                    to={item.to}
+                    end={item.to === ROUTES.HOME}
+                    role="menuitem"
+                    className="mobile-nav-link"
+                    onClick={closeMobileMenu}
+                  >
+                    <span className="nav-icon">{item.icon}</span>
+                    <span className="nav-label">{item.label}</span>
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </nav>
+
+      {/* Mobile Bottom Navigation */}
+      <nav className="bottom-navigation" aria-label="Mobile navigation">
+        <ul className="bottom-nav-links" role="menubar">
+          {navItems.map((item) => (
+            <li key={item.to} role="none">
+              <NavLink
+                to={item.to}
+                end={item.to === ROUTES.HOME}
+                role="menuitem"
+                className="bottom-nav-link"
+                title={item.label}
+              >
+                <span className="nav-icon">{item.icon}</span>
+                <span className="nav-label">{item.label}</span>
+              </NavLink>
+            </li>
+          ))}
         </ul>
-        <ThemeToggle />
-      </div>
-    </nav>
+      </nav>
+    </>
   )
 }
 
