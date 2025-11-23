@@ -3,7 +3,7 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import { postService } from '../api/services'
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll'
 import { Loading, ErrorDisplay, EmptyState } from '../components'
-import { ROUTES, PAGINATION, INFINITE_SCROLL } from '../constants'
+import { ROUTES, INFINITE_SCROLL } from '../constants'
 import './Posts.css'
 
 function InfinitePosts() {

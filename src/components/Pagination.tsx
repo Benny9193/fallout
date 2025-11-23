@@ -114,7 +114,7 @@ function calculatePageNumbers(
   // Calculate the range of pages to show around current page
   const halfVisible = Math.floor(maxVisible / 2)
   let startPage = Math.max(2, currentPage - halfVisible)
-  let endPage = Math.min(lastPage - 1, startPage + maxVisible - 3)
+  const endPage = Math.min(lastPage - 1, startPage + maxVisible - 3)
 
   // Adjust if we're near the end
   if (endPage === lastPage - 1) {

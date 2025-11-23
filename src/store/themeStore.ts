@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware/devtools'
+import { devtools } from 'zustand/middleware'
 import { STORAGE_KEYS } from '../constants/api'
 import { getLocalStorageItem, setLocalStorageItem } from '../utils/storage'
 import { ThemeSchema, type Theme, type ThemeState } from './schemas'

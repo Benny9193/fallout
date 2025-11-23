@@ -100,7 +100,7 @@ function Settings() {
       setSaveStatus('saved')
       setHasChanges(false)
       setTimeout(() => setSaveStatus('idle'), 2000)
-    } catch (error) {
+    } catch {
       setSaveStatus('error')
       setTimeout(() => setSaveStatus('idle'), 3000)
     }

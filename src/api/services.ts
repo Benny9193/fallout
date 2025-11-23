@@ -109,7 +109,7 @@ export const compendiumService = {
         description: 'Learn the fundamentals of using this application.',
         content: `Welcome to the Compendium! This guide will help you get started with all the basic features.
 
-## What You\'ll Learn
+## What You'll Learn
 - How to navigate the application
 - Understanding the dashboard
 - Managing your profile
