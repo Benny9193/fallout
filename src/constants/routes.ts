@@ -10,6 +10,8 @@ export const ROUTES = {
   PROFILE: '/profile',
   SETTINGS: '/settings',
   ABOUT: '/about',
+  COMPENDIUM: '/compendium',
+  COMPENDIUM_ARTICLE: '/compendium/:id',
 } as const
 
 export type Route = typeof ROUTES[keyof typeof ROUTES]
