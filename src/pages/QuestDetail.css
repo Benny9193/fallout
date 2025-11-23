@@ -431,6 +431,178 @@
   font-weight: 600;
 }
 
+/* Quest Action Buttons */
+.quest-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.btn-danger {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-success {
+  background-color: #16a34a;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #15803d;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+
+.btn-danger {
+  background-color: #dc2626;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.btn-secondary {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* Interactive Objectives */
+.objectives-hint {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.objective-item.interactive {
+  cursor: pointer;
+  user-select: none;
+}
+
+.objective-item.interactive:hover {
+  border-color: var(--primary-color);
+  background-color: var(--bg-hover);
+  transform: translateX(4px);
+}
+
+.objective-item.interactive:active {
+  transform: translateX(2px);
+}
+
+.objective-item.interactive.completed:hover {
+  border-color: #16a34a;
+}
+
+/* Quest Notes Section */
+.notes-section {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.notes-header h2 {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.notes-editor {
+  margin-top: 1rem;
+}
+
+.notes-textarea {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  resize: vertical;
+  transition: all 0.2s ease;
+}
+
+.notes-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.notes-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.notes-display {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--bg-secondary);
+  border-radius: 0.5rem;
+  min-height: 100px;
+}
+
+.note-text {
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.note-placeholder {
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .quest-detail-page {
@@ -469,5 +641,21 @@
   .quest-metadata {
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .quest-actions {
+    flex-direction: column;
+  }
+
+  .quest-actions button {
+    width: 100%;
+  }
+
+  .notes-actions {
+    flex-direction: column;
+  }
+
+  .notes-actions button {
+    width: 100%;
   }
 }

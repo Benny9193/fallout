@@ -4,7 +4,8 @@ import { useQuery } from '@tanstack/react-query'
 import { questService } from '../api/services'
 import { Loading, ErrorDisplay, EmptyState } from '../components'
 import { ROUTES } from '../constants'
-import type { QuestType, QuestStatus, QuestDifficulty } from '../types/api'
+import { useQuestProgressStore } from '../store/questProgressStore'
+import type { QuestType, QuestStatus, QuestDifficulty, Quest } from '../types/api'
 import './Quests.css'
 
 function Quests() {
@@ -19,11 +20,32 @@ function Quests() {
     queryFn: questService.getQuests,
   })
 
-  // Filter quests based on search, type, status, and difficulty
-  const filteredQuests = useMemo(() => {
+  // Get quest progress from store
+  const questProgress = useQuestProgressStore((state) => state.questProgress)
+  const getQuestProgress = useQuestProgressStore((state) => state.getQuestProgress)
+
+  // Merge quests with progress data
+  const questsWithProgress = useMemo(() => {
     if (!quests) return []
 
-    let result = quests
+    return quests.map((quest) => {
+      const progress = getQuestProgress(quest.id)
+      return {
+        ...quest,
+        status: progress?.status || quest.status,
+        objectives: quest.objectives.map((obj) => ({
+          ...obj,
+          completed: progress?.completedObjectives.includes(obj.id) || obj.completed,
+        })),
+      }
+    })
+  }, [quests, questProgress, getQuestProgress])
+
+  // Filter quests based on search, type, status, and difficulty
+  const filteredQuests = useMemo(() => {
+    if (!questsWithProgress) return []
+
+    let result = questsWithProgress
 
     // Filter by type
     if (selectedType !== 'All') {
@@ -53,7 +75,7 @@ function Quests() {
     }
 
     return result
-  }, [quests, searchQuery, selectedType, selectedStatus, selectedDifficulty])
+  }, [questsWithProgress, searchQuery, selectedType, selectedStatus, selectedDifficulty])
 
   // Get quest type badge color
   const getTypeBadgeClass = (type: QuestType) => {
@@ -126,13 +148,13 @@ function Quests() {
           <div className="stat">
             <span className="stat-label">Active</span>
             <span className="stat-value">
-              {quests?.filter((q) => q.status === 'In Progress').length || 0}
+              {questsWithProgress?.filter((q) => q.status === 'In Progress').length || 0}
             </span>
           </div>
           <div className="stat">
             <span className="stat-label">Completed</span>
             <span className="stat-value">
-              {quests?.filter((q) => q.status === 'Completed').length || 0}
+              {questsWithProgress?.filter((q) => q.status === 'Completed').length || 0}
             </span>
           </div>
         </div>
