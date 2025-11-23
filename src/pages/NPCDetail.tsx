@@ -106,12 +106,24 @@ function NPCDetail() {
         {/* Biography Section */}
         <div className="npc-section npc-biography">
           <h2>Biography</h2>
-          <div
-            className="biography-content markdown-content"
-            dangerouslySetInnerHTML={{
-              __html: npc.biography.replace(/\n/g, '<br />').replace(/## /g, '<h3>').replace(/<br \/><br \/>/g, '</p><p>'),
-            }}
-          />
+          <div className="biography-content markdown-content">
+            {npc.biography.split('\n\n').map((paragraph, index) => {
+              if (paragraph.startsWith('## ')) {
+                return <h3 key={index}>{paragraph.substring(3)}</h3>
+              }
+              if (paragraph.trim().startsWith('- ')) {
+                const items = paragraph.split('\n').filter(line => line.trim().startsWith('- '))
+                return (
+                  <ul key={index}>
+                    {items.map((item, i) => (
+                      <li key={i}>{item.substring(2)}</li>
+                    ))}
+                  </ul>
+                )
+              }
+              return <p key={index}>{paragraph}</p>
+            })}
+          </div>
         </div>
 
         {/* Perks Section */}
