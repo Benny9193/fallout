@@ -394,4 +394,286 @@
   .fade-up {
     transform: translateY(20px);
   }
+
+  .stat-card {
+    padding: 1.5rem;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+  }
+
+  .feature-title {
+    font-size: 1.3rem;
+  }
+
+  .tech-badge {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* ============================================
+   Responsive Design - Mobile (480px and below)
+   ============================================ */
+@media (max-width: 480px) {
+  .hero {
+    padding: 3rem 1.25rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  .hero-buttons {
+    gap: 0.75rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: translateY(-1px);
+  }
+
+  .stats-section {
+    padding: 2rem 1.25rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+  }
+
+  .stat-card {
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+    margin-bottom: 0;
+    order: 2;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    text-align: left;
+    order: 1;
+    margin-bottom: 0;
+  }
+
+  .stat-trend {
+    display: none;
+  }
+
+  .features-section {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .features-grid {
+    gap: 1.25rem;
+  }
+
+  .feature-card {
+    padding: 1.25rem;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .feature-icon {
+    font-size: 2.25rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .feature-title {
+    font-size: 1.2rem;
+  }
+
+  .feature-description {
+    font-size: 0.95rem;
+  }
+
+  .tech-section {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .tech-grid {
+    gap: 0.75rem;
+  }
+
+  .tech-badge {
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .tech-badge:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* ============================================
+   Responsive Design - Extra Small Mobile (< 380px)
+   ============================================ */
+@media (max-width: 380px) {
+  .hero {
+    padding: 2.5rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.875rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .stats-section {
+    padding: 1.75rem 1rem;
+  }
+
+  .stats-grid {
+    gap: 0.75rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .features-section {
+    padding: 2rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .features-grid {
+    gap: 1rem;
+  }
+
+  .feature-card {
+    padding: 1rem;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+  }
+
+  .feature-title {
+    font-size: 1.1rem;
+  }
+
+  .feature-description {
+    font-size: 0.875rem;
+  }
+
+  .tech-section {
+    padding: 2rem 1rem;
+  }
+
+  .tech-badge {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* ============================================
+   Reduced Motion Support
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content,
+  .fade-up,
+  .stat-card,
+  .feature-card,
+  .tech-badge,
+  .btn-primary,
+  .btn-secondary {
+    transition: none;
+    animation: none;
+  }
+
+  .fade-up.animate-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-in .stat-card,
+  .animate-in .feature-card,
+  .animate-in .tech-badge {
+    opacity: 1;
+    animation: none;
+  }
+
+  .stat-card:hover,
+  .feature-card:hover,
+  .tech-badge:hover,
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: none;
+  }
+
+  .feature-card:hover .feature-arrow {
+    transform: none;
+  }
 }
