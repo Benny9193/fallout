@@ -62,3 +62,41 @@ export interface CompendiumCategory {
   count: number
 }
 
+export type QuestType = 'Main' | 'Side' | 'Faction' | 'Companion' | 'DLC'
+export type QuestStatus = 'Not Started' | 'In Progress' | 'Completed' | 'Failed'
+export type QuestDifficulty = 'Easy' | 'Medium' | 'Hard' | 'Very Hard'
+
+export interface QuestObjective {
+  id: number
+  description: string
+  completed: boolean
+  optional: boolean
+}
+
+export interface QuestReward {
+  type: 'Caps' | 'XP' | 'Item' | 'Perk' | 'Reputation'
+  value: string
+  description?: string
+}
+
+export interface Quest {
+  id: number
+  title: string
+  type: QuestType
+  status: QuestStatus
+  difficulty: QuestDifficulty
+  description: string
+  location: string
+  giver: string
+  level: number
+  objectives: QuestObjective[]
+  rewards: QuestReward[]
+  walkthrough: string
+  choices?: string[]
+  consequences?: string
+  relatedQuests?: number[]
+  faction?: string
+  createdAt: string
+  updatedAt: string
+}
+
