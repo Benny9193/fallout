@@ -25,6 +25,7 @@ function Navigation() {
     { to: ROUTES.HOME, label: 'Home', icon: '🏠' },
     { to: ROUTES.DASHBOARD, label: 'Dashboard', icon: '📊' },
     { to: ROUTES.QUESTS, label: 'Quests', icon: '⚔️' },
+    { to: ROUTES.NPCS, label: 'NPCs', icon: '👥' },
     { to: ROUTES.POSTS, label: 'Posts', icon: '📝' },
     { to: ROUTES.PROFILE, label: 'Profile', icon: '👤' },
     { to: ROUTES.SETTINGS, label: 'Settings', icon: '⚙️' },

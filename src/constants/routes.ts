@@ -12,7 +12,10 @@ export const ROUTES = {
   ABOUT: '/about',
   COMPENDIUM: '/compendium',
   COMPENDIUM_ARTICLE: '/compendium/:id',
-  CHARACTERS: '/characters',
+  QUESTS: '/quests',
+  QUEST_DETAIL: '/quests/:id',
+  NPCS: '/npcs',
+  NPC_DETAIL: '/npcs/:id',
 } as const
 
 export type Route = typeof ROUTES[keyof typeof ROUTES]

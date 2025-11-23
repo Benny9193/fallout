@@ -258,19 +258,15 @@ function Quests() {
           <EmptyState
             title="No quests found"
             message="Try adjusting your filters or search query"
-            action={
-              <button
-                onClick={() => {
-                  setSearchQuery('')
-                  setSelectedType('All')
-                  setSelectedStatus('All')
-                  setSelectedDifficulty('All')
-                }}
-                className="btn-primary"
-              >
-                Clear Filters
-              </button>
-            }
+            action={{
+              label: 'Clear Filters',
+              onClick: () => {
+                setSearchQuery('')
+                setSelectedType('All')
+                setSelectedStatus('All')
+                setSelectedDifficulty('All')
+              },
+            }}
           />
         ) : (
           filteredQuests.map((quest) => (

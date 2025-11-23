@@ -74,3 +74,48 @@ export interface Character {
   type: 'Protagonist' | 'Companion' | 'Antagonist' | 'NPC' | 'Faction Leader'
 }
 
+export type NPCRole = 'Companion' | 'Merchant' | 'Quest Giver' | 'Faction Leader' | 'Civilian' | 'Enemy'
+export type NPCFaction = 'Brotherhood of Steel' | 'Railroad' | 'Institute' | 'Minutemen' | 'Raiders' | 'Gunners' | 'Children of Atom' | 'None'
+export type NPCLocation = 'Commonwealth' | 'Capital Wasteland' | 'Mojave Wasteland' | 'Appalachia' | 'Various'
+
+export interface NPCPerk {
+  name: string
+  description: string
+  requirement?: string
+}
+
+export interface NPCStats {
+  health: number
+  level: number
+  resistance?: {
+    damage: number
+    energy: number
+    radiation: number
+  }
+}
+
+export interface NPC {
+  id: number
+  name: string
+  role: NPCRole
+  faction: NPCFaction
+  location: NPCLocation
+  description: string
+  biography: string
+  image?: string
+  isCompanion: boolean
+  isMerchant: boolean
+  isEssential: boolean
+  perks?: NPCPerk[]
+  stats?: NPCStats
+  inventory?: string[]
+  quests?: string[]
+  dialogue?: string[]
+  relationships?: {
+    likes: string[]
+    dislikes: string[]
+  }
+  createdAt: string
+  updatedAt: string
+}
+
