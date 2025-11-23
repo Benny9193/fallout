@@ -14,6 +14,7 @@ const Posts = lazy(() => import('./pages/Posts'))
 const InfinitePosts = lazy(() => import('./pages/InfinitePosts'))
 const Compendium = lazy(() => import('./pages/Compendium'))
 const CompendiumArticle = lazy(() => import('./pages/CompendiumArticle'))
+const Characters = lazy(() => import('./pages/Characters'))
 const Quests = lazy(() => import('./pages/Quests'))
 const QuestDetail = lazy(() => import('./pages/QuestDetail'))
 const NPCs = lazy(() => import('./pages/NPCs'))
@@ -38,6 +39,7 @@ function App() {
                 <Route path={ROUTES.ABOUT} element={<About />} />
                 <Route path={ROUTES.COMPENDIUM} element={<Compendium />} />
                 <Route path={ROUTES.COMPENDIUM_ARTICLE} element={<CompendiumArticle />} />
+                <Route path={ROUTES.CHARACTERS} element={<Characters />} />
                 <Route path={ROUTES.QUESTS} element={<Quests />} />
                 <Route path={ROUTES.QUEST_DETAIL} element={<QuestDetail />} />
                 <Route path={ROUTES.NPCS} element={<NPCs />} />
